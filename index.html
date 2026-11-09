@@ -563,29 +563,73 @@ header{gap:12px}
 .tr-club{flex:none;width:52px;height:52px;border-radius:14px;background:#0e0f0e;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;font-weight:900;color:#fff;font-size:12px}
 .tr-club img{width:34px;height:34px;object-fit:contain}
 .tr-club.on{border-color:var(--neon);background:rgba(61,255,128,.12);box-shadow:0 0 12px rgba(61,255,128,.25)}
-.tr-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:rgba(26,27,26,.9);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:16px;position:sticky;top:6px;z-index:5;backdrop-filter:blur(6px)}
-.tr-head>img{width:52px;height:52px;object-fit:contain}
-.tr-head b{font-weight:900;font-size:20px;text-transform:uppercase}
-.tr-cnt{display:flex;gap:12px;font-family:var(--cond);font-weight:700;font-size:15px;text-transform:uppercase;margin-top:2px}
-.tr-cnt .f{color:#4ade80}.tr-cnt .s{color:#f87171}.tr-cnt .x{color:var(--mut)}
-.tr-act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
-.tr-g{margin-bottom:18px}
-.tr-g h5{font-weight:900;text-transform:uppercase;font-size:15px;margin-bottom:10px;color:var(--g)}
-.tr-g h5 span{font-family:var(--cond);color:var(--mut);font-size:14px;font-weight:700;margin-left:8px}
-.tr-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
-.tr-p{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;background:#151615;border:2px solid #232623;border-radius:14px;padding:8px 10px;transition:.15s}
-.tr-p.f{border-color:#22c55e;background:rgba(34,197,94,.12)}
-.tr-p.s{border-color:#ef4444;background:rgba(239,68,68,.12)}
-.tr-sh{width:44px;height:44px}
-.tr-ph{display:block;width:44px;height:44px;border-radius:50%;background:#222 center/cover;border:2px solid var(--line)}
-.tr-n{min-width:0}.tr-n b{display:block;font-weight:800;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tr-n small{font-family:var(--cond);color:var(--mut);font-size:13px}
-.tr-b{display:flex;gap:6px}
-.tr-b button{font-family:var(--head);cursor:pointer;font-weight:900;font-size:12px;text-transform:uppercase;border-radius:10px;padding:8px 10px;border:1px solid var(--line);background:#0e0f0e;color:var(--mut)}
-.tr-b .tr-f:hover,.tr-b .tr-f.on{border-color:#22c55e;color:#fff}.tr-b .tr-f.on{background:#16a34a}
-.tr-b .tr-s:hover,.tr-b .tr-s.on{border-color:#ef4444;color:#fff}.tr-b .tr-s.on{background:#dc2626}
 .tr-bx{max-width:560px}
 .tr-img{width:100%;border-radius:12px;border:1px solid var(--line);min-height:120px;background:#0e0f0e}
-@media (max-width:560px){.tr-head{padding:10px 12px;gap:10px}.tr-head>img{width:40px;height:40px}.tr-head b{font-size:17px}.tr-act{margin-left:0;width:100%}.tr-act .h-btn{flex:1;padding:9px 6px;font-size:12px}.tr-list{grid-template-columns:1fr}}
+
+.mv-hero{position:relative;overflow:hidden;border-radius:22px;padding:22px;background:linear-gradient(160deg,var(--cb) 0%,color-mix(in srgb,var(--cb) 55%,#111) 70%,#141614 100%);border:1px solid rgba(255,255,255,.1);margin-bottom:14px}
+.mv-hero::before{content:"";position:absolute;left:24%;top:-20%;width:10px;height:150%;background:rgba(255,255,255,.1);transform:rotate(24deg)}
+.mv-top{display:flex;justify-content:space-between;gap:12px;position:relative}
+.mv-top>div{min-width:0}.mv-top>img{flex:none;width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
+.mv-k{font-family:var(--cond);font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.7);font-size:15px}
+.mv-hero h2{font-family:var(--cond);font-weight:700;font-size:clamp(38px,7vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.5px}
+.mv-hero h2 span{color:var(--neon)}
+.mv-club{font-weight:900;letter-spacing:3px;text-transform:uppercase;font-size:18px;margin-top:4px}
+.mv-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1.5fr;gap:10px;margin-top:16px;position:relative}
+.mv-stats>div{background:rgba(0,0,0,.28);border-radius:14px;padding:10px 6px;text-align:center}
+.mv-stats b{display:block;font-family:var(--cond);font-weight:700;font-size:40px;line-height:1}
+.mv-stats small{font-family:var(--cond);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);font-size:13px}
+.mv-stats .sd.neg b{color:#fca5a5}.mv-stats .sd.pos b{color:#4ade80}
+.mv-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px;margin-top:10px;position:relative}
+.mv-gold{background:linear-gradient(135deg,#c99a12,#f2c94c);border-radius:14px;padding:10px 14px;color:#2b2100;display:block;cursor:pointer}
+.mv-gold span{display:block;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.mv-gold select{appearance:none;background:transparent;border:0;font-family:var(--head);font-weight:900;font-size:20px;color:#2b2100;width:100%;cursor:pointer;padding:2px 0}
+.mv-gold select option{color:#111}
+.mv-box{background:rgba(0,0,0,.28);border-radius:14px;padding:10px 14px;min-width:0}
+.mv-box span{display:block;font-family:var(--cond);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65);font-size:13px}
+.mv-box b{display:block;font-weight:900;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.mv-card{border-radius:20px;padding:16px;margin-bottom:14px;background:rgba(26,27,26,.9);border:1px solid var(--line)}
+.mv-card.lt{background:#fff;color:#111;border-color:#fff}
+.mv-card.dk{background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.12)}
+.mv-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
+.mv-h h3{font-family:var(--cond);font-weight:700;font-size:34px;text-transform:uppercase;line-height:1}
+.mv-card.lt .mv-h h3,.mv-card.lt .mv-h span{color:#0f4d2a}
+.mv-h span{font-weight:800;font-size:14px;color:rgba(255,255,255,.75)}
+.mv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:12px 10px}
+.mv-grid.sm{grid-template-columns:repeat(auto-fill,minmax(84px,1fr))}
+.mv-t{background:none;border:0;color:inherit;cursor:pointer;text-align:center;font-family:var(--head);padding:0;min-width:0}
+.mv-f{position:relative;display:block;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#2a2d2a;border:2px solid #4b4f4b;transition:.15s}
+.mv-card.lt .mv-f{background:#eef1ee;border-color:#0f4d2a}
+.mv-t:hover .mv-f{transform:translateY(-2px);border-color:var(--g)}
+.mv-f .mv-sh{position:absolute;inset:6% 10% 18%;width:80%;height:76%}
+.mv-grid.sm .mv-f .mv-sh{inset:8% 12% 8%;width:76%;height:84%}
+.mv-ph{position:absolute;inset:0;background:center/cover}
+.mv-anon{position:absolute;inset:0;background:#b8892a}.mv-anon i{position:absolute;left:50%;top:22%;width:30%;aspect-ratio:1;border-radius:50%;background:#f4ead4;transform:translateX(-50%)}.mv-anon b{position:absolute;left:50%;bottom:-24%;width:66%;aspect-ratio:1;border-radius:50%;background:#f4ead4;transform:translateX(-50%)}
+.mv-f em{position:absolute;left:0;right:0;bottom:0;font-style:normal;font-weight:900;font-size:11px;padding:4px 2px;background:#111;color:#fff;letter-spacing:.2px}
+.mv-card.lt .mv-f em{background:#0f4d2a}
+.mv-cr{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:#fff;padding:2px;object-fit:contain}
+.mv-t b{display:block;font-weight:800;font-size:13px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mv-t small{display:block;font-family:var(--cond);font-weight:700;letter-spacing:1px;font-size:11.5px;text-transform:uppercase;color:#7c837d}
+.mv-card.dk .mv-t small{color:rgba(255,255,255,.55)}
+.mv-add .mv-f{border-style:dashed;display:grid;place-items:center;background:#f3f6f3}
+.mv-add .mv-f i{font-style:normal;font-size:40px;font-weight:900;color:#0f4d2a}
+.mv-pos{margin-top:6px}.mv-pos h6{font-weight:900;text-transform:uppercase;font-size:13px;color:var(--g);margin:10px 0 8px}.mv-pos h6 span{color:var(--mut);font-family:var(--cond)}
+.mv-hint{font-family:var(--cond);color:rgba(255,255,255,.55);font-size:16px}
+.mv-act{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px 0 10px}
+.mv-sheet h4 span{color:var(--g)}
+.mv-types{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.mv-types button{font-family:var(--head);cursor:pointer;font-weight:900;font-size:13px;text-transform:uppercase;border-radius:11px;padding:10px 12px;border:1px solid var(--line);background:#0e0f0e;color:var(--mut)}
+.mv-types button.on{border-color:var(--neon);color:#fff;background:rgba(61,255,128,.14)}
+.mv-types.sm button{font-size:11.5px;padding:7px 9px}
+.mv-res{display:grid;gap:4px;max-height:240px;overflow:auto;margin-bottom:8px}
+.mv-res button{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;background:#151615;border:1px solid #232623;border-radius:10px;padding:7px 9px;color:#fff;font-family:var(--head);font-weight:700;font-size:14px;text-align:left;cursor:pointer}
+.mv-res button:hover{border-color:var(--g)}
+.mv-res img{width:24px;height:24px;object-fit:contain}
+.mv-res small{font-family:var(--cond);color:var(--mut);font-size:13px}
+.mv-plus{font-weight:900;color:var(--neon);text-align:center}
+.mv-chosen{display:flex;align-items:center;gap:12px;background:#151615;border:1px solid var(--g);border-radius:12px;padding:8px 10px;margin-bottom:6px}
+.mv-chosen>span,.mv-chosen>svg{position:relative;width:52px;height:52px;flex:none;border-radius:10px;overflow:hidden;display:block}
+.mv-chosen b{display:block;font-weight:900}.mv-chosen small{font-family:var(--cond);color:var(--mut)}
+@media (max-width:640px){.mv-hero{padding:16px}.mv-top>img{position:absolute;right:0;top:0;width:52px;height:52px}.mv-k{font-size:12px;letter-spacing:2.5px;padding-right:56px}.mv-hero h2{font-size:32px;padding-right:50px}.mv-stats{grid-template-columns:repeat(3,1fr)}.mv-stats .sd{grid-column:1/-1}.mv-stats b{font-size:32px}.mv-row{grid-template-columns:1fr}.mv-h h3{font-size:28px}.mv-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px 8px}}
 @media (max-width:620px){.apptabs{margin-bottom:14px}.apptabs button{font-size:12.5px;padding:11px 4px}}
 
 </style>
@@ -763,6 +807,7 @@ header{gap:12px}
 <div class="acc" id="accBox" hidden><div class="bx"><h4>Acesso <span>profissional</span></h4><p>Área da equipe do Nó Tático (host e editores) para publicar notícias, episódios do PodCast e jogos do Mundo.</p><div id="accMsg"></div><button class="h-btn acc-x" id="accClose">Fechar</button></div></div>
 <div class="acc" id="ytBox" hidden><div class="bx yt"><div class="ytw" id="ytW"></div><button class="h-btn" id="ytClose">Fechar</button></div></div>
 <div class="acc" id="trBox" hidden><div class="bx tr-bx"><h4>Minha <span>lista</span></h4><img id="trImg" class="tr-img" alt="Prévia da lista"><div class="acc-row" style="margin-top:12px"><button class="h-btn pri" id="trShare">Compartilhar imagem</button><button class="h-btn" id="trDown">Baixar imagem</button><button class="h-btn" id="trLink">Copiar link</button></div><button class="h-btn acc-x" id="trClose">Fechar</button></div></div>
+<div class="acc" id="trSheet" hidden><div class="bx mv-sheet"><h4 id="trSheetT"></h4><div id="trSheetB"></div><button class="h-btn acc-x" id="trSheetX">Cancelar</button></div></div>
 <script>
 (() => {
 
@@ -1685,88 +1730,172 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const g = e.target.closest('.sec [data-go]'); if (g) { go(g.dataset.go); window.scrollTo({ top: 0 }); return; }
     const m = e.target.closest('.sec .more[data-sec]'); if (m) { go(m.dataset.sec); window.scrollTo({ top: 0 }); }
   });
-  // ===== Games: Transferências (quem fica e quem sai) =====
-  const TR_KEY = 'notatico-transf-v1', POS = [['G', 'Goleiros'], ['D', 'Defensores'], ['M', 'Meio-campistas'], ['A', 'Atacantes']];
-  let TR = { club: 'flamengo', picks: {} };
-  try { const s = JSON.parse(localStorage.getItem(TR_KEY)); if (s && s.picks) TR = s; } catch (e) {}
+  // ===== Games: Transferências — Movimentações 2027 =====
+  const TR_KEY = 'notatico-transf-v2', POS = [['G', 'Goleiros'], ['D', 'Defensores'], ['M', 'Meio-campistas'], ['A', 'Atacantes']];
+  const SAI = { v: ['Vendido', 'VENDIDO'], e: ['Emprestado', 'EMPRESTADO'], d: ['Dispensado', 'DISPENSADO'], a: ['Aposentado', 'APOSENTADO'] };
+  const CHE = { c: ['Contratado', 'CONTRATADO', 'CONTRATADO'], z: ['Custo zero', 'CUSTO ZERO', 'CONTRATADO'], v: ['Volta de empréstimo', 'VOLTA', 'VOLTA'], b: ['Subiu da base', 'BASE', 'SUBIU DA BASE'] };
+  let TR = { club: 'flamengo', d: {} };
+  try { const s = JSON.parse(localStorage.getItem(TR_KEY)); if (s && s.d) TR = s; } catch (e) {}
   const trSave = () => { try { localStorage.setItem(TR_KEY, JSON.stringify(TR)); } catch (e) {} };
   const E = () => window.NT_esc;
-  const trPick = c => TR.picks[c] || (TR.picks[c] = {});
-  function trAvatar(c, p, cls) { const ph = E().PHOTOS[c.id + ':' + p[0]]; return ph ? `<span class="tr-ph ${cls || ''}" style="background-image:url('${ph}')"></span>` : E().shirtSVG(c.kit, p[0], 'tr-sh ' + (cls || '')); }
+  const trD = c => { const d = TR.d[c] || (TR.d[c] = {}); d.s = d.s || {}; d.e = d.e || []; return d; };
+  const eur = v => '€' + (Math.round(v * 10) / 10).toString().replace('.', ',') + 'M';
+  const num = s => { const v = parseFloat(String(s || '').replace(',', '.')); return isFinite(v) && v > 0 ? Math.min(v, 999) : null; };
+  const shortN = n => { const p = n.trim().split(/\s+/); return p.length > 1 && n.length > 11 ? p[0][0] + '. ' + p.slice(1).join(' ') : n; };
+  function lum(h) { const m = /^#?([0-9a-f]{6})$/i.exec(h || ''); if (!m) return 1; const n = parseInt(m[1], 16); return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; }
+  function clubBg(c) { const cs = (c.kit.c || []).slice().sort((a, b) => lum(a) - lum(b)); const d = cs[0] || '#1f6b3a'; return lum(d) > .55 ? '#2a2c2a' : lum(d) < .07 ? '#262826' : d; }
+  function trSummary(c) {
+    const d = trD(c.id), out = c.players.filter(p => d.s[p[0]]), stay = c.players.filter(p => !d.s[p[0]]);
+    const inv = d.e.reduce((a, x) => a + (x.t === 'c' && x.v ? x.v : 0), 0), arr = out.reduce((a, p) => a + (d.s[p[0]].t === 'v' && d.s[p[0]].v ? d.s[p[0]].v : 0), 0);
+    const top = d.e.filter(x => x.t === 'c' && x.v).sort((a, b) => b.v - a.v)[0];
+    return { d, out, stay, inv, arr, saldo: arr - inv, top };
+  }
+  function arrInfo(x) { const src = x.src && E().CLUBS[x.src]; const p = src && src.byNum[x.num]; return { nome: p ? p[2] : x.nome, pos: p ? p[1] : (x.pos || 'M'), club: src, num: p ? p[0] : null, ph: src ? E().PHOTOS[src.id + ':' + x.num] : null }; }
+  function face(club, n, ph) { if (ph) return `<span class="mv-ph" style="background-image:url('${ph}')"></span>`; if (club && n != null) return E().shirtSVG(club.kit, n, 'mv-sh'); return '<span class="mv-anon"><i></i><b></b></span>'; }
+  function tile(o) { return `<button class="mv-t${o.cls ? ' ' + o.cls : ''}" ${o.attr || ''}><span class="mv-f">${o.face}${o.tag ? `<em>${esc(o.tag)}</em>` : ''}${o.crest ? `<img class="mv-cr" src="${o.crest}" alt="">` : ''}</span><b>${esc(shortN(o.nome))}</b>${o.st ? `<small>${esc(o.st)}</small>` : ''}</button>`; }
   function renderTransf() {
-    const C = E().CLUBS, c = C[TR.club] || C.flamengo; TR.club = c.id; const pk = trPick(c.id);
-    const nF = c.players.filter(p => pk[p[0]] === 'f').length, nS = c.players.filter(p => pk[p[0]] === 's').length, nX = c.players.length - nF - nS;
+    const C = E().CLUBS, c = C[TR.club] || C.flamengo; TR.club = c.id; const S = trSummary(c), d = S.d;
     const clubs = E().DATA.clubs.map(k => `<button class="tr-club${k.id === c.id ? ' on' : ''}" data-trc="${k.id}" title="${esc(k.nome)}">${CREST[k.id] ? `<img src="${CREST[k.id]}" alt="">` : esc(k.sigla)}</button>`).join('');
-    const card = p => { const s = pk[p[0]] || ''; return `<div class="tr-p ${s}">${trAvatar(c, p)}<div class="tr-n"><b>${esc(p[2])}</b><small>#${p[0]}</small></div><div class="tr-b"><button class="tr-f${s === 'f' ? ' on' : ''}" data-trp="${p[0]}" data-v="f">Fica</button><button class="tr-s${s === 's' ? ' on' : ''}" data-trp="${p[0]}" data-v="s">Sai</button></div></div>`; };
-    const groups = POS.map(([k, nome]) => { const ps = c.players.filter(p => p[1] === k); return ps.length ? `<div class="tr-g"><h5>${nome} <span>${ps.filter(p => pk[p[0]] === 'f').length} ficam · ${ps.filter(p => pk[p[0]] === 's').length} saem</span></h5><div class="tr-list">${ps.map(card).join('')}</div></div>` : ''; }).join('');
-    $('sec-transf').innerHTML = `<h3 class="sec-title">Transfe<span>rências</span></h3><p class="sec-sub">Escolha o clube e decida quem <b style="color:#4ade80">fica</b> e quem <b style="color:#f87171">sai</b> do elenco. Depois compartilhe a sua lista.</p>
-      <div class="tr-clubs">${clubs}</div>
-      <div class="tr-head">${CREST[c.id] ? `<img src="${CREST[c.id]}" alt="">` : ''}<div><b>${esc(c.nome)}</b><div class="tr-cnt"><span class="f">${nF} ficam</span><span class="s">${nS} saem</span><span class="x">${nX} sem decisão</span></div></div>
-        <div class="tr-act"><button class="h-btn" data-tra="allf">Todos ficam</button><button class="h-btn" data-tra="clear">Limpar</button><button class="h-btn pri" data-tra="share">Compartilhar</button></div></div>
-      ${groups}`;
+    const che = d.e.map((x, i) => { const a = arrInfo(x); return tile({ face: face(a.club, a.num, a.ph), tag: x.t === 'c' && x.v ? eur(x.v) : CHE[x.t][1], st: CHE[x.t][2], nome: a.nome, crest: a.club && CREST[a.club.id], attr: `data-tre="${i}"` }); }).join('') + `<button class="mv-t mv-add" data-tra="add"><span class="mv-f"><i>+</i></span><b>Adicionar</b><small>reforço</small></button>`;
+    const sai = S.out.map(p => { const s = d.s[p[0]]; return tile({ face: face(c, p[0], E().PHOTOS[c.id + ':' + p[0]]), tag: s.t === 'v' && s.v ? eur(s.v) : SAI[s.t][1], st: SAI[s.t][1], nome: p[2], attr: `data-trs="${p[0]}"` }); }).join('');
+    const fic = POS.map(([k, nome]) => { const ps = S.stay.filter(p => p[1] === k); return ps.length ? `<div class="mv-pos"><h6>${nome} <span>${ps.length}</span></h6><div class="mv-grid sm">${ps.map(p => tile({ face: face(c, p[0], E().PHOTOS[c.id + ':' + p[0]]), nome: p[2], attr: `data-trf="${p[0]}"` })).join('')}</div></div>` : ''; }).join('');
+    const bg = clubBg(c);
+    $('sec-transf').innerHTML = `<div class="tr-clubs">${clubs}</div>
+      <div class="mv-hero" style="--cb:${bg}">
+        <div class="mv-top"><div><div class="mv-k">Janela de transferências</div><h2>Movimentações <span>2027</span></h2><div class="mv-club">${esc(c.nome)}</div></div>${CREST[c.id] ? `<img src="${CREST[c.id]}" alt="">` : ''}</div>
+        <div class="mv-stats"><div><b>${d.e.length}</b><small>Chegam</small></div><div><b>${S.out.length}</b><small>Saem</small></div><div><b>${S.stay.length}</b><small>Ficam</small></div><div class="sd ${S.saldo > 0 ? 'pos' : S.saldo < 0 ? 'neg' : ''}"><b>${S.saldo ? (S.saldo > 0 ? '+' : '-') + eur(Math.abs(S.saldo)) : '€0'}</b><small>Saldo</small></div></div>
+        <div class="mv-row"><label class="mv-gold"><span>Sua temporada</span><select data-trp="1"><option value="">Escolha…</option>${Array.from({ length: 20 }, (_, i) => `<option value="${i + 1}"${d.p == i + 1 ? ' selected' : ''}>${i + 1}º na Série A</option>`).join('')}</select></label>
+          <div class="mv-box">${S.top ? `<span>Maior contratação</span><b>${esc(arrInfo(S.top).nome)} · ${eur(S.top.v)}</b>` : '<span>Maior contratação</span><b style="opacity:.5">—</b>'}</div></div>
+      </div>
+      <div class="mv-card lt"><div class="mv-h"><h3>▲ Chegam</h3><span>${S.inv ? eur(S.inv) + ' investidos' : ''}</span></div><div class="mv-grid">${che}</div></div>
+      <div class="mv-card dk"><div class="mv-h"><h3>▼ Saem</h3><span>${S.arr ? eur(S.arr) + ' arrecadados' : ''}</span></div>${sai ? `<div class="mv-grid">${sai}</div>` : '<p class="mv-hint">Toque num jogador do elenco, logo abaixo, para tirar ele do time.</p>'}</div>
+      <div class="mv-card"><div class="mv-h"><h3>● Ficam</h3><span>toque para tirar do elenco</span></div>${fic}</div>
+      <div class="mv-act"><button class="h-btn pri" data-tra="share">Compartilhar</button><button class="h-btn" data-tra="clear">Recomeçar ${esc(c.sigla)}</button></div>`;
     const on = $('sec-transf').querySelector('.tr-club.on'); if (on) on.scrollIntoView({ block: 'nearest', inline: 'center' });
   }
+  // ----- folha de opções -----
+  let SH = null;
+  function sheet(title, html) { $('trSheetT').innerHTML = title; $('trSheetB').innerHTML = html; $('trSheet').hidden = false; const i = $('trSheetB').querySelector('input'); if (i && matchMedia('(pointer:fine)').matches) i.focus(); }
+  const shut = () => { $('trSheet').hidden = true; SH = null; };
+  function typeBtns(map, cur) { return `<div class="mv-types">${Object.entries(map).map(([k, v]) => `<button class="${k === cur ? 'on' : ''}" data-ty="${k}">${v[0]}</button>`).join('')}</div>`; }
+  function sheetSai(n) {
+    const c = E().CLUBS[TR.club], p = c.byNum[n], cur = trD(c.id).s[n] || { t: 'v', v: null }; SH = { k: 'sai', n, t: cur.t };
+    sheet(`Como sai <span>${esc(p[2])}</span>?`, typeBtns(SAI, cur.t) + `<label class="fl" id="shVal"${cur.t === 'v' ? '' : ' hidden'}><span>Valor da venda em € milhões (opcional)</span><input id="shV" inputmode="decimal" placeholder="ex: 7 ou 1,5" value="${cur.v ? String(cur.v).replace('.', ',') : ''}"></label>
+      <div class="acc-row"><button class="h-btn pri" data-sh="ok">Confirmar saída</button>${trD(c.id).s[n] ? '<button class="h-btn" data-sh="stay">Fica no elenco</button>' : ''}</div>`);
+  }
+  function sheetChe(i) {
+    const d = trD(TR.club), cur = i != null ? d.e[i] : null; SH = { k: 'che', i, t: cur ? cur.t : 'c', pick: cur ? { src: cur.src, num: cur.num, nome: cur.nome, pos: cur.pos } : null };
+    sheet(cur ? `Reforço <span>${esc(arrInfo(cur).nome)}</span>` : 'Novo <span>reforço</span>', `${cur ? '' : `<label class="fl"><span>Buscar jogador da Série A ou digitar o nome</span><input id="shQ" placeholder="ex: Gabigol, Hulk…" autocomplete="off"></label><div class="mv-res" id="shRes"></div>`}
+      <div id="shPick" class="mv-pick">${cur ? '' : '<p class="acc-st">Escolha um jogador acima.</p>'}</div>${typeBtns(CHE, SH.t)}
+      <label class="fl" id="shVal"${SH.t === 'c' ? '' : ' hidden'}><span>Valor da contratação em € milhões (opcional)</span><input id="shV" inputmode="decimal" placeholder="ex: 20" value="${cur && cur.v ? String(cur.v).replace('.', ',') : ''}"></label>
+      <div class="acc-row"><button class="h-btn pri" data-sh="ok">${cur ? 'Salvar' : 'Adicionar'}</button>${cur ? '<button class="h-btn" data-sh="rm">Remover</button>' : ''}</div>`);
+    if (!cur) trSearch('');
+  }
+  const norm = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  function trSearch(q) {
+    const r = $('shRes'); if (!r) return; const qq = norm(q.trim()), out = [];
+    if (qq.length >= 2) E().DATA.clubs.forEach(k => { if (k.id === TR.club) return; k.players.forEach(p => { if (out.length < 30 && norm(p[2]).includes(qq)) out.push([k, p]); }); });
+    r.innerHTML = out.map(([k, p]) => `<button data-pk="${k.id}:${p[0]}">${CREST[k.id] ? `<img src="${CREST[k.id]}" alt="">` : ''}<span>${esc(p[2])}</span><small>${esc(k.sigla)} · ${({ G: 'GOL', D: 'DEF', M: 'MEI', A: 'ATA' })[p[1]]}</small></button>`).join('') + (q.trim().length >= 2 ? `<button data-pk="free"><span class="mv-plus">+</span><span>Usar “${esc(q.trim())}”</span><small>outro clube / exterior</small></button>` : '');
+  }
+  function showPick() {
+    const el = $('shPick'); if (!el || !SH.pick) return; const a = arrInfo(SH.pick);
+    el.innerHTML = `<div class="mv-chosen">${face(a.club, a.num, a.ph)}<div><b>${esc(a.nome)}</b><small>${a.club ? esc(a.club.nome) : 'De fora da Série A'}</small></div></div>` + (a.club ? '' : `<div class="mv-types sm">${POS.map(([k, n]) => `<button class="${(SH.pick.pos || 'M') === k ? 'on' : ''}" data-ps="${k}">${n}</button>`).join('')}</div>`);
+  }
+  $('trSheet').addEventListener('input', e => { if (e.target.id === 'shQ') trSearch(e.target.value); });
+  $('trSheet').addEventListener('click', e => {
+    if (e.target === $('trSheet') || e.target.closest('#trSheetX')) return shut();
+    const b = e.target.closest('button'); if (!b || !SH) return;
+    const c = E().CLUBS[TR.club], d = trD(c.id);
+    if (b.dataset.ty) { SH.t = b.dataset.ty; b.parentNode.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); const showV = SH.k === 'sai' ? SH.t === 'v' : SH.t === 'c'; $('shVal').hidden = !showV; return; }
+    if (b.dataset.ps) { SH.pick.pos = b.dataset.ps; showPick(); return; }
+    if (b.dataset.pk) { if (b.dataset.pk === 'free') SH.pick = { src: null, num: null, nome: $('shQ').value.trim().slice(0, 30), pos: 'M' }; else { const [k, n] = b.dataset.pk.split(':'); SH.pick = { src: k, num: +n }; } $('shRes').innerHTML = ''; $('shQ').value = ''; showPick(); return; }
+    const v = $('shV') ? num($('shV').value) : null;
+    if (b.dataset.sh === 'ok' && SH.k === 'sai') d.s[SH.n] = { t: SH.t, v: SH.t === 'v' ? v : null };
+    if (b.dataset.sh === 'stay') delete d.s[SH.n];
+    if (b.dataset.sh === 'ok' && SH.k === 'che') { if (!SH.pick) { const st = $('shPick'); st.innerHTML = '<p class="acc-st" style="color:#f87171">Escolha ou digite um jogador primeiro.</p>'; return; } const it = { ...SH.pick, t: SH.t, v: SH.t === 'c' ? v : null }; if (SH.i != null) d.e[SH.i] = it; else d.e.push(it); }
+    if (b.dataset.sh === 'rm') d.e.splice(SH.i, 1);
+    if (b.dataset.sh) { trSave(); shut(); const y = window.scrollY; renderTransf(); window.scrollTo(0, y); }
+  });
   $('sec-transf').addEventListener('click', e => {
     const k = e.target.closest('[data-trc]'); if (k) { TR.club = k.dataset.trc; trSave(); renderTransf(); return; }
-    const b = e.target.closest('[data-trp]'); if (b) { const pk = trPick(TR.club), n = b.dataset.trp; pk[n] = pk[n] === b.dataset.v ? undefined : b.dataset.v; if (!pk[n]) delete pk[n]; trSave(); const y = window.scrollY; renderTransf(); window.scrollTo(0, y); return; }
+    const f = e.target.closest('[data-trf]'); if (f) return sheetSai(+f.dataset.trf);
+    const s = e.target.closest('[data-trs]'); if (s) return sheetSai(+s.dataset.trs);
+    const r = e.target.closest('[data-tre]'); if (r) return sheetChe(+r.dataset.tre);
     const a = e.target.closest('[data-tra]'); if (!a) return;
     const c = E().CLUBS[TR.club];
-    if (a.dataset.tra === 'allf') { const pk = trPick(c.id); c.players.forEach(p => { if (!pk[p[0]]) pk[p[0]] = 'f'; }); trSave(); renderTransf(); }
-    if (a.dataset.tra === 'clear') { if (confirm('Limpar as escolhas do ' + c.nome + '?')) { TR.picks[c.id] = {}; trSave(); renderTransf(); } }
+    if (a.dataset.tra === 'add') sheetChe(null);
+    if (a.dataset.tra === 'clear' && confirm('Recomeçar as movimentações do ' + c.nome + '?')) { TR.d[c.id] = {}; trSave(); renderTransf(); }
     if (a.dataset.tra === 'share') trShare();
   });
+  $('sec-transf').addEventListener('change', e => { if (e.target.dataset.trp) { trD(TR.club).p = e.target.value ? +e.target.value : null; trSave(); } });
+  // ----- link e imagem -----
   const IN_FR = (() => { try { return window.top !== window; } catch (e) { return true; } })();
-  const trLink = () => { const c = E().CLUBS[TR.club], pk = trPick(c.id); return location.href.split('#')[0] + '#t.' + c.id + '.' + c.players.map(p => pk[p[0]] || 'x').join(''); };
+  const b64 = s => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const unb64 = s => decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/'))));
+  const trLink = () => { const d = trD(TR.club); return location.href.split('#')[0] + '#t.' + b64(JSON.stringify({ c: TR.club, s: d.s, e: d.e, p: d.p || null })); };
   function trFromHash(h) {
-    const p = h.slice(1).split('.'); if (p[0] !== 't' || p.length < 3) return false;
-    const c = E().CLUBS[p[1]]; if (!c) return false;
-    const pk = {}; c.players.forEach((pl, i) => { const v = p[2][i]; if (v === 'f' || v === 's') pk[pl[0]] = v; });
-    TR.club = c.id; TR.picks[c.id] = pk; trSave(); return true;
+    if (!h.startsWith('#t.')) return false;
+    try { const o = JSON.parse(unb64(h.slice(3))), c = E().CLUBS[o.c]; if (!c) return false;
+      const s = {}; Object.entries(o.s || {}).forEach(([n, v]) => { if (c.byNum[n] && v && SAI[v.t]) s[n] = { t: v.t, v: num(v.v) }; });
+      const ea = (o.e || []).filter(x => x && CHE[x.t] && (x.src ? E().CLUBS[x.src] && E().CLUBS[x.src].byNum[x.num] : typeof x.nome === 'string' && x.nome.trim())).slice(0, 30).map(x => ({ src: x.src || null, num: x.src ? +x.num : null, nome: x.src ? undefined : String(x.nome).slice(0, 30), pos: 'GDMA'.includes(x.pos) ? x.pos : 'M', t: x.t, v: x.t === 'c' ? num(x.v) : null }));
+      TR.club = c.id; TR.d[c.id] = { s, e: ea, p: o.p >= 1 && o.p <= 20 ? +o.p : null }; trSave(); return true; } catch (e) { return false; }
   }
   async function trDraw() {
-    const X = E(), c = X.CLUBS[TR.club], pk = trPick(c.id);
+    const X = E(), c = X.CLUBS[TR.club], S = trSummary(c), d = S.d, bg = clubBg(c);
     const load = s => new Promise(r => { if (!s) return r(null); const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = s; });
     try { await Promise.all(['900 60px Montserrat', '800 30px Montserrat', '700 30px "Barlow Condensed"'].map(f => document.fonts.load(f))); } catch (e) {}
-    const [logo, crest] = await Promise.all([load(LOGO), load(CREST[c.id])]);
-    const ph = {}; await Promise.all(c.players.map(async p => { const s = X.PHOTOS[c.id + ':' + p[0]]; if (s) ph[p[0]] = await load(s); }));
-    const RH = 50, blocks = POS.map(([k, nome]) => { const ps = c.players.filter(p => p[1] === k); const f = ps.filter(p => pk[p[0]] === 'f'), s = ps.filter(p => pk[p[0]] === 's'); return { nome, f, s, rows: Math.max(f.length, s.length) }; }).filter(b => b.rows);
-    const W = 1080, top = 300, H = Math.max(1350, top + blocks.reduce((a, b) => a + 102 + b.rows * RH, 0) + 140);
+    const ins = d.e.map(arrInfo), outs = S.out.map(p => ({ p, s: d.s[p[0]] }));
+    const imgs = {}; await Promise.all([['logo', LOGO], ['crest', CREST[c.id]], ...ins.map((a, i) => ['i' + i, a.ph]), ...ins.map((a, i) => ['ic' + i, a.club && CREST[a.club.id]]), ...outs.map((o, i) => ['o' + i, X.PHOTOS[c.id + ':' + o.p[0]]])].map(async ([k, s]) => { imgs[k] = await load(s); }));
+    const W = 1080, COLS = 7, TW = 132, GAP = 12, TH = 196, PAD = 60, rowsI = Math.max(1, Math.ceil(ins.length / COLS)), rowsO = Math.max(1, Math.ceil(outs.length / COLS));
+    const hI = 110 + rowsI * TH, hO = 110 + rowsO * TH, top = 560, H = top + hI + 30 + hO + 170;
     const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const x = cv.getContext('2d');
-    x.fillStyle = '#111211'; x.fillRect(0, 0, W, H);
-    let g = x.createRadialGradient(W, 0, 0, W, 0, 800); g.addColorStop(0, 'rgba(34,180,92,.35)'); g.addColorStop(1, 'rgba(34,180,92,0)'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+    const rr = (X0, Y0, w, h, r) => { x.beginPath(); x.moveTo(X0 + r, Y0); x.arcTo(X0 + w, Y0, X0 + w, Y0 + h, r); x.arcTo(X0 + w, Y0 + h, X0, Y0 + h, r); x.arcTo(X0, Y0 + h, X0, Y0, r); x.arcTo(X0, Y0, X0 + w, Y0, r); x.closePath(); };
     const fit = (im, cx, cy, s) => { if (!im) return; const k = s / Math.max(im.width, im.height); x.drawImage(im, cx - im.width * k / 2, cy - im.height * k / 2, im.width * k, im.height * k); };
-    fit(logo, 120, 120, 170); fit(crest, W - 110, 120, 140);
-    x.textAlign = 'left'; x.fillStyle = '#3dff80'; x.font = '700 34px "Barlow Condensed", sans-serif'; x.fillText('QUEM FICA E QUEM SAI', 230, 95);
-    x.fillStyle = '#fff'; x.font = '900 64px Montserrat, sans-serif'; let t = c.nome.toUpperCase(); while (x.measureText(t).width > 640 && t.length > 3) t = t.slice(0, -1); x.fillText(t, 230, 160);
-    const nF = c.players.filter(p => pk[p[0]] === 'f').length, nS = c.players.filter(p => pk[p[0]] === 's').length;
-    x.font = '800 30px Montserrat, sans-serif'; x.fillStyle = '#4ade80'; x.fillText(`${nF} FICAM`, 230, 210); const w1 = x.measureText(`${nF} FICAM`).width; x.fillStyle = '#f87171'; x.fillText(`${nS} SAEM`, 230 + w1 + 30, 210);
-    x.fillStyle = '#3dff80'; x.fillRect(60, 250, W - 120, 4);
-    let y = top;
-    const chip = (p, cx, cy, ok) => {
-      const w = 450; x.fillStyle = ok ? 'rgba(34,197,94,.16)' : 'rgba(239,68,68,.16)'; x.strokeStyle = ok ? '#22c55e' : '#ef4444'; x.lineWidth = 2;
-      x.beginPath(); x.roundRect ? x.roundRect(cx, cy, w, RH - 8, 12) : x.rect(cx, cy, w, RH - 8); x.fill(); x.stroke();
-      if (ph[p[0]]) { x.save(); x.beginPath(); x.arc(cx + 26, cy + 21, 18, 0, 7); x.clip(); fit(ph[p[0]], cx + 26, cy + 21, 40); x.restore(); } else X.drawShirt(x, c.kit, p[0], cx + 26, cy + 21, 40);
-      x.fillStyle = '#fff'; x.font = '800 24px Montserrat, sans-serif'; let n = p[2]; while (x.measureText(n).width > w - 90 && n.length > 3) n = n.slice(0, -1); x.fillText(n, cx + 56, cy + 30);
+    const fill = (im, X0, Y0, w, h) => { const k = Math.max(w / im.width, h / im.height); x.drawImage(im, X0 + (w - im.width * k) / 2, Y0 + (h - im.height * k) / 2, im.width * k, im.height * k); };
+    let g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, bg); g.addColorStop(.55, '#151715'); g.addColorStop(1, '#0f100f'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+    x.save(); x.globalAlpha = .12; x.strokeStyle = '#fff'; x.lineWidth = 14; x.beginPath(); x.moveTo(330, 0); x.lineTo(60, 600); x.stroke(); x.restore();
+    x.textAlign = 'left'; x.fillStyle = 'rgba(255,255,255,.7)'; x.font = '700 30px "Barlow Condensed", sans-serif'; x.fillText('J A N E L A   D E   T R A N S F E R Ê N C I A S', PAD, 92);
+    x.fillStyle = '#fff'; x.font = '900 66px Montserrat, sans-serif'; x.fillText('MOVIMENTAÇÕES', PAD, 168); const mw = x.measureText('MOVIMENTAÇÕES ').width; x.fillStyle = '#3dff80'; x.fillText('2027', PAD + mw, 168);
+    x.fillStyle = '#fff'; x.font = '800 36px Montserrat, sans-serif'; x.fillText(c.nome.toUpperCase(), PAD, 222);
+    fit(imgs.crest, W - 110, 130, 116);
+    const stats = [[d.e.length, 'CHEGAM'], [S.out.length, 'SAEM'], [S.stay.length, 'FICAM']];
+    stats.forEach(([v, l], i) => { const X0 = PAD + i * 236; x.fillStyle = 'rgba(0,0,0,.28)'; rr(X0, 258, 220, 118, 18); x.fill(); x.textAlign = 'center'; x.fillStyle = '#fff'; x.font = '900 56px Montserrat, sans-serif'; x.fillText(String(v), X0 + 110, 326); x.fillStyle = 'rgba(255,255,255,.65)'; x.font = '700 24px "Barlow Condensed", sans-serif'; x.fillText(l, X0 + 110, 360); });
+    { const X0 = PAD + 3 * 236, w = W - PAD - X0; x.fillStyle = 'rgba(0,0,0,.28)'; rr(X0, 258, w, 118, 18); x.fill(); x.textAlign = 'center'; x.fillStyle = S.saldo > 0 ? '#4ade80' : S.saldo < 0 ? '#fca5a5' : '#fff'; x.font = '900 50px Montserrat, sans-serif'; x.fillText(S.saldo ? (S.saldo > 0 ? '+' : '-') + eur(Math.abs(S.saldo)) : '€0', X0 + w / 2, 326); x.fillStyle = 'rgba(255,255,255,.65)'; x.font = '700 24px "Barlow Condensed", sans-serif'; x.fillText('SALDO', X0 + w / 2, 360); }
+    x.textAlign = 'left';
+    { const gg = x.createLinearGradient(PAD, 396, PAD + 380, 520); gg.addColorStop(0, '#c99a12'); gg.addColorStop(1, '#f2c94c'); x.fillStyle = gg; rr(PAD, 396, 380, 124, 18); x.fill(); x.fillStyle = '#2b2100'; x.font = '800 24px Montserrat, sans-serif'; x.fillText('SUA TEMPORADA', PAD + 26, 436); x.font = '900 46px Montserrat, sans-serif'; x.fillText(d.p ? d.p + 'º na Série A' : 'A definir', PAD + 26, 494); }
+    { const X0 = PAD + 400, w = W - PAD - X0; x.fillStyle = 'rgba(0,0,0,.28)'; rr(X0, 396, w, 124, 18); x.fill(); x.fillStyle = 'rgba(255,255,255,.65)'; x.font = '700 24px "Barlow Condensed", sans-serif'; x.fillText('MAIOR CONTRATAÇÃO', X0 + 26, 436); x.fillStyle = '#fff'; x.font = '800 36px Montserrat, sans-serif'; let t = S.top ? arrInfo(S.top).nome + ' · ' + eur(S.top.v) : '—'; while (x.measureText(t).width > w - 52 && t.length > 4) t = t.slice(0, -2) + '…'; x.fillText(t, X0 + 26, 490); }
+    const tileC = (X0, Y0, im, club, n, tag, nome, st, light, crest) => {
+      x.save(); rr(X0, Y0, TW, TW, 16); x.fillStyle = light ? '#eef1ee' : '#2a2d2a'; x.fill(); x.clip();
+      if (im) fill(im, X0, Y0, TW, TW); else if (club && n != null) X.drawShirt(x, club.kit, n, X0 + TW / 2, Y0 + TW / 2 - 8, 92); else { x.fillStyle = '#b8892a'; x.fillRect(X0, Y0, TW, TW); x.fillStyle = '#f4ead4'; x.beginPath(); x.arc(X0 + TW / 2, Y0 + 50, 22, 0, 7); x.fill(); x.beginPath(); x.arc(X0 + TW / 2, Y0 + 118, 44, Math.PI, 0); x.fill(); }
+      x.fillStyle = light ? '#0f4d2a' : '#111'; x.fillRect(X0, Y0 + TW - 28, TW, 28); x.fillStyle = '#fff'; x.font = '800 17px Montserrat, sans-serif'; x.textAlign = 'center'; x.fillText(tag, X0 + TW / 2, Y0 + TW - 8);
+      x.restore(); x.lineWidth = 3; x.strokeStyle = light ? '#0f4d2a' : '#4b4f4b'; rr(X0, Y0, TW, TW, 16); x.stroke();
+      if (crest) { x.fillStyle = '#fff'; x.beginPath(); x.arc(X0 + TW - 16, Y0 + 16, 15, 0, 7); x.fill(); fit(crest, X0 + TW - 16, Y0 + 16, 22); }
+      x.textAlign = 'center'; x.fillStyle = light ? '#111' : '#fff'; x.font = '800 20px Montserrat, sans-serif'; let nn = shortN(nome); while (x.measureText(nn).width > TW + 8 && nn.length > 3) nn = nn.slice(0, -2) + '…'; x.fillText(nn, X0 + TW / 2, Y0 + TW + 28);
+      x.fillStyle = light ? '#6b716b' : 'rgba(255,255,255,.55)'; x.font = '700 15px "Barlow Condensed", sans-serif'; x.fillText(st, X0 + TW / 2, Y0 + TW + 50);
     };
-    blocks.forEach(b => {
-      x.fillStyle = '#fff'; x.font = '900 30px Montserrat, sans-serif'; x.fillText(b.nome.toUpperCase(), 60, y + 32);
-      x.font = '700 24px "Barlow Condensed", sans-serif'; x.fillStyle = '#4ade80'; x.fillText(`FICAM (${b.f.length})`, 62, y + 68); x.fillStyle = '#f87171'; x.fillText(`SAEM (${b.s.length})`, 572, y + 68);
-      y += 82; b.f.forEach((p, i) => chip(p, 60, y + i * RH, 1)); b.s.forEach((p, i) => chip(p, 570, y + i * RH, 0)); y += b.rows * RH + 20;
-    });
-    x.fillStyle = '#9aa39d'; x.font = '700 28px "Barlow Condensed", sans-serif'; x.textAlign = 'center'; x.fillText('Faça a sua lista no site do Nó Tático', W / 2, H - 50);
+    const sect = (Y0, h, light, title, sub, items) => {
+      x.fillStyle = light ? '#ffffff' : 'rgba(0,0,0,.35)'; rr(PAD, Y0, W - 2 * PAD, h, 22); x.fill(); if (!light) { x.strokeStyle = 'rgba(255,255,255,.12)'; x.lineWidth = 2; x.stroke(); }
+      x.textAlign = 'left'; x.fillStyle = light ? '#0f4d2a' : '#fff'; x.font = '900 52px Montserrat, sans-serif'; x.fillText(title, PAD + 26, Y0 + 72);
+      x.textAlign = 'right'; x.fillStyle = light ? '#0f4d2a' : 'rgba(255,255,255,.75)'; x.font = '800 26px Montserrat, sans-serif'; if (sub) x.fillText(sub, W - PAD - 26, Y0 + 66);
+      if (!items.length) { x.textAlign = 'left'; x.fillStyle = light ? '#6b716b' : 'rgba(255,255,255,.5)'; x.font = '700 28px "Barlow Condensed", sans-serif'; x.fillText(light ? 'Nenhum reforço' : 'Ninguém sai', PAD + 26, Y0 + 150); }
+      items.forEach((f, i) => f(PAD + 22 + (i % COLS) * (TW + GAP), Y0 + 100 + Math.floor(i / COLS) * TH));
+    };
+    sect(top, hI, true, '▲ CHEGAM', S.inv ? eur(S.inv) + ' investidos' : '', d.e.map((it, i) => (X0, Y0) => tileC(X0, Y0, imgs['i' + i], ins[i].club, ins[i].num, it.t === 'c' && it.v ? eur(it.v) : CHE[it.t][1], ins[i].nome, CHE[it.t][2], true, imgs['ic' + i])));
+    sect(top + hI + 30, hO, false, '▼ SAEM', S.arr ? eur(S.arr) + ' arrecadados' : '', outs.map((o, i) => (X0, Y0) => tileC(X0, Y0, imgs['o' + i], c, o.p[0], o.s.t === 'v' && o.s.v ? eur(o.s.v) : SAI[o.s.t][1], o.p[2], SAI[o.s.t][1], false)));
+    fit(imgs.logo, PAD + 50, H - 85, 100); x.textAlign = 'left'; x.fillStyle = '#fff'; x.font = '900 34px Montserrat, sans-serif'; x.fillText('NÓ TÁTICO', PAD + 116, H - 92); x.fillStyle = 'rgba(255,255,255,.6)'; x.font = '700 24px "Barlow Condensed", sans-serif'; x.fillText('Monte o seu no site do Nó Tático', PAD + 116, H - 60);
     return cv;
   }
   async function trShare() {
-    const c = E().CLUBS[TR.club], pk = trPick(c.id); if (!Object.keys(pk).length) { E().toast('Marque pelo menos um jogador'); return; }
-    const box = $('trBox'); box.hidden = false; $('trImg').removeAttribute('src');
+    const c = E().CLUBS[TR.club], d = trD(c.id); if (!d.e.length && !Object.keys(d.s).length) { E().toast('Adicione um reforço ou tire alguém do elenco primeiro'); return; }
+    $('trBox').hidden = false; $('trImg').removeAttribute('src');
     const cv = await trDraw(); $('trImg').src = cv.toDataURL('image/png');
-    const blob = await new Promise(r => cv.toBlob(r, 'image/png')), fn = `transferencias-${c.id}-notatico.png`, link = trLink();
+    const blob = await new Promise(r => cv.toBlob(r, 'image/png')), fn = `movimentacoes-2027-${c.id}-notatico.png`, link = trLink();
     $('trLink').hidden = IN_FR;
     $('trDown').onclick = () => E().saveBlob(blob, fn);
     $('trLink').onclick = async () => { try { await navigator.clipboard.writeText(link); E().toast('Link copiado!'); } catch (e) { E().toast('Não deu para copiar aqui'); } };
     $('trShare').onclick = async () => {
       if (IN_FR) return E().saveBlob(blob, fn);
-      const file = new File([blob], fn, { type: 'image/png' }), text = `Quem fica e quem sai do ${c.nome}? Olha a minha lista: ${link}`;
+      const file = new File([blob], fn, { type: 'image/png' }), text = `Minhas movimentações 2027 do ${c.nome}. Monte as suas: ${link}`;
       try { if (navigator.canShare && navigator.canShare({ files: [file] })) return await navigator.share({ files: [file], text }); if (navigator.share) return await navigator.share({ text, url: link }); } catch (e) { if (e && e.name === 'AbortError') return; }
       E().saveBlob(blob, fn);
     };
