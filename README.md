@@ -1,6 +1,7 @@
-# Simulador do Brasileirão 2026 · Nó Tático
+# Nó Tático
 
-Site do simulador da tabela do Brasileirão com a identidade do Nó Tático.
-Qualquer pessoa pode simular os jogos que faltam e compartilhar a própria tabela (imagem ou link).
+Site do Nó Tático: tabela do Brasileirão, chaves da Copa do Brasil e da Libertadores, notícias, PodCast, participantes e games (simulação, escalação, 11x11).
 
-O site é o arquivo `index.html`, publicado pelo GitHub Pages. A tabela oficial é atualizada a cada rodada.
+- Tabela, jogos, fichas e chaves: atualizados pelo Claude a cada rodada ("ATT O NO TATICO").
+- Notícias, episódios do PodCast e jogos do Mundo: publicados pela equipe no botão **Acesso profissional**, no rodapé do site (login pelo Firebase).
+- `firestore.rules`: regras de segurança do banco (colar no Firebase em Firestore > Regras).
