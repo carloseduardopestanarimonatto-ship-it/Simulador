@@ -556,6 +556,36 @@ header{gap:12px}
 .acc-it span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .acc-x{margin-top:14px}
 @media (max-width:480px){.fl2{grid-template-columns:1fr}}
+
+.apptabs{max-width:680px}
+.tr-clubs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px;margin-bottom:10px}
+.tr-clubs::-webkit-scrollbar{display:none}
+.tr-club{flex:none;width:52px;height:52px;border-radius:14px;background:#0e0f0e;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;font-weight:900;color:#fff;font-size:12px}
+.tr-club img{width:34px;height:34px;object-fit:contain}
+.tr-club.on{border-color:var(--neon);background:rgba(61,255,128,.12);box-shadow:0 0 12px rgba(61,255,128,.25)}
+.tr-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:rgba(26,27,26,.9);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:16px;position:sticky;top:6px;z-index:5;backdrop-filter:blur(6px)}
+.tr-head>img{width:52px;height:52px;object-fit:contain}
+.tr-head b{font-weight:900;font-size:20px;text-transform:uppercase}
+.tr-cnt{display:flex;gap:12px;font-family:var(--cond);font-weight:700;font-size:15px;text-transform:uppercase;margin-top:2px}
+.tr-cnt .f{color:#4ade80}.tr-cnt .s{color:#f87171}.tr-cnt .x{color:var(--mut)}
+.tr-act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.tr-g{margin-bottom:18px}
+.tr-g h5{font-weight:900;text-transform:uppercase;font-size:15px;margin-bottom:10px;color:var(--g)}
+.tr-g h5 span{font-family:var(--cond);color:var(--mut);font-size:14px;font-weight:700;margin-left:8px}
+.tr-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.tr-p{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;background:#151615;border:2px solid #232623;border-radius:14px;padding:8px 10px;transition:.15s}
+.tr-p.f{border-color:#22c55e;background:rgba(34,197,94,.12)}
+.tr-p.s{border-color:#ef4444;background:rgba(239,68,68,.12)}
+.tr-sh{width:44px;height:44px}
+.tr-ph{display:block;width:44px;height:44px;border-radius:50%;background:#222 center/cover;border:2px solid var(--line)}
+.tr-n{min-width:0}.tr-n b{display:block;font-weight:800;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tr-n small{font-family:var(--cond);color:var(--mut);font-size:13px}
+.tr-b{display:flex;gap:6px}
+.tr-b button{font-family:var(--head);cursor:pointer;font-weight:900;font-size:12px;text-transform:uppercase;border-radius:10px;padding:8px 10px;border:1px solid var(--line);background:#0e0f0e;color:var(--mut)}
+.tr-b .tr-f:hover,.tr-b .tr-f.on{border-color:#22c55e;color:#fff}.tr-b .tr-f.on{background:#16a34a}
+.tr-b .tr-s:hover,.tr-b .tr-s.on{border-color:#ef4444;color:#fff}.tr-b .tr-s.on{background:#dc2626}
+.tr-bx{max-width:560px}
+.tr-img{width:100%;border-radius:12px;border:1px solid var(--line);min-height:120px;background:#0e0f0e}
+@media (max-width:560px){.tr-head{padding:10px 12px;gap:10px}.tr-head>img{width:40px;height:40px}.tr-head b{font-size:17px}.tr-act{margin-left:0;width:100%}.tr-act .h-btn{flex:1;padding:9px 6px;font-size:12px}.tr-list{grid-template-columns:1fr}}
 @media (max-width:620px){.apptabs{margin-bottom:14px}.apptabs button{font-size:12.5px;padding:11px 4px}}
 
 </style>
@@ -573,12 +603,13 @@ header{gap:12px}
   </header>
   <div class="neon"></div>
   <nav class="mainnav" id="mainnav"><button data-sec="home" class="on">Home</button><button data-sec="bra">Competições</button><button data-sec="podcast">PodCast</button><button data-sec="news">News</button><button data-sec="part">Participantes</button><button data-sec="games">Games</button></nav>
-<nav class="apptabs" id="gamesnav" hidden><button data-app="sim" class="on">Simulação</button><button data-app="esc">Escalação</button><button data-app="duel">11x11</button></nav>
+<nav class="apptabs" id="gamesnav" hidden><button data-app="sim" class="on">Simulação</button><button data-app="esc">Escalação</button><button data-app="duel">11x11</button><button data-app="transf">Transferências</button></nav>
 <section id="sec-home" class="sec"></section>
 <section id="sec-bra" class="sec" hidden></section>
 <section id="sec-podcast" class="sec" hidden></section>
 <section id="sec-news" class="sec" hidden></section>
 <section id="sec-part" class="sec" hidden></section>
+<section id="sec-transf" class="sec" hidden></section>
   <div id="app-sim" hidden>
 
 
@@ -731,6 +762,7 @@ header{gap:12px}
 </div>
 <div class="acc" id="accBox" hidden><div class="bx"><h4>Acesso <span>profissional</span></h4><p>Área da equipe do Nó Tático (host e editores) para publicar notícias, episódios do PodCast e jogos do Mundo.</p><div id="accMsg"></div><button class="h-btn acc-x" id="accClose">Fechar</button></div></div>
 <div class="acc" id="ytBox" hidden><div class="bx yt"><div class="ytw" id="ytW"></div><button class="h-btn" id="ytClose">Fechar</button></div></div>
+<div class="acc" id="trBox" hidden><div class="bx tr-bx"><h4>Minha <span>lista</span></h4><img id="trImg" class="tr-img" alt="Prévia da lista"><div class="acc-row" style="margin-top:12px"><button class="h-btn pri" id="trShare">Compartilhar imagem</button><button class="h-btn" id="trDown">Baixar imagem</button><button class="h-btn" id="trLink">Copiar link</button></div><button class="h-btn acc-x" id="trClose">Fechar</button></div></div>
 <script>
 (() => {
 
@@ -1483,6 +1515,8 @@ document.getElementById('eUpd').textContent = DATA.atualizado;
 fromHash();
 renderEsc(); renderDuelBuild(); setTab(ST.tab || 'esc');
 
+window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
+
 })();
 
 (function () {
@@ -1491,7 +1525,7 @@ renderEsc(); renderDuelBuild(); setTab(ST.tab || 'esc');
   const $ = id => document.getElementById(id);
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const S = window.NT_sim, CREST = window.NT_CREST, LOGO = document.querySelector('.logo').src;
-  const SUB = { bra: 'Competições <span style="color:#fff;opacity:.5">|</span> Tabelas e chaves', home: 'Nó Tático <span style="color:#fff;opacity:.5">|</span> Home', podcast: 'PodCast <span style="color:#fff;opacity:.5">|</span> Episódios', news: 'News <span style="color:#fff;opacity:.5">|</span> Últimas notícias', part: 'Participantes <span style="color:#fff;opacity:.5">|</span> Quem faz o programa', sim: 'Games <span style="color:#fff;opacity:.5">|</span> Simulação', esc: 'Games <span style="color:#fff;opacity:.5">|</span> Escalação', duel: 'Games <span style="color:#fff;opacity:.5">|</span> 11x11' };
+  const SUB = { bra: 'Competições <span style="color:#fff;opacity:.5">|</span> Tabelas e chaves', home: 'Nó Tático <span style="color:#fff;opacity:.5">|</span> Home', podcast: 'PodCast <span style="color:#fff;opacity:.5">|</span> Episódios', news: 'News <span style="color:#fff;opacity:.5">|</span> Últimas notícias', part: 'Participantes <span style="color:#fff;opacity:.5">|</span> Quem faz o programa', sim: 'Games <span style="color:#fff;opacity:.5">|</span> Simulação', esc: 'Games <span style="color:#fff;opacity:.5">|</span> Escalação', duel: 'Games <span style="color:#fff;opacity:.5">|</span> 11x11', transf: 'Games <span style="color:#fff;opacity:.5">|</span> Transferências' };
   const COMPS = {"times": {"fortaleza": {"nome": "Fortaleza", "sig": "FOR", "cor": "#1d4ed8"}, "juventude": {"nome": "Juventude", "sig": "JUV", "cor": "#15803d"}, "estudiantes": {"nome": "Estudiantes", "sig": "EST", "cor": "#dc2626"}, "ucatolica": {"nome": "U. Católica", "sig": "UC", "cor": "#2563eb"}, "rosario": {"nome": "Rosario Central", "sig": "ROS", "cor": "#ca8a04"}, "tolima": {"nome": "Tolima", "sig": "TOL", "cor": "#b91c1c"}, "idv": {"nome": "Ind. del Valle", "sig": "IDV", "cor": "#1e3a8a"}, "ldu": {"nome": "LDU", "sig": "LDU", "cor": "#9ca3af"}, "cerro": {"nome": "Cerro Porteño", "sig": "CER", "cor": "#1e40af"}, "platense": {"nome": "Platense", "sig": "PLA", "cor": "#78350f"}, "coquimbo": {"nome": "Coquimbo Unido", "sig": "COQ", "cor": "#eab308"}, "rivadavia": {"nome": "Ind. Rivadavia", "sig": "IRI", "cor": "#4b5563"}}, "cb": {"nome": "Copa do Brasil", "ano": 2026, "nota": "Final em jogo único: domingo, 06/12, no Mané Garrincha (Brasília). Horário a definir pela CBF.", "fases": [{"nome": "Oitavas", "ties": [{"a": "internacional", "b": "corinthians", "agg": null, "w": "a"}, {"a": "gremio", "b": "mirassol", "agg": "2-1", "w": "a"}, {"a": "cruzeiro", "b": "chapecoense", "agg": null, "w": "a"}, {"a": "atletico-mg", "b": "juventude", "agg": "1-0", "w": "a"}, {"a": "palmeiras", "b": "fortaleza", "agg": null, "w": "a"}, {"a": "santos", "b": "remo", "agg": "1-0", "w": "a"}, {"a": "vasco", "b": "fluminense", "agg": "3-1", "w": "a"}, {"a": "vitoria", "b": "athletico", "agg": "4-2", "w": "a"}]}, {"nome": "Quartas", "ties": [{"a": "internacional", "b": "gremio", "agg": "1-3", "w": "b"}, {"a": "cruzeiro", "b": "atletico-mg", "agg": "2-3", "w": "b"}, {"a": "palmeiras", "b": "santos", "agg": "3-0", "w": "a"}, {"a": "vasco", "b": "vitoria", "agg": "3-0", "w": "a"}]}, {"nome": "Semifinal", "ties": [{"a": "gremio", "b": "atletico-mg", "agg": "3-1", "w": "a", "obs": "Ida 2x0 · Volta 1x1"}, {"a": "palmeiras", "b": "vasco", "agg": "2-2", "pen": true, "w": "a", "obs": "Ida 1x0 · Volta 1x2 · Palmeiras nos pênaltis"}]}, {"nome": "Final", "ties": [{"a": "gremio", "b": "palmeiras", "agg": null, "w": null, "obs": "06/12 · Mané Garrincha"}]}]}, "lib": {"nome": "Libertadores", "ano": 2026, "nota": "Final em jogo único: sábado, 28/11, no Estádio Centenário (Montevidéu).", "fases": [{"nome": "Oitavas", "ties": [{"a": "estudiantes", "b": "ucatolica", "agg": "4-1", "w": "a"}, {"a": "corinthians", "b": "rosario", "agg": null, "w": "a"}, {"a": "flamengo", "b": "cruzeiro", "agg": "3-2", "w": "a"}, {"a": "idv", "b": "tolima", "agg": "4-1", "w": "a"}, {"a": "ldu", "b": "mirassol", "agg": null, "w": "a"}, {"a": "palmeiras", "b": "cerro", "agg": null, "w": "a"}, {"a": "platense", "b": "coquimbo", "agg": null, "w": "a"}, {"a": "fluminense", "b": "rivadavia", "agg": null, "w": "a"}]}, {"nome": "Quartas", "ties": [{"a": "estudiantes", "b": "corinthians", "agg": null, "w": "a"}, {"a": "flamengo", "b": "idv", "agg": null, "w": "a"}, {"a": "ldu", "b": "palmeiras", "agg": null, "pen": "3-4", "w": "b"}, {"a": "platense", "b": "fluminense", "agg": "2-3", "w": "b"}]}, {"nome": "Semifinal", "ties": [{"a": "estudiantes", "b": "flamengo", "agg": "0-0", "pen": "3-2", "w": "a", "obs": "Ida 0x0 · Volta 0x0"}, {"a": "palmeiras", "b": "fluminense", "agg": "2-2", "pen": "5-3", "w": "a", "obs": "Ida 2x1 · Volta 0x1"}]}, {"nome": "Final", "ties": [{"a": "estudiantes", "b": "palmeiras", "agg": null, "w": null, "obs": "28/11 · Centenário, Montevidéu"}]}]}, "mundo": {"nome": "Mundo", "jogos": []}};
   const MUNDO_BASE = (COMPS.mundo.jogos || []).slice();
   function tinfo(id) { const t = COMPS.times[id]; return { nome: (S.TEAMS[id] && S.TEAMS[id].nome) || (t && t.nome) || id, img: CREST[id], sig: t ? t.sig : String(id).slice(0, 3).toUpperCase(), cor: t ? t.cor : '#333' }; }
@@ -1622,7 +1656,7 @@ renderEsc(); renderDuelBuild(); setTab(ST.tab || 'esc');
     const c = e.target.closest('[data-comp]'); if (c) { compSel = c.dataset.comp; try { localStorage.setItem('notatico-comp', compSel); } catch (er) {} renderBra(); return; }
     const b = e.target.closest('[data-br]'); if (b) { braR = +b.dataset.br; renderBra(); }
   });
-  const GAMES = ['sim', 'esc', 'duel'];
+  const GAMES = ['sim', 'esc', 'duel', 'transf'];
   function go(a) {
     if (CNAME[a]) { compSel = a; try { localStorage.setItem('notatico-comp', a); } catch (e) {} a = 'bra'; }
     if (!SUB[a]) a = 'home';
@@ -1631,6 +1665,8 @@ renderEsc(); renderDuelBuild(); setTab(ST.tab || 'esc');
     $('gamesnav').hidden = !isG;
     $('app-sim').hidden = a !== 'sim';
     $('app-esc').hidden = !(a === 'esc' || a === 'duel');
+    $('sec-transf').hidden = a !== 'transf';
+    if (a === 'transf') renderTransf();
     document.querySelector('header .status').style.visibility = a === 'sim' ? '' : 'hidden';
     $('appSub').innerHTML = SUB[a];
     if ((a === 'esc' || a === 'duel') && window.NT_escTab) window.NT_escTab(a);
@@ -1649,6 +1685,93 @@ renderEsc(); renderDuelBuild(); setTab(ST.tab || 'esc');
     const g = e.target.closest('.sec [data-go]'); if (g) { go(g.dataset.go); window.scrollTo({ top: 0 }); return; }
     const m = e.target.closest('.sec .more[data-sec]'); if (m) { go(m.dataset.sec); window.scrollTo({ top: 0 }); }
   });
+  // ===== Games: Transferências (quem fica e quem sai) =====
+  const TR_KEY = 'notatico-transf-v1', POS = [['G', 'Goleiros'], ['D', 'Defensores'], ['M', 'Meio-campistas'], ['A', 'Atacantes']];
+  let TR = { club: 'flamengo', picks: {} };
+  try { const s = JSON.parse(localStorage.getItem(TR_KEY)); if (s && s.picks) TR = s; } catch (e) {}
+  const trSave = () => { try { localStorage.setItem(TR_KEY, JSON.stringify(TR)); } catch (e) {} };
+  const E = () => window.NT_esc;
+  const trPick = c => TR.picks[c] || (TR.picks[c] = {});
+  function trAvatar(c, p, cls) { const ph = E().PHOTOS[c.id + ':' + p[0]]; return ph ? `<span class="tr-ph ${cls || ''}" style="background-image:url('${ph}')"></span>` : E().shirtSVG(c.kit, p[0], 'tr-sh ' + (cls || '')); }
+  function renderTransf() {
+    const C = E().CLUBS, c = C[TR.club] || C.flamengo; TR.club = c.id; const pk = trPick(c.id);
+    const nF = c.players.filter(p => pk[p[0]] === 'f').length, nS = c.players.filter(p => pk[p[0]] === 's').length, nX = c.players.length - nF - nS;
+    const clubs = E().DATA.clubs.map(k => `<button class="tr-club${k.id === c.id ? ' on' : ''}" data-trc="${k.id}" title="${esc(k.nome)}">${CREST[k.id] ? `<img src="${CREST[k.id]}" alt="">` : esc(k.sigla)}</button>`).join('');
+    const card = p => { const s = pk[p[0]] || ''; return `<div class="tr-p ${s}">${trAvatar(c, p)}<div class="tr-n"><b>${esc(p[2])}</b><small>#${p[0]}</small></div><div class="tr-b"><button class="tr-f${s === 'f' ? ' on' : ''}" data-trp="${p[0]}" data-v="f">Fica</button><button class="tr-s${s === 's' ? ' on' : ''}" data-trp="${p[0]}" data-v="s">Sai</button></div></div>`; };
+    const groups = POS.map(([k, nome]) => { const ps = c.players.filter(p => p[1] === k); return ps.length ? `<div class="tr-g"><h5>${nome} <span>${ps.filter(p => pk[p[0]] === 'f').length} ficam · ${ps.filter(p => pk[p[0]] === 's').length} saem</span></h5><div class="tr-list">${ps.map(card).join('')}</div></div>` : ''; }).join('');
+    $('sec-transf').innerHTML = `<h3 class="sec-title">Transfe<span>rências</span></h3><p class="sec-sub">Escolha o clube e decida quem <b style="color:#4ade80">fica</b> e quem <b style="color:#f87171">sai</b> do elenco. Depois compartilhe a sua lista.</p>
+      <div class="tr-clubs">${clubs}</div>
+      <div class="tr-head">${CREST[c.id] ? `<img src="${CREST[c.id]}" alt="">` : ''}<div><b>${esc(c.nome)}</b><div class="tr-cnt"><span class="f">${nF} ficam</span><span class="s">${nS} saem</span><span class="x">${nX} sem decisão</span></div></div>
+        <div class="tr-act"><button class="h-btn" data-tra="allf">Todos ficam</button><button class="h-btn" data-tra="clear">Limpar</button><button class="h-btn pri" data-tra="share">Compartilhar</button></div></div>
+      ${groups}`;
+    const on = $('sec-transf').querySelector('.tr-club.on'); if (on) on.scrollIntoView({ block: 'nearest', inline: 'center' });
+  }
+  $('sec-transf').addEventListener('click', e => {
+    const k = e.target.closest('[data-trc]'); if (k) { TR.club = k.dataset.trc; trSave(); renderTransf(); return; }
+    const b = e.target.closest('[data-trp]'); if (b) { const pk = trPick(TR.club), n = b.dataset.trp; pk[n] = pk[n] === b.dataset.v ? undefined : b.dataset.v; if (!pk[n]) delete pk[n]; trSave(); const y = window.scrollY; renderTransf(); window.scrollTo(0, y); return; }
+    const a = e.target.closest('[data-tra]'); if (!a) return;
+    const c = E().CLUBS[TR.club];
+    if (a.dataset.tra === 'allf') { const pk = trPick(c.id); c.players.forEach(p => { if (!pk[p[0]]) pk[p[0]] = 'f'; }); trSave(); renderTransf(); }
+    if (a.dataset.tra === 'clear') { if (confirm('Limpar as escolhas do ' + c.nome + '?')) { TR.picks[c.id] = {}; trSave(); renderTransf(); } }
+    if (a.dataset.tra === 'share') trShare();
+  });
+  const IN_FR = (() => { try { return window.top !== window; } catch (e) { return true; } })();
+  const trLink = () => { const c = E().CLUBS[TR.club], pk = trPick(c.id); return location.href.split('#')[0] + '#t.' + c.id + '.' + c.players.map(p => pk[p[0]] || 'x').join(''); };
+  function trFromHash(h) {
+    const p = h.slice(1).split('.'); if (p[0] !== 't' || p.length < 3) return false;
+    const c = E().CLUBS[p[1]]; if (!c) return false;
+    const pk = {}; c.players.forEach((pl, i) => { const v = p[2][i]; if (v === 'f' || v === 's') pk[pl[0]] = v; });
+    TR.club = c.id; TR.picks[c.id] = pk; trSave(); return true;
+  }
+  async function trDraw() {
+    const X = E(), c = X.CLUBS[TR.club], pk = trPick(c.id);
+    const load = s => new Promise(r => { if (!s) return r(null); const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = s; });
+    try { await Promise.all(['900 60px Montserrat', '800 30px Montserrat', '700 30px "Barlow Condensed"'].map(f => document.fonts.load(f))); } catch (e) {}
+    const [logo, crest] = await Promise.all([load(LOGO), load(CREST[c.id])]);
+    const ph = {}; await Promise.all(c.players.map(async p => { const s = X.PHOTOS[c.id + ':' + p[0]]; if (s) ph[p[0]] = await load(s); }));
+    const RH = 50, blocks = POS.map(([k, nome]) => { const ps = c.players.filter(p => p[1] === k); const f = ps.filter(p => pk[p[0]] === 'f'), s = ps.filter(p => pk[p[0]] === 's'); return { nome, f, s, rows: Math.max(f.length, s.length) }; }).filter(b => b.rows);
+    const W = 1080, top = 300, H = Math.max(1350, top + blocks.reduce((a, b) => a + 102 + b.rows * RH, 0) + 140);
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const x = cv.getContext('2d');
+    x.fillStyle = '#111211'; x.fillRect(0, 0, W, H);
+    let g = x.createRadialGradient(W, 0, 0, W, 0, 800); g.addColorStop(0, 'rgba(34,180,92,.35)'); g.addColorStop(1, 'rgba(34,180,92,0)'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+    const fit = (im, cx, cy, s) => { if (!im) return; const k = s / Math.max(im.width, im.height); x.drawImage(im, cx - im.width * k / 2, cy - im.height * k / 2, im.width * k, im.height * k); };
+    fit(logo, 120, 120, 170); fit(crest, W - 110, 120, 140);
+    x.textAlign = 'left'; x.fillStyle = '#3dff80'; x.font = '700 34px "Barlow Condensed", sans-serif'; x.fillText('QUEM FICA E QUEM SAI', 230, 95);
+    x.fillStyle = '#fff'; x.font = '900 64px Montserrat, sans-serif'; let t = c.nome.toUpperCase(); while (x.measureText(t).width > 640 && t.length > 3) t = t.slice(0, -1); x.fillText(t, 230, 160);
+    const nF = c.players.filter(p => pk[p[0]] === 'f').length, nS = c.players.filter(p => pk[p[0]] === 's').length;
+    x.font = '800 30px Montserrat, sans-serif'; x.fillStyle = '#4ade80'; x.fillText(`${nF} FICAM`, 230, 210); const w1 = x.measureText(`${nF} FICAM`).width; x.fillStyle = '#f87171'; x.fillText(`${nS} SAEM`, 230 + w1 + 30, 210);
+    x.fillStyle = '#3dff80'; x.fillRect(60, 250, W - 120, 4);
+    let y = top;
+    const chip = (p, cx, cy, ok) => {
+      const w = 450; x.fillStyle = ok ? 'rgba(34,197,94,.16)' : 'rgba(239,68,68,.16)'; x.strokeStyle = ok ? '#22c55e' : '#ef4444'; x.lineWidth = 2;
+      x.beginPath(); x.roundRect ? x.roundRect(cx, cy, w, RH - 8, 12) : x.rect(cx, cy, w, RH - 8); x.fill(); x.stroke();
+      if (ph[p[0]]) { x.save(); x.beginPath(); x.arc(cx + 26, cy + 21, 18, 0, 7); x.clip(); fit(ph[p[0]], cx + 26, cy + 21, 40); x.restore(); } else X.drawShirt(x, c.kit, p[0], cx + 26, cy + 21, 40);
+      x.fillStyle = '#fff'; x.font = '800 24px Montserrat, sans-serif'; let n = p[2]; while (x.measureText(n).width > w - 90 && n.length > 3) n = n.slice(0, -1); x.fillText(n, cx + 56, cy + 30);
+    };
+    blocks.forEach(b => {
+      x.fillStyle = '#fff'; x.font = '900 30px Montserrat, sans-serif'; x.fillText(b.nome.toUpperCase(), 60, y + 32);
+      x.font = '700 24px "Barlow Condensed", sans-serif'; x.fillStyle = '#4ade80'; x.fillText(`FICAM (${b.f.length})`, 62, y + 68); x.fillStyle = '#f87171'; x.fillText(`SAEM (${b.s.length})`, 572, y + 68);
+      y += 82; b.f.forEach((p, i) => chip(p, 60, y + i * RH, 1)); b.s.forEach((p, i) => chip(p, 570, y + i * RH, 0)); y += b.rows * RH + 20;
+    });
+    x.fillStyle = '#9aa39d'; x.font = '700 28px "Barlow Condensed", sans-serif'; x.textAlign = 'center'; x.fillText('Faça a sua lista no site do Nó Tático', W / 2, H - 50);
+    return cv;
+  }
+  async function trShare() {
+    const c = E().CLUBS[TR.club], pk = trPick(c.id); if (!Object.keys(pk).length) { E().toast('Marque pelo menos um jogador'); return; }
+    const box = $('trBox'); box.hidden = false; $('trImg').removeAttribute('src');
+    const cv = await trDraw(); $('trImg').src = cv.toDataURL('image/png');
+    const blob = await new Promise(r => cv.toBlob(r, 'image/png')), fn = `transferencias-${c.id}-notatico.png`, link = trLink();
+    $('trLink').hidden = IN_FR;
+    $('trDown').onclick = () => E().saveBlob(blob, fn);
+    $('trLink').onclick = async () => { try { await navigator.clipboard.writeText(link); E().toast('Link copiado!'); } catch (e) { E().toast('Não deu para copiar aqui'); } };
+    $('trShare').onclick = async () => {
+      if (IN_FR) return E().saveBlob(blob, fn);
+      const file = new File([blob], fn, { type: 'image/png' }), text = `Quem fica e quem sai do ${c.nome}? Olha a minha lista: ${link}`;
+      try { if (navigator.canShare && navigator.canShare({ files: [file] })) return await navigator.share({ files: [file], text }); if (navigator.share) return await navigator.share({ text, url: link }); } catch (e) { if (e && e.name === 'AbortError') return; }
+      E().saveBlob(blob, fn);
+    };
+  }
+  $('trClose').onclick = () => { $('trBox').hidden = true; };
   // ===== Conteúdo da equipe (Firebase): notícias, podcasts e jogos do Mundo + painel de acesso =====
   const FBCFG = window.NT_FB, HOST_EMAIL = 'rimonattoc@gmail.com', FBV = '10.12.2';
   const ddmm = d => String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0');
@@ -1789,7 +1912,7 @@ renderEsc(); renderDuelBuild(); setTab(ST.tab || 'esc');
   renderNews(); renderPodcast(); renderPart();
   let a = 'home'; try { a = localStorage.getItem('notatico-app') || 'home'; } catch (e) {}
   const h = decodeURIComponent(window.NT_HASH);
-  if (h.startsWith('#sim-')) a = 'sim'; else if (h.startsWith('#e.')) a = 'esc'; else if (h.startsWith('#d.')) a = 'duel';
+  if (h.startsWith('#t.') && trFromHash(h)) a = 'transf'; else if (h.startsWith('#sim-')) a = 'sim'; else if (h.startsWith('#e.')) a = 'esc'; else if (h.startsWith('#d.')) a = 'duel';
   go(a);
   fbStart();
 })();
