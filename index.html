@@ -839,6 +839,19 @@ header{gap:12px}
 .tc-g small{color:var(--mut)}.tc-g b{text-align:center;font-weight:900}.tc-g .tm-chip,.tc-g .tm-chip img{width:24px;height:24px}.tc-g span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tc-g i{font-style:normal;font-weight:900;text-align:center;border-radius:6px;font-size:11px;padding:2px 0}
 .tc-g.v i{background:#16a34a}.tc-g.e i{background:#52525b}.tc-g.d i{background:#dc2626}
 @media (max-width:520px){.cr-q{font-size:16px}.cr-sum b{font-size:15px}.cr-pos{grid-template-columns:repeat(2,1fr)}}
+.tc-forms,.tc-opt{display:flex;flex-wrap:wrap;gap:6px}.tc-forms button,.tc-opt button{cursor:pointer;background:#141514;border:1px solid var(--line);border-radius:10px;color:#fff;font:inherit;font-weight:800;font-size:13px;padding:9px 12px}.tc-forms button.on,.tc-opt button.on{border-color:var(--neon);background:rgba(34,197,94,.18)}.tc-opt.tk button{font-size:12px;padding:7px 10px}
+.tc-pitch{background:repeating-linear-gradient(0deg,#14532d 0 34px,#166534 34px 68px);border:2px solid rgba(255,255,255,.25);border-radius:14px;padding:10px 4px;display:grid;gap:8px;margin-bottom:10px}
+.tc-row{display:flex;justify-content:space-evenly;gap:2px}.tc-row button{cursor:pointer;background:none;border:2px solid transparent;border-radius:10px;padding:3px 2px;width:74px;display:grid;justify-items:center;color:#fff;font:inherit}.tc-row button svg{width:40px;height:40px}
+.tc-row button span{font-size:10.5px;font-weight:800;line-height:1.15;text-shadow:0 1px 2px #000;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tc-row button em{font-style:normal;font-size:8.5px;font-weight:800;color:#fff;background:#dc2626;border-radius:5px;padding:0 4px;margin-top:2px}
+.tc-row button.on{border-color:#fde047;background:rgba(0,0,0,.35)}.tc-row button.off svg{opacity:.75}
+.tc-bench{background:#141514;border:1px solid var(--neon);border-radius:12px;padding:4px 10px 10px;margin-bottom:10px}.tc-bench .cr-l{margin-top:8px}.tc-bl{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;max-height:230px;overflow:auto}
+.tc-bl button{cursor:pointer;display:grid;grid-template-columns:28px 1fr;align-items:center;column-gap:6px;background:#1c1d1c;border:1px solid var(--line);border-radius:9px;color:#fff;font:inherit;padding:6px 8px;text-align:left}.tc-bl button:hover{border-color:var(--neon)}
+.tc-bl b{grid-row:span 2;text-align:center;font-weight:900;color:var(--neon)}.tc-bl span{font-weight:800;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tc-bl small{font-size:10.5px;color:var(--mut)}.tc-bl small.ok{color:#4ade80}
+.tc-g span em{display:block;font-style:normal;font-size:11px;color:var(--mut);overflow:hidden;text-overflow:ellipsis}
+.tc-final{border:1px solid rgba(250,204,21,.5);background:rgba(250,204,21,.06);border-radius:14px;padding:14px;margin-bottom:6px}.tc-vs{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0}.tc-vs b{font-weight:900;font-size:26px}.tc-vs .tm-chip,.tc-vs .tm-chip img{width:60px;height:60px}
+.tc-opp{text-align:center;font-weight:900;text-transform:uppercase;margin:0 0 10px}.tc-scout{background:#141514;border-radius:10px;padding:10px 12px;font-size:14px;line-height:1.45;margin:0 0 4px}
+.tc-nar{background:#141514;border-radius:12px;padding:8px 14px;margin:10px 0 14px}.tc-nar p{margin:8px 0;font-size:14px}.tc-pen{display:flex;flex-wrap:wrap;gap:6px}.tc-pen span{display:grid;justify-items:center;background:#1c1d1c;border-radius:8px;padding:4px 8px;font-size:13px}.tc-pen small{font-size:10px;color:var(--mut);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:520px){.tc-row button{width:62px}.tc-row button svg{width:34px;height:34px}.tc-row button span{max-width:60px;font-size:10px}}
 .cm-fact{max-width:460px;margin:6px auto 12px;text-align:center}
 .or-slots{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
 .or-s{display:flex;align-items:center;gap:10px;background:#141514;border:1px dashed var(--line);border-radius:12px;padding:8px 12px;min-height:50px}
@@ -2099,7 +2112,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   const GLIST = [
     { k: 'sim', n: 'Simulação', d: 'Simule os jogos que faltam do Brasileirão e veja como fica a tabela.' },
     { k: 'carreira', n: 'Modo carreira', d: 'Saia da base aos 17 anos e decida tudo: festas, propostas, pênaltis, Europa. Até onde você chega?', novo: 1 },
-    { k: 'tecnico', n: 'Técnico do Brasileirão', d: 'Assuma um clube e sobreviva às 38 rodadas sem ser demitido. Cada decisão pesa.', novo: 1 },
+    { k: 'tecnico', n: 'Técnico do Brasileirão', d: 'Monte o time da temporada, sobreviva às 38 rodadas e, se chegar à final da Copa do Brasil, monte a estratégia.', novo: 1 },
     { k: 'bolao', n: 'Bolão da rodada', d: 'Dê seu palpite para cada jogo da próxima rodada e compartilhe o card.', novo: 1 },
     { k: 'esc', n: 'Escalação', d: 'Escolha o clube e a formação e monte o seu time ideal.' },
     { k: 'duel', n: '11x11', d: 'Dois times frente a frente: escolha o melhor de cada posição.' },
@@ -2713,61 +2726,130 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
 
     // ---------- TÉCNICO DO BRASILEIRÃO ----------
     let TC = null;
+    const FORMS = { '4-3-3': { D: 4, M: 3, A: 3 }, '4-4-2': { D: 4, M: 4, A: 2 }, '4-2-3-1': { D: 4, M: 5, A: 1 }, '3-5-2': { D: 3, M: 5, A: 2 }, '3-4-3': { D: 3, M: 4, A: 3 }, '5-3-2': { D: 5, M: 3, A: 2 } };
+    const GN = { G: 'Goleiro', D: 'Defensor', M: 'Meio-campo', A: 'Atacante' };
+    const slotsOf = fm => ['G'].concat(Array(FORMS[fm].D).fill('D'), Array(FORMS[fm].M).fill('M'), Array(FORMS[fm].A).fill('A'));
+    const club = () => E().CLUBS[TC.club];
+    const pl = n => club().byNum[n];
+    function autoXI(fm, keep) {
+      const P = club().players.slice().sort((a, b) => a[0] - b[0]), used = new Set(), sl = slotsOf(fm), xi = Array(11).fill(null);
+      if (keep) sl.forEach((g, i) => { const k = keep.find(n => n != null && !used.has(n) && pl(n) && pl(n)[1] === g); if (k != null) { xi[i] = k; used.add(k); } });
+      sl.forEach((g, i) => { if (xi[i] != null) return; const p = P.find(p => p[1] === g && !used.has(p[0])) || P.find(p => !used.has(p[0])); xi[i] = p[0]; used.add(p[0]); });
+      return xi;
+    }
+    const offPos = () => slotsOf(TC.form).filter((g, i) => pl(TC.xi[i])[1] !== g).length;
+    const xiMod = () => slotsOf(TC.form).reduce((m, g, i) => m - (pl(TC.xi[i])[1] === g ? 0 : g === 'G' || pl(TC.xi[i])[1] === 'G' ? .08 : .015), 0);
+    const xiName = g => { const c = TC.xi.map(pl).filter(p => p[1] === g); return (c.length ? pk(c) : pl(pk(TC.xi)))[2]; };
+    function scorer() { const w = { A: 5, M: 3, D: 1, G: 0 }, L = []; TC.xi.forEach(n => { const p = pl(n); for (let k = 0; k < w[p[1]]; k++) L.push(p[2]); }); return pk(L); }
     const EVT = [
-      { t: 'O camisa 10 chegou atrasado ao treino pela terceira vez.', c: [['Afastar do time', { E: -10, D: 8, f: -.02 }, 'O recado foi dado, mas o time sentiu a falta dele.'], ['Conversar em particular', { E: 6, D: -5 }, 'Ele pediu desculpas ao grupo. A diretoria achou que você foi mole.']] },
-      { t: 'Um clube europeu quer a joia da base. A diretoria está louca para vender.', c: [['Aceitar a venda', { D: 15, T: -10, f: -.04 }, 'O caixa agradece. A torcida, nem tanto.'], ['Bater o pé', { D: -12, T: 8, E: 3 }, 'O garoto ficou e a torcida te apoiou. O presidente não gostou.']] },
+      { t: s => `${xiName('M')}, um dos seus titulares, chegou atrasado ao treino pela terceira vez.`, c: [['Afastar do time por um jogo', { E: -10, D: 8, f: -.02 }, 'O recado foi dado, mas o time sentiu a falta dele.'], ['Conversar em particular', { E: 6, D: -5 }, 'Ele pediu desculpas ao grupo. A diretoria achou que você foi mole.']] },
+      { t: 'Um clube europeu quer a joia da base. A diretoria está louca para vender.', c: [['Aceitar a venda', { D: 15, T: -10, f: -.03 }, 'O caixa agradece. A torcida, nem tanto.'], ['Bater o pé', { D: -12, T: 8, E: 3 }, 'O garoto ficou e a torcida te apoiou. O presidente não gostou.']] },
       { t: 'Clássico no fim de semana. Como o time vai jogar?', c: [['Pra cima deles', { T: 4, tm: () => R() < .5 ? .14 : -.12 }, 'Coragem! Ou vai, ou racha.'], ['Fechadinho', { T: -4, tm: () => .04 }, 'A torcida reclamou da postura, mas o time ficou mais seguro.']] },
       { t: 'A organizada aparece no CT pedindo reunião depois de uma sequência ruim.', c: [['Receber a organizada', { T: 10, D: -8 }, 'Conversa franca. A diretoria não gostou de não ser avisada.'], ['Não receber', { T: -10, D: 4, E: 3 }, 'O elenco gostou de ser protegido. Teve protesto na porta.']] },
       { t: 'Coletiva depois de uma derrota com erro claro da arbitragem.', c: [['Detonar a arbitragem', { T: 8, D: -6 }, 'A torcida vibrou. Veio uma multa no STJD.'], ['Assumir a culpa', { E: 8, T: -3 }, 'O elenco gostou de ser protegido pelo treinador.']] },
-      { t: 'Abriu a janela. Qual reforço você pede?', c: [['Veterano famoso e caro', { f: .06, D: -10, T: 8 }, 'Chegou com festa no aeroporto e qualidade no treino.'], ['Promessa barata', { f: .02, D: 6 }, 'A diretoria adorou a economia. O garoto ainda está se adaptando.']] },
-      { t: 'O presidente sugere que você escale o atacante que ele mesmo contratou.', c: [['Escalar', { D: 10, E: -6, f: -.02 }, 'O presidente sorriu. O vestiário torceu o nariz.'], ['Escalar quem merece', { D: -10, E: 6 }, 'O grupo percebeu que quem manda no time é você.']] },
-      { t: 'Elenco cansado. Poupar os titulares na Copa do Brasil?', c: [['Poupar', { f: .03, T: -6 }, 'Eliminado na Copa, mas o time chega inteiro no Brasileirão.'], ['Jogar com tudo', { fn: () => R() < .5 ? [{ T: 10, D: 8, E: -5, f: -.02 }, 'Classificou na Copa! Mas o desgaste vai pesar.'] : [{ T: -6, E: -8, f: -.02 }, 'Eliminado e com o time moído.'] }]] },
-      { t: 'Um titular pede pra sair rumo à Arábia Saudita.', c: [['Liberar', { E: 4, D: 8, f: -.03 }, 'Bom dinheiro para o clube. Fica um buraco no time.'], ['Segurar', { E: -8 }, 'Ele ficou, mas de cara fechada.']] },
+      { t: 'Abriu a janela. Qual reforço você pede para o banco?', c: [['Veterano famoso e caro', { f: .05, D: -10, T: 8 }, 'Chegou com festa no aeroporto e qualidade no treino.'], ['Promessa barata', { f: .02, D: 6 }, 'A diretoria adorou a economia.']] },
+      { t: 'O presidente sugere que você coloque no time o atacante que ele mesmo contratou.', c: [['Atender o presidente', { D: 10, E: -6, f: -.02 }, 'O presidente sorriu. O vestiário torceu o nariz.'], ['Manter os seus titulares', { D: -10, E: 6 }, 'O grupo percebeu que quem manda no time é você.']] },
+      { t: 'Elenco cansado e tem jogo de Copa do Brasil no meio da semana. Poupar os titulares?', ok: s => s.cb.alive && s.cb.f < 3, c: [['Poupar na Copa', { f: .03, cup: -.12 }, 'O time chega inteiro no Brasileirão, mas a Copa ficou mais difícil.'], ['Jogar com tudo', { E: -5, f: -.02, cup: .1 }, 'Força máxima na Copa. O desgaste vai pesar no Brasileirão.']] },
+      { t: s => `${xiName('A')} recebeu uma proposta milionária da Arábia e quer sair.`, c: [['Liberar', { E: 4, D: 8, f: -.04 }, 'Bom dinheiro para o clube. O reserva assume a vaga.'], ['Segurar', { E: -8 }, 'Ele ficou, mas de cara fechada.']] },
       { t: 'Um influenciador quer gravar os bastidores do vestiário.', c: [['Liberar a gravação', { T: 6, E: -6, D: 4 }, 'Bombou nas redes. Alguns jogadores não gostaram.'], ['Proibir', { E: 4, T: -2 }, 'Vestiário fechado. O grupo agradeceu.']] },
-      { t: 'O auxiliar sugere mudar para três zagueiros.', c: [['Testar o 3-5-2', { fn: () => R() < .5 ? [{ f: .05, E: 4 }, 'Encaixou! O time ficou mais sólido.'] : [{ f: -.04, T: -4 }, 'Virou bagunça. Os jogadores se perderam em campo.'] }], ['Manter o esquema', { E: 2 }, 'Time que está acostumado rende mais.']] },
       { t: 'Um clube rival te liga com uma proposta no meio da temporada.', c: [['Recusar publicamente', { T: 10, D: 6 }, 'Você declarou amor ao clube. Ganhou moral com todos.'], ['Ouvir a proposta', { D: -15, T: -10, E: -4 }, 'Vazou na imprensa. Pegou muito mal.']] },
-      { t: 'O artilheiro e o volante brigaram feio no treino.', c: [['Punir os dois', { E: -4, D: 5 }, 'Disciplina acima de tudo.'], ['Deixar quieto', { fn: () => R() < .5 ? [{ E: 3 }, 'Eles se resolveram sozinhos.'] : [{ E: -10, f: -.02 }, 'O racha no vestiário aumentou.'] }]] },
-      { t: 'O goleiro titular se machucou. Quem entra?', c: [['O reserva experiente', { f: -.02 }, 'Seguro, mas sem brilho.'], ['O garoto da base', { fn: () => R() < .5 ? [{ T: 8, f: .01 }, 'Pegou tudo! Virou xodó da torcida.'] : [{ T: -6, f: -.05 }, 'Falhou em dois gols. A torcida perdeu a paciência.'] }]] },
+      { t: s => `${xiName('A')} e ${xiName('M')} brigaram feio no treino.`, c: [['Punir os dois', { E: -4, D: 5 }, 'Disciplina acima de tudo.'], ['Deixar quieto', { fn: () => R() < .5 ? [{ E: 3 }, 'Eles se resolveram sozinhos.'] : [{ E: -10, f: -.02 }, 'O racha no vestiário aumentou.'] }]] },
+      { t: s => `${xiName('G')}, seu goleiro titular, sentiu dores. O médico diz que dá pra jogar no sacrifício.`, c: [['Manter ele no gol', { fn: () => R() < .6 ? [{ E: 3 }, 'Aguentou firme e fez defesas importantes.'] : [{ f: -.03, T: -5 }, 'Jogou no sacrifício e falhou. Vai ficar fora umas semanas.'] }], ['Dar chance ao reserva', { fn: () => R() < .5 ? [{ T: 6 }, 'O reserva pegou tudo e virou xodó da torcida.'] : [{ f: -.03 }, 'O reserva sentiu o peso da camisa.'] }]] },
       { t: 'Viagem longa no meio da semana. Pedir avião fretado?', c: [['Pedir o fretado', { D: -8, E: 4, f: .02 }, 'O time chegou descansado.'], ['Ir de voo comercial', { E: -4, D: 3 }, 'Escala, atraso e o time chegou moído.']] },
       { t: 'A torcida pede a volta de um ídolo veterano, sem clube.', c: [['Contratar', { T: 12, D: -6, f: .01 }, 'Festa nas arquibancadas!'], ['Dizer não', { T: -6, D: 3 }, 'Decisão técnica, mas impopular.']] },
       { t: 'Churrasco do elenco no seu sítio no dia de folga?', c: [['Fazer o churrasco', { E: 10, D: -3 }, 'O grupo ficou unido como nunca.'], ['Treino em dois períodos', { E: -6, f: .02 }, 'O time correu mais, mas reclamou bastante.']] }
     ];
     const META = k => k < 4 ? { p: 2, t: 'Brigar pelo título (terminar no top 2)' } : k < 10 ? { p: 6, t: 'Vaga na Libertadores (terminar no G6)' } : k < 16 ? { p: 12, t: 'Sul-Americana (terminar até o 12º)' } : { p: 16, t: 'Escapar do rebaixamento (fora do Z4)' };
+    const CBF = ['Oitavas de final', 'Quartas de final', 'Semifinal', 'Final'], CBT = [2, 5, 8, 11];
+    const STY = {
+      posse: { h: 'Gosta de ficar com a bola e joga com a linha de defesa alta.', best: ['contra', 'baixa'], ok: 'equil', bad: 'ofens' },
+      retranca: { h: 'Joga fechado, com muita gente atrás, esperando o contra-ataque.', best: ['ofens', 'alta'], ok: 'equil', bad: 'contra' },
+      intensa: { h: 'Marca sob pressão no campo todo e corre o jogo inteiro.', best: ['equil', 'baixa'], ok: 'contra', bad: 'ofens' }
+    };
+    const POST = { ofens: 'Ofensiva', equil: 'Equilibrada', contra: 'Contra-ataque' }, MARC = { alta: 'Pressão alta', baixa: 'Bloco baixo' };
     function tcNew() { TC = { stage: 'setup', club: null }; }
     function tcStart() {
       const T = tbl(), me = T.find(r => r.id === TC.club) || T[8], n = T.length;
-      const pw = {}; T.forEach(r => pw[r.id] = 1 - r.k / (n - 1));
-      const pts = {}; T.forEach(r => pts[r.id] = 0);
-      TC = { stage: 'event', club: me.id, meta: META(me.k), pw, pts, D: 60, T: 60, E: 60, f: 0, tm: 0, r: 0, turn: 0, ev: shuf(EVT.slice()), res: null, games: [], V: 0, Em: 0, Dr: 0, gp: 0, gc: 0 };
+      const pw = {}, pts = {}; T.forEach(r => { pw[r.id] = 1 - r.k / (n - 1); pts[r.id] = 0; });
+      TC = { stage: 'xi', club: me.id, meta: META(me.k), pw, pts, D: 60, T: 60, E: 60, f: 0, tm: 0, r: 0, turn: 0, ev: shuf(EVT.slice()), ei: 0, res: null, games: [], V: 0, Em: 0, Dr: 0, gp: 0, gc: 0, form: '4-3-3', xi: null, pick: null, ent: 0, cb: { f: 0, alive: true, mod: 0, log: [] }, tit: [] };
+      TC.xi = autoXI('4-3-3');
     }
     const tcPos = () => { const s = TC; return Object.keys(s.pts).sort((a, b) => s.pts[b] - s.pts[a] || (b === s.club ? 1 : a === s.club ? -1 : 0)).indexOf(s.club) + 1; };
+    const myPow = () => TC.pw[TC.club] + TC.f + xiMod() + TC.ent + (TC.E - 55) / 300;
+    function score(diff) {
+      const pW = cl(.37 + diff * .5, .07, .78), x = R(); let a, b;
+      if (x < pW) { b = ri(0, 2); a = b + ri(1, 2); } else if (x < pW + .26) { a = b = ri(0, 2); } else { a = ri(0, 2); b = a + ri(1, 2); }
+      return [a, b];
+    }
     function tcPlay(nr) {
       const s = TC, ids = Object.keys(s.pw), games = [];
       for (let k = 0; k < nr && s.r < 38; k++) {
         s.r++;
         const opp = pk(ids.filter(i => i !== s.club)), home = R() < .5;
-        const diff = (s.pw[s.club] + s.f + s.tm + (s.E - 55) / 300) - s.pw[opp] + (home ? .08 : -.04);
-        const pW = cl(.37 + diff * .5, .07, .82), pD = .26, x = R();
-        let a, b; if (x < pW) { b = ri(0, 2); a = b + ri(1, 2); } else if (x < pW + pD) { a = b = ri(0, 2); } else { a = ri(0, 2); b = a + ri(1, 2); }
+        const [a, b] = score(myPow() + s.tm - s.pw[opp] + (home ? .08 : -.04));
         if (a > b) { s.pts[s.club] += 3; s.V++; s.T += 3; s.D += 2; } else if (a === b) { s.pts[s.club] += 1; s.Em++; s.T -= 1; } else { s.Dr++; s.T -= 5; s.D -= 3; s.E -= 1; }
         s.gp += a; s.gc += b;
         ids.forEach(i => { if (i === s.club) return; const p = .37 + (s.pw[i] - .5) * .5, y = R(); s.pts[i] += y < p ? 3 : y < p + .27 ? 1 : 0; });
-        games.push({ r: s.r, opp, home, a, b });
+        games.push({ r: s.r, opp, home, a, b, sc: Array.from({ length: a }, scorer) });
       }
-      s.tm = 0;
+      s.tm = 0; s.ent = Math.min(.03, s.ent + .004);
       const pos = tcPos(); if (pos > s.meta.p + 4 && s.r > 9) s.D -= 5; else if (pos <= s.meta.p) s.D += 2;
-      s.D = cl(s.D, 0, 100); s.T = cl(s.T, 0, 100); s.E = cl(s.E, 0, 100);
       return games;
     }
+    function pens(first) {
+      const takers = [first].concat(shuf(TC.xi.map(pl).filter(p => p[2] !== first && p[1] !== 'G').map(p => p[2]))).slice(0, 5), seq = [];
+      let a = 0, b = 0;
+      for (let k = 0; k < 5; k++) { const x = R() < (k === 0 ? .82 : .74), y = R() < .74; a += x; b += y; seq.push([takers[k], x, y]); if (a > b + (4 - k) || b > a + (4 - k)) break; }
+      let k = 0; while (a === b && k < 6) { const x = R() < .72, y = R() < .72; a += x; b += y; seq.push([pk(takers), x, y]); k++; }
+      if (a === b) { a++; seq.push([takers[0], true, false]); }
+      return { a, b, seq };
+    }
+    function tcCup() {
+      const s = TC, cb = s.cb, ids = Object.keys(s.pw).filter(i => i !== s.club && !cb.log.some(l => l.opp === i)), strong = ids.sort((x, y) => s.pw[y] - s.pw[x]);
+      const opp = cb.f >= 2 ? pk(strong.slice(0, 8)) : pk(ids);
+      if (cb.f === 3) { cb.opp = opp; cb.sty = pk(Object.keys(STY)); return 'final'; }
+      const [a, b] = score(myPow() + cb.mod - s.pw[opp] + .02); cb.mod = 0;
+      let p = null, win = a > b; if (a === b) { p = pens(scorer()); win = p.a > p.b; }
+      cb.log.push({ fase: CBF[cb.f], opp, a, b, p, win });
+      if (win) { cb.f++; s.T += 6; s.D += 6; } else { cb.alive = false; s.T -= 6; s.D -= 4; }
+      return 'res';
+    }
+    function tcFinal(post, marc, taker) {
+      const s = TC, cb = s.cb, st = STY[cb.sty];
+      let m = 0; m += post === st.best[0] ? .12 : post === st.ok ? .04 : post === st.bad ? -.08 : 0; m += marc === st.best[1] ? .06 : -.04;
+      const [a, b] = score(myPow() + cb.mod + m - s.pw[cb.opp]);
+      const mins = n => Array.from({ length: n }, () => ri(3, 90)).sort((x, y) => x - y);
+      const ev = mins(a).map(mn => ({ mn, me: 1, who: scorer() })).concat(mins(b).map(mn => ({ mn, me: 0 }))).sort((x, y) => x.mn - y.mn);
+      let p = null, win = a > b; if (a === b) { p = pens(taker); win = p.a > p.b; }
+      cb.fin = { a, b, ev, p, win, post, marc, taker, m };
+      if (win) { s.tit.push('Copa do Brasil'); s.T += 25; s.D += 20; s.E += 10; } else { s.T -= 8; s.D -= 5; }
+      cb.alive = false; s.T = cl(s.T, 0, 100); s.D = cl(s.D, 0, 100); s.E = cl(s.E, 0, 100);
+    }
     function tcChoose(i) {
-      const s = TC, ev = s.ev[s.turn % s.ev.length], c = ev.c[i];
+      const s = TC, ev = s.cur, c = ev.c[i];
       let eff = c[1], txt = c[2];
       if (eff.fn) { const r = eff.fn(); eff = r[0]; txt = r[1]; }
-      s.D = cl(s.D + (eff.D || 0), 0, 100); s.T = cl(s.T + (eff.T || 0), 0, 100); s.E = cl(s.E + (eff.E || 0), 0, 100); s.f = cl(s.f + (eff.f || 0), -.2, .2); if (eff.tm) s.tm = eff.tm();
-      s.res = txt; s.games = tcPlay(s.r >= 36 ? 38 - s.r : 3); s.turn++;
+      s.D = cl(s.D + (eff.D || 0), 0, 100); s.T = cl(s.T + (eff.T || 0), 0, 100); s.E = cl(s.E + (eff.E || 0), 0, 100); s.f = cl(s.f + (eff.f || 0), -.2, .2); if (eff.tm) s.tm = eff.tm(); if (eff.cup) s.cb.mod += eff.cup;
+      s.res = txt; s.games = tcPlay(s.r >= 36 ? 38 - s.r : 3); s.cupNow = null;
+      let go = 'result';
+      if (s.cb.alive && CBT[s.cb.f] === s.turn) { s.cupNow = s.cb.f; if (tcCup() === 'final') go = 'final'; }
+      s.turn++;
+      s.D = cl(s.D, 0, 100); s.T = cl(s.T, 0, 100); s.E = cl(s.E, 0, 100);
       const why = s.D <= 0 ? 'A diretoria perdeu a paciência e te demitiu.' : s.T <= 0 ? 'A torcida protestou no CT e a diretoria cedeu: você foi demitido.' : s.E <= 0 ? 'Você perdeu o vestiário. Os jogadores pararam de jogar por você.' : null;
-      if (why) { s.fired = why; } else if (s.r >= 38) { s.done = 1; }
-      s.stage = 'result';
+      if (why) { s.fired = why; go = 'result'; } else if (s.r >= 38) s.done = 1;
+      s.stage = go;
+    }
+    function nextEv() { const s = TC; for (let k = 0; k < s.ev.length; k++) { const e = s.ev[(s.ei + k) % s.ev.length]; if (!e.ok || e.ok(s)) { s.ei = (s.ei + k + 1) % s.ev.length; return e; } } return s.ev[0]; }
+    const evT = e => typeof e.t === 'function' ? e.t(TC) : e.t;
+    const cupLine = l => `<div class="tc-g ${l.win ? 'v' : 'd'}"><small>CB</small>${chip(TC.club)}<b>${l.a} x ${l.b}</b>${chip(l.opp)}<span>${l.fase} · ${esc(S.TEAMS[l.opp].nome)}${l.p ? ` (pên. ${l.p.a}x${l.p.b})` : ''}</span><i>${l.win ? 'V' : 'D'}</i></div>`;
+    function pitch() {
+      const s = TC, sl = slotsOf(s.form), kit = club().kit, X = E(), rows = ['A', 'M', 'D', 'G'];
+      return `<div class="tc-pitch">${rows.map(g => `<div class="tc-row">${sl.map((x, i) => x === g ? i : -1).filter(i => i >= 0).map(i => { const p = pl(s.xi[i]), off = p[1] !== g; return `<button data-xs="${i}" class="${s.pick === i ? 'on' : ''}${off ? ' off' : ''}">${X.shirtSVG(kit, p[0])}<span>${esc(p[2])}</span>${off ? '<em>fora de posição</em>' : ''}</button>`; }).join('')}</div>`).join('')}</div>`;
+    }
+    function bench() {
+      const s = TC, g = slotsOf(s.form)[s.pick], P = club().players.filter(p => !s.xi.includes(p[0])).sort((a, b) => (a[1] !== g) - (b[1] !== g) || a[0] - b[0]);
+      const cur = pl(s.xi[s.pick]);
+      return `<div class="tc-bench"><p class="cr-l">Trocar ${esc(cur[2])} (${GN[g]}) por:</p><div class="tc-bl">${P.map(p => `<button data-xb="${p[0]}"><b>${p[0]}</b><span>${esc(p[2])}</span><small class="${p[1] === g ? 'ok' : ''}">${GN[p[1]]}</small></button>`).join('')}</div></div>`;
     }
     function renderTecnico() {
       if (!TC) tcNew();
@@ -2775,38 +2857,81 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
       if (s.stage === 'setup') {
         const t = tbl(), sel = s.club || t[8].id; s.club = sel;
         const mt = META(t.find(r => r.id === sel).k);
-        box.innerHTML = T + `<p class="sec-sub">Assuma um clube e sobreviva às 38 rodadas. Cada decisão mexe com a diretoria, a torcida e o elenco. Se uma delas zerar, você está demitido.</p><div class="qz-card cr-card">
+        box.innerHTML = T + `<p class="sec-sub">Assuma um clube, monte o time titular da temporada e sobreviva às 38 rodadas. Ainda tem a Copa do Brasil: se chegar à final, a estratégia é sua.</p><div class="qz-card cr-card">
           <p class="cr-l">Escolha o clube</p><div class="cr-teams">${t.map(r => `<button data-tcclub="${r.id}" class="${sel === r.id ? 'on' : ''}">${chip(r.id)}<span>${esc(S.TEAMS[r.id].nome)}</span></button>`).join('')}</div>
           <p class="cr-meta">Meta da diretoria: <b>${mt.t}</b></p><button class="h-btn pri qz-big" id="tcGo">Assinar contrato</button></div>`;
         return;
       }
-      const pos = tcPos(), head = `<div class="cr-head"><div class="cr-who">${chip(s.club)}<div><b>${esc(S.TEAMS[s.club].nome)}</b><small>Rodada ${s.r}/38 · ${s.pts[s.club]} pts · ${s.V}V ${s.Em}E ${s.Dr}D</small></div><span class="cr-ovr">${s.r ? pos + 'º' : '–'}<small>lugar</small></span></div>
-        <div class="cr-bars">${bar('Diretoria', s.D)}${bar('Torcida', s.T)}${bar('Elenco', s.E)}</div><p class="cr-meta">Meta: ${s.meta.t}</p></div>`;
+      if (s.stage === 'xi') {
+        const off = offPos();
+        box.innerHTML = T + `<div class="qz-card cr-card"><div class="cr-who">${chip(s.club)}<div><b>${esc(S.TEAMS[s.club].nome)}</b><small>Monte os titulares da temporada</small></div></div>
+          <p class="cr-l">Esquema</p><div class="tc-forms">${Object.keys(FORMS).map(f => `<button data-tcf="${f}" class="${s.form === f ? 'on' : ''}">${f}</button>`).join('')}</div>
+          <p class="cr-l">Toque num jogador para trocar</p>${pitch()}${s.pick != null ? bench() : ''}
+          <p class="cr-meta">${off ? `<b style="color:#fca5a5">${off} jogador${off > 1 ? 'es' : ''} fora de posição.</b> Isso pesa no rendimento do time.` : 'Todo mundo na posição certa. Quanto mais rodadas com o mesmo time, mais entrosado ele fica.'}</p>
+          <button class="h-btn pri qz-big" id="tcXi">Confirmar time e começar</button></div>`;
+        return;
+      }
+      const pos = tcPos(), cbTxt = s.tit.includes('Copa do Brasil') ? 'Campeão da Copa do Brasil' : s.cb.alive ? `Copa do Brasil: ${CBF[s.cb.f]}` : 'Fora da Copa do Brasil';
+      const head = `<div class="cr-head"><div class="cr-who">${chip(s.club)}<div><b>${esc(S.TEAMS[s.club].nome)}</b><small>Rodada ${s.r}/38 · ${s.pts[s.club]} pts · ${s.V}V ${s.Em}E ${s.Dr}D · ${s.form}</small></div><span class="cr-ovr">${s.r ? pos + 'º' : '–'}<small>lugar</small></span></div>
+        <div class="cr-bars">${bar('Diretoria', s.D)}${bar('Torcida', s.T)}${bar('Elenco', s.E)}</div><p class="cr-meta">Meta: ${s.meta.t} · ${cbTxt}</p></div>`;
       if (s.stage === 'event') {
-        const ev = s.ev[s.turn % s.ev.length];
-        box.innerHTML = T + `<div class="qz-card cr-card">${head}<p class="cr-step">Antes da rodada ${s.r + 1}</p><p class="cr-q">${esc(ev.t)}</p><div class="cr-ch">${ev.c.map((c, i) => `<button data-tcch="${i}">${esc(c[0])}</button>`).join('')}</div></div>`;
+        if (!s.cur) s.cur = nextEv();
+        const ev = s.cur, cup = s.cb.alive && CBT[s.cb.f] === s.turn;
+        box.innerHTML = T + `<div class="qz-card cr-card">${head}<p class="cr-step">Antes da rodada ${s.r + 1}${cup ? ` · semana de Copa do Brasil (${CBF[s.cb.f]})` : ''}</p><p class="cr-q">${esc(evT(ev))}</p><div class="cr-ch">${ev.c.map((c, i) => `<button data-tcch="${i}">${esc(c[0])}</button>`).join('')}</div></div>`;
+        return;
+      }
+      const gamesHtml = `<div class="tc-games">${s.games.map(g => { const w = g.a > g.b ? 'v' : g.a === g.b ? 'e' : 'd'; return `<div class="tc-g ${w}"><small>${g.r}ª</small>${chip(s.club)}<b>${g.a} x ${g.b}</b>${chip(g.opp)}<span>${esc(S.TEAMS[g.opp].nome)}${g.home ? '' : ' (fora)'}${g.sc.length ? `<em>⚽ ${g.sc.map(esc).join(', ')}</em>` : ''}</span><i>${w.toUpperCase()}</i></div>`; }).join('')}</div>`;
+      if (s.stage === 'final') {
+        const cb = s.cb, st = STY[cb.sty], F = s.fsel || (s.fsel = { post: null, marc: null, taker: null }), takers = s.xi.map(pl).filter(p => p[1] !== 'G');
+        box.innerHTML = T + `<div class="qz-card cr-card">${head}<p class="cr-res">${esc(s.res)}</p>${gamesHtml}
+          <div class="tc-final"><p class="cr-step">🏆 Final da Copa do Brasil</p><div class="tc-vs">${chip(s.club, 'big')}<b>x</b>${chip(cb.opp, 'big')}</div><p class="tc-opp">${esc(S.TEAMS[cb.opp].nome)}</p>
+          <p class="tc-scout"><b>Relatório do auxiliar:</b> ${esc(st.h)}</p>
+          <p class="cr-l">Postura do time</p><div class="tc-opt">${Object.keys(POST).map(k => `<button data-fp="${k}" class="${F.post === k ? 'on' : ''}">${POST[k]}</button>`).join('')}</div>
+          <p class="cr-l">Marcação</p><div class="tc-opt">${Object.keys(MARC).map(k => `<button data-fm="${k}" class="${F.marc === k ? 'on' : ''}">${MARC[k]}</button>`).join('')}</div>
+          <p class="cr-l">Batedor de pênalti</p><div class="tc-opt tk">${takers.map(p => `<button data-ft="${esc(p[2])}" class="${F.taker === p[2] ? 'on' : ''}">${esc(p[2])}</button>`).join('')}</div>
+          <button class="h-btn pri qz-big" id="tcPlayFinal"${F.post && F.marc && F.taker ? '' : ' disabled'}>Começar a final</button></div></div>`;
+        return;
+      }
+      if (s.stage === 'finalres') {
+        const f = s.cb.fin, nm = S.TEAMS[s.cb.opp].nome;
+        box.innerHTML = T + `<div class="qz-card cr-card">${head}<p class="cr-step">🏆 Final da Copa do Brasil</p><div class="tc-vs">${chip(s.club, 'big')}<b>${f.a} x ${f.b}</b>${chip(s.cb.opp, 'big')}</div>
+          <p class="cr-meta" style="text-align:center">${POST[f.post]} · ${MARC[f.marc]} · ${f.m > .1 ? 'a estratégia encaixou perfeitamente' : f.m > 0 ? 'a estratégia funcionou' : 'o adversário encaixou melhor o jogo'}</p>
+          <div class="tc-nar">${f.ev.length ? f.ev.map(e => `<p><b>${e.mn}'</b> ${e.me ? `⚽ Gol! ${esc(e.who)} marca para o ${esc(S.TEAMS[s.club].nome)}.` : `Gol do ${esc(nm)}.`}</p>`).join('') : '<p>Jogo travado, muito estudado. Ninguém balançou a rede.</p>'}
+          ${f.p ? `<p><b>Pênaltis</b></p><div class="tc-pen">${f.p.seq.map(x => `<span><small>${esc(x[0])}</small>${x[1] ? '✅' : '❌'} ${x[2] ? '✅' : '❌'}</span>`).join('')}</div><p><b>${f.p.a} x ${f.p.b} nos pênaltis.</b></p>` : ''}</div>
+          ${f.win ? '<p class="cr-trophy gold">🏆 CAMPEÃO DA COPA DO BRASIL!</p>' : `<p class="cr-trophy bad">Vice-campeão. O ${esc(nm)} levou a taça.</p>`}
+          ${s.fired ? `<p class="cr-trophy bad">${esc(s.fired)}</p><button class="h-btn pri qz-big" id="tcEnd">Ver o fim da história</button>` : s.done ? '<button class="h-btn pri qz-big" id="tcEnd">Ver classificação final</button>' : '<button class="h-btn pri qz-big" id="tcCont">Voltar ao Brasileirão</button>'}</div>`;
         return;
       }
       if (s.stage === 'result') {
-        box.innerHTML = T + `<div class="qz-card cr-card">${head}<p class="cr-res">${esc(s.res)}</p>
-          <div class="tc-games">${s.games.map(g => { const w = g.a > g.b ? 'v' : g.a === g.b ? 'e' : 'd'; return `<div class="tc-g ${w}"><small>${g.r}ª</small>${chip(s.club)}<b>${g.a} x ${g.b}</b>${chip(g.opp)}<span>${esc(S.TEAMS[g.opp].nome)}${g.home ? '' : ' (fora)'}</span><i>${w.toUpperCase()}</i></div>`; }).join('')}</div>
+        const cupL = s.cupNow != null && s.cb.log[s.cb.log.length - 1];
+        box.innerHTML = T + `<div class="qz-card cr-card">${head}<p class="cr-res">${esc(s.res)}</p>${gamesHtml}
+          ${cupL && cupL.fase === CBF[s.cupNow] ? `<p class="cr-step">Copa do Brasil</p><div class="tc-games">${cupLine(cupL)}</div><p class="cr-res">${cupL.win ? (s.cb.f === 3 ? 'Classificado para a FINAL! Daqui a algumas rodadas, você monta a estratégia.' : `Classificado! Próxima fase: ${CBF[s.cb.f]}.`) : 'Eliminado da Copa do Brasil.'}</p>` : ''}
           ${s.fired ? `<p class="cr-trophy bad">${esc(s.fired)}</p><button class="h-btn pri qz-big" id="tcEnd">Ver o fim da história</button>` : s.done ? '<button class="h-btn pri qz-big" id="tcEnd">Ver classificação final</button>' : '<button class="h-btn pri qz-big" id="tcCont">Próxima decisão</button>'}</div>`;
         return;
       }
-      const fin = !s.fired, ok = fin && pos <= s.meta.p;
+      const fin = !s.fired, ok = fin && pos <= s.meta.p, cbw = s.tit.includes('Copa do Brasil');
       const tt = s.fired ? 'Demitido' : pos === 1 ? 'Campeão brasileiro!' : pos >= 17 ? 'Rebaixado' : ok ? 'Meta cumprida' : 'Meta não cumprida';
-      const msg = s.fired ? `${s.fired} Você durou ${s.r} rodadas.` : pos === 1 ? 'Volta olímpica! Seu nome está na história do clube.' : pos >= 17 ? 'O clube caiu para a Série B. Dia triste.' : ok ? 'A diretoria já quer renovar o seu contrato.' : 'Você termina o ano pressionado. A renovação está em dúvida.';
-      box.innerHTML = T + `<div class="qz-card cr-card cr-end">${chip(s.club, 'big')}<h4>${tt}</h4><p class="qz-rec">${esc(msg)}</p>
+      const msg = s.fired ? `${s.fired} Você durou ${s.r} rodadas.` : pos === 1 ? 'Volta olímpica! Seu nome está na história do clube.' : pos >= 17 ? 'O clube caiu para a Série B. Dia triste.' : ok ? 'A diretoria já quer renovar o seu contrato.' : cbw ? 'Não bateu a meta no Brasileirão, mas a taça da Copa garante o seu emprego.' : 'Você termina o ano pressionado. A renovação está em dúvida.';
+      box.innerHTML = T + `<div class="qz-card cr-card cr-end">${chip(s.club, 'big')}<h4>${tt}</h4>${cbw ? '<p class="cr-trophy gold">🏆 Campeão da Copa do Brasil</p>' : ''}<p class="qz-rec">${esc(msg)}</p>
         <div class="cr-sum"><div><b>${s.r ? pos + 'º' : '–'}</b><small>posição</small></div><div><b>${s.pts[s.club]}</b><small>pontos</small></div><div><b>${s.V}-${s.Em}-${s.Dr}</b><small>V-E-D</small></div><div><b>${s.gp}:${s.gc}</b><small>gols</small></div></div>
-        <div class="h-cta" style="justify-content:center"><button class="h-btn pri" id="tcAgain">Novo desafio</button><button class="h-btn" data-share="Fui técnico do ${esc(S.TEAMS[s.club].nome)} no Nó Tático: ${tt}, ${s.pts[s.club]} pontos. E você, aguenta a pressão?">Compartilhar</button></div></div>`;
+        <p class="cr-step">Seu time (${s.form})</p><p class="cr-tl">${s.xi.map(n => esc(pl(n)[2])).join(' · ')}</p>
+        <div class="h-cta" style="justify-content:center"><button class="h-btn pri" id="tcAgain">Novo desafio</button><button class="h-btn" data-share="Fui técnico do ${esc(S.TEAMS[s.club].nome)} no Nó Tático: ${tt}${cbw ? ' e campeão da Copa do Brasil' : ''}, ${s.pts[s.club]} pontos. E você, aguenta a pressão?">Compartilhar</button></div></div>`;
     }
     $('sec-tecnico').addEventListener('click', e => {
       const t = e.target.closest('button'); if (!t) return; const s = TC;
       if (t.dataset.share) return shareTxt(t.dataset.share);
       if (t.dataset.tcclub) { s.club = t.dataset.tcclub; return renderTecnico(); }
       if (t.id === 'tcGo') { tcStart(); return renderTecnico(); }
-      if (t.dataset.tcch != null && s.stage === 'event') { tcChoose(+t.dataset.tcch); return renderTecnico(); }
-      if (t.id === 'tcCont') { s.stage = 'event'; s.res = null; return renderTecnico(); }
+      if (t.dataset.tcf) { s.form = t.dataset.tcf; s.xi = autoXI(s.form, s.xi); s.pick = null; return renderTecnico(); }
+      if (t.dataset.xs != null) { const i = +t.dataset.xs; s.pick = s.pick === i ? null : i; renderTecnico(); const b = $('sec-tecnico').querySelector('.tc-bench'); if (b && innerWidth < 700) b.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return; }
+      if (t.dataset.xb) { s.xi[s.pick] = +t.dataset.xb; s.pick = null; return renderTecnico(); }
+      if (t.id === 'tcXi') { s.stage = 'event'; return renderTecnico(); }
+      if (t.dataset.tcch != null && s.stage === 'event') { tcChoose(+t.dataset.tcch); s.cur = null; return renderTecnico(); }
+      if (t.dataset.fp) { s.fsel.post = t.dataset.fp; return renderTecnico(); }
+      if (t.dataset.fm) { s.fsel.marc = t.dataset.fm; return renderTecnico(); }
+      if (t.dataset.ft) { s.fsel.taker = t.dataset.ft; return renderTecnico(); }
+      if (t.id === 'tcPlayFinal') { tcFinal(s.fsel.post, s.fsel.marc, s.fsel.taker); s.stage = 'finalres'; const why = s.D <= 0 ? 'A diretoria perdeu a paciência e te demitiu.' : s.T <= 0 ? 'A torcida protestou no CT e a diretoria cedeu: você foi demitido.' : null; if (why) s.fired = why; return renderTecnico(); }
+      if (t.id === 'tcCont') { if (s.fired) { s.stage = 'end'; return renderTecnico(); } s.stage = 'event'; s.res = null; return renderTecnico(); }
       if (t.id === 'tcEnd') { s.stage = 'end'; return renderTecnico(); }
       if (t.id === 'tcAgain') { tcNew(); return renderTecnico(); }
     });
