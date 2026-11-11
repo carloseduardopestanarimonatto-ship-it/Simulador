@@ -15,7 +15,7 @@ service cloud.firestore {
     // Conteúdo público: qualquer visitante lê, só a equipe escreve
     match /noticias/{id} { allow read: if true; allow write: if isEditor(); }
     match /podcasts/{id} { allow read: if true; allow write: if isEditor(); }
-    match /mundo/{id}    { allow read: if true; allow write: if isEditor(); }
+    match /dicas/{id}    { allow read: if true; allow write: if isEditor(); }
     // Equipe aprovada: só o host aprova ou remove
     match /editores/{uid} { allow read: if request.auth != null; allow write: if isHost(); }
     // Pedidos de acesso: cada pessoa cria o seu, só o host vê todos e decide
