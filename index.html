@@ -772,13 +772,13 @@ header{gap:12px}
 @media (max-width:820px){.gm-grid{grid-template-columns:1fr 1fr}.pg-info{grid-template-columns:1fr 1fr}.e7-cols{grid-template-columns:1fr 1fr}.e7-conf{grid-template-columns:1fr}}
 @media (max-width:520px){.gm-grid{grid-template-columns:1fr}.gm-card{min-height:0;flex-direction:row;align-items:center}.gm-go{display:none}.gm-ic{flex:none}.pt-grid{grid-template-columns:1fr 1fr}.qz-grid button{font-size:13.5px}.bl-row .t b .ln{display:none}.bl-row .t b .sg{display:inline}.bl-nm input{width:130px}.e7-mini{display:none}}
 .h-sel{margin-bottom:16px;border-color:rgba(254,221,0,.45);background:linear-gradient(120deg,rgba(0,156,59,.22),rgba(26,27,26,.92) 45%,rgba(254,221,0,.10))}
-.h-sel h4{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.sel-tag{background:#fedd00;color:#0b3d1f !important;border-radius:8px;padding:3px 9px;font-size:12px;letter-spacing:.4px}
+.h-sel h4{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.sel-tag{display:inline-flex;align-items:center;gap:6px;background:#fedd00;color:#0b3d1f !important;border-radius:8px;padding:3px 9px;font-size:12px;letter-spacing:.4px}
 .sel-sub{color:var(--mut);font-size:13px;margin:-4px 0 12px}.sel-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .sel-m{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:10px;background:rgba(10,11,10,.55);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .sel-m small{grid-column:1/-1;color:var(--mut);font-size:11.5px;text-align:center;margin-top:-2px}
 .sel-d{display:grid;justify-items:center;line-height:1.15;padding-right:10px;border-right:1px solid var(--line)}.sel-d b{font-size:13px;text-transform:uppercase;white-space:nowrap}.sel-d span{color:#fedd00;font-weight:900;font-size:16px}
 .sel-t{display:flex;align-items:center;gap:8px;min-width:0}.sel-t.r{justify-content:flex-end;text-align:right}.sel-t b{font-weight:900;text-transform:uppercase;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sel-t .tm-chip,.sel-t .tm-chip img{width:34px;height:34px}.sel-x{font-weight:900;font-size:18px;color:var(--neon)}.sel-nota{color:var(--mut);font-size:12.5px;margin:10px 0 0}
+.sel-flag{width:20px;height:14px;flex:none}.sel-t .tm-chip{width:40px;height:40px;background:#fff;border-radius:50%;display:grid;place-items:center;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.15)}.sel-t .tm-chip img{width:30px;height:30px;object-fit:contain}.sel-x{font-weight:900;font-size:18px;color:var(--neon)}.sel-nota{color:var(--mut);font-size:12.5px;margin:10px 0 0}
 @media (max-width:720px){.sel-g{grid-template-columns:1fr}.sel-t b{font-size:13px}}
 @media (max-width:480px){.sel-m{grid-template-columns:1fr auto 1fr}.sel-d{grid-column:1/-1;display:flex;justify-content:center;gap:8px;border-right:0;padding:0 0 6px;border-bottom:1px solid var(--line)}}
 .h-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
@@ -1974,7 +1974,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const car = NEWS.slice(0, 5), three = NEWS.slice(0, 3);
     const slide = (n, i) => { const v = newsVis(n); return `<div class="sl${i === 0 ? ' on' : ''}"${newsAttr(n)}>${v ? `<div class="crs">${chip(v.a)}<b>${esc(v.mid)}</b>${chip(v.b)}</div>` : `<div class="crs"><img src="${LOGO}" alt="" style="width:60px"></div>`}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5><p>${esc(n.texto)}</p></div></div>`; };
     const SL = COMPS.selecao, slOn = SL && (!SL.ate || new Date() <= new Date(SL.ate + 'T23:59:00-03:00'));
-    const selHtml = slOn ? `<div class="h-card h-sel"><h4><span class="sel-tag">🇧🇷 Seleção Brasileira</span>${esc(SL.titulo)}</h4><p class="sel-sub">${esc(SL.sub || '')}</p>
+    const selHtml = slOn ? `<div class="h-card h-sel"><h4><span class="sel-tag"><svg class="sel-flag" viewBox="0 0 28 20"><rect width="28" height="20" rx="3" fill="#009c3b"/><path d="M14 3 25 10 14 17 3 10z" fill="#fedd00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/><path d="M10 9.2c2.6-.6 5.4-.3 8 .9" stroke="#fff" stroke-width=".9" fill="none"/></svg>Seleção Brasileira</span>${esc(SL.titulo)}</h4><p class="sel-sub">${esc(SL.sub || '')}</p>
       <div class="sel-g">${SL.jogos.map(j => { const ta = tinfo(j.a), tb = tinfo(j.b); return `<div class="sel-m"><div class="sel-d"><b>${esc(j.d)}</b><span>${esc(j.h)}</span></div><div class="sel-t">${chip(j.a)}<b>${esc(ta.nome)}</b></div><div class="sel-x">${j.placar ? esc(j.placar) : 'x'}</div><div class="sel-t r"><b>${esc(tb.nome)}</b>${chip(j.b)}</div><small>${esc(j.local || '')}</small></div>`; }).join('')}</div>
       ${SL.nota ? `<p class="sel-nota">${esc(SL.nota)}</p>` : ''}</div>` : '';
     $('sec-home').innerHTML = selHtml + `
