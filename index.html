@@ -313,6 +313,22 @@ header{gap:12px}
 #app-esc .vx{font-weight:900;font-size:clamp(30px,5vw,52px);color:var(--neon);text-shadow:0 0 18px rgba(61,255,128,.6)}
 #app-esc .nav{display:flex;justify-content:center;gap:12px;margin-top:22px}
 #app-esc .nav .btn{min-width:150px;padding:13px 18px;font-size:14px}
+#app-esc .dp-swap{text-align:center;margin-top:12px}
+#app-esc .dp-swap label{font-family:var(--cond);color:var(--mut);font-size:15px;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+#app-esc .dp-swap select,#app-esc .dp-pair select{font:inherit;font-family:var(--cond);font-weight:700;font-size:15px;background:#151615;color:#fff;border:1px solid #333733;border-radius:10px;padding:7px 10px;max-width:100%}
+#app-esc .pairsbox{margin-top:14px}
+#app-esc .pairsbox summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:2px}
+#app-esc .pairsbox summary::-webkit-details-marker{display:none}
+#app-esc .pairsbox summary b{font-weight:900;text-transform:uppercase;font-size:15px}
+#app-esc .pairsbox summary b::after{content:' ▾';color:var(--g)}
+#app-esc .pairsbox[open] summary b::after{content:' ▴'}
+#app-esc .pairsbox summary small{font-family:var(--cond);color:var(--mut);font-size:14.5px}
+#app-esc .dp-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+#app-esc .dp-pair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.2fr);align-items:center;gap:8px;background:#151615;border:1px solid #262826;border-radius:12px;padding:8px 10px}
+#app-esc .dp-pa{min-width:0;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#app-esc .dp-pa b{color:var(--g);margin-right:6px;font-family:var(--cond)}
+#app-esc .dp-px{color:var(--mut);font-weight:700}
+@media (max-width:620px){#app-esc .dp-pairs{grid-template-columns:1fr}}
 #app-esc .hint{font-family:var(--cond);color:var(--mut);text-align:center;font-size:15px;margin-top:10px}
 #app-esc .pitch.reveal .slot{animation:pop .45s both}
 @keyframes pop{from{opacity:0;transform:translate(-50%,-50%) scale(.5)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
@@ -920,6 +936,7 @@ a.pc-card{text-decoration:none;color:inherit;display:block}
         <div class="panel team" data-team="A"></div>
         <div class="panel team" data-team="B"></div>
       </div>
+      <details class="panel pairsbox" id="duelPairs" hidden><summary><b>Ajustar os duelos</b><small>O site junta as posições parecidas. Se algum confronto ficou estranho, escolha aqui quem enfrenta quem.</small></summary><div class="dp-pairs"></div><div class="bar" style="margin-top:10px"><button class="btn ghost" id="pairAuto">Organizar automático</button></div></details>
       <div class="cta"><button class="btn pri" id="duelStart">Começar o duelo</button></div>
     </div>
     <div id="duelPlay" hidden>
@@ -1403,10 +1420,11 @@ const KEY = 'notatico-escalacao-v1';
 function blank(club, form) { return { club, form, slots: Array(11).fill(null) }; }
 let ST = { tab: 'esc', esc: blank('flamengo', '4-3-3'), duel: { A: blank('flamengo', '4-3-3'), B: blank('palmeiras', '4-3-3'), picks: Array(11).fill(null), started: false, finalForm: null } };
 try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.esc && s.duel) ST = s; } catch (e) {}
+function okMapLoad(m) { return Array.isArray(m) && m.length === 11 && [...m].sort((a, b) => a - b).every((v, k) => v === k); }
 function valid(t) { if (!CLUBS[t.club]) t.club = 'flamengo'; if (!F[t.form]) t.form = '4-3-3'; if (!Array.isArray(t.slots) || t.slots.length !== 11) t.slots = Array(11).fill(null); t.slots = t.slots.map(n => CLUBS[t.club].byNum[n] ? n : null); }
 valid(ST.esc); valid(ST.duel.A); valid(ST.duel.B);
 if (!Array.isArray(ST.duel.picks) || ST.duel.picks.length !== 11) ST.duel.picks = Array(11).fill(null);
-if (typeof ST.duel.step !== 'number') ST.duel.step = 0; if (typeof ST.duel.done !== 'boolean') ST.duel.done = false;
+if (!okMapLoad(ST.duel.map)) ST.duel.map = null; if (typeof ST.duel.step !== 'number') ST.duel.step = 0; if (typeof ST.duel.done !== 'boolean') ST.duel.done = false;
 function save() { try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch (e) {} }
 let armed = null; // slot selecionado na aba escalação
 
@@ -1516,7 +1534,7 @@ function renderTeam(side) {
   clubBtn(el.querySelector('[data-act="club"]'), t.club);
   renderPitch(el.querySelector('.pitch'), t);
 }
-function renderDuelBuild() { renderTeam('A'); renderTeam('B'); const ok = ST.duel.A.slots.every(x => x != null) && ST.duel.B.slots.every(x => x != null); const b = document.getElementById('duelStart'); b.disabled = !ok; b.textContent = ok ? 'Começar o duelo' : 'Complete os dois times (11 cada)'; save(); }
+function renderDuelBuild() { renderTeam('A'); renderTeam('B'); renderPairs(); const ok = ST.duel.A.slots.every(x => x != null) && ST.duel.B.slots.every(x => x != null); const b = document.getElementById('duelStart'); b.disabled = !ok; b.textContent = ok ? 'Começar o duelo' : 'Complete os dois times (11 cada)'; save(); }
 document.querySelectorAll('.team').forEach(el => {
   const side = el.dataset.team;
   el.addEventListener('click', e => {
@@ -1529,17 +1547,46 @@ document.querySelectorAll('.team').forEach(el => {
   });
   el.addEventListener('change', e => { if (e.target.dataset.act === 'form') { changeForm(ST.duel[side], e.target.value); resetPicks(); renderDuelBuild(); } });
 });
-function resetPicks() { ST.duel.picks = Array(11).fill(null); ST.duel.started = false; ST.duel.step = 0; ST.duel.done = false; }
+function resetPicks() { ST.duel.picks = Array(11).fill(null); ST.duel.started = false; ST.duel.step = 0; ST.duel.done = false; ST.duel.map = autoMap(ST.duel.A.form, ST.duel.B.form); }
+// ===== quem enfrenta quem: pareamento por posição no campo (e ajuste manual) =====
+const RGD = { GOL: 0, LE: 1, LD: 1, ZAG: 1, ALE: 2, ALD: 2, VOL: 3, MC: 3, ME: 4, MD: 4, MEI: 4, PE: 5, PD: 5, ATA: 6 };
+function autoMap(fa, fb) {
+  const A = F[fa], B = F[fb], n = 11, N = 1 << n;
+  const cost = (i, j) => { const a = A[i], b = B[j]; if ((a[0] === 'GOL') !== (b[0] === 'GOL')) return 1e6; return Math.hypot(a[1] - b[1], (a[2] - b[2]) * 1.2) + Math.abs(RGD[a[0]] - RGD[b[0]]) * 12 + (a[0] === b[0] ? 0 : 4); };
+  const pc = m => { let c = 0; while (m) { m &= m - 1; c++; } return c; };
+  const dp = new Float64Array(N).fill(Infinity), ch = new Int8Array(N).fill(-1); dp[0] = 0;
+  for (let m = 0; m < N; m++) { if (dp[m] === Infinity) continue; const i = pc(m); if (i >= n) continue; for (let j = 0; j < n; j++) if (!(m & (1 << j))) { const v = dp[m] + cost(i, j), m2 = m | (1 << j); if (v < dp[m2]) { dp[m2] = v; ch[m2] = j; } } }
+  const map = Array(n); let m = N - 1; for (let i = n - 1; i >= 0; i--) { const j = ch[m]; map[i] = j; m ^= (1 << j); }
+  return map;
+}
+const okMap = m => Array.isArray(m) && m.length === 11 && [...m].sort((a, b) => a - b).every((v, k) => v === k);
+function mapOf() { const d = ST.duel; if (!okMap(d.map)) d.map = autoMap(d.A.form, d.B.form); return d.map; }
+function swapPair(i, j) {
+  const d = ST.duel, m = mapOf(), k = m.indexOf(j); if (k < 0 || k === i) return;
+  [m[i], m[k]] = [m[k], m[i]]; d.picks[i] = null; d.picks[k] = null; d.done = false; save();
+}
+function pairOpts(i) {
+  const d = ST.duel, m = mapOf(), B = d.B, c = CLUBS[B.club];
+  return F[B.form].map((s, j) => { const p = playerOf(B, j); return `<option value="${j}" ${m[i] === j ? 'selected' : ''}>${s[0]} · ${p ? p[2] : '—'}</option>`; }).join('');
+}
+function renderPairs() {
+  const el = document.getElementById('duelPairs'); if (!el) return;
+  const d = ST.duel, ok = d.A.slots.every(x => x != null) && d.B.slots.every(x => x != null);
+  el.hidden = !ok; if (!ok) return;
+  const A = d.A;
+  el.querySelector('.dp-pairs').innerHTML = F[A.form].map((s, i) => { const p = playerOf(A, i); return `<div class="dp-pair"><span class="dp-pa"><b>${s[0]}</b>${p ? p[2] : '—'}</span><span class="dp-px">x</span><select data-pi="${i}" aria-label="Adversário de ${p ? p[2] : s[0]}">${pairOpts(i)}</select></div>`; }).join('');
+}
+
 function scoreHTML() {
   const d = ST.duel, a = d.picks.filter(x => x === 'A').length, b = d.picks.filter(x => x === 'B').length;
   const A = CLUBS[d.A.club], B = CLUBS[d.B.club];
   return `<div class="side"><img src="${CREST[A.id]}" alt="">${A.sigla}</div><div class="num">${a}</div><div class="x">x</div><div class="num">${b}</div><div class="side">${B.sigla}<img src="${CREST[B.id]}" alt=""></div>`;
 }
 function finalPlayers() {
-  const d = ST.duel; return d.picks.map((w, i) => { if (!w) return null; const t = d[w]; return { club: t.club, p: CLUBS[t.club].byNum[t.slots[i]] }; });
+  const d = ST.duel, m = mapOf(); return d.picks.map((w, i) => { if (!w) return null; const t = d[w]; return { club: t.club, p: CLUBS[t.club].byNum[t.slots[w === 'B' ? m[i] : i]] }; });
 }
-function vcard(side, team, i) {
-  const c = CLUBS[team.club], p = playerOf(team, i), role = F[team.form][i][0], w = ST.duel.picks[i];
+function vcard(side, team, i, si = i) {
+  const c = CLUBS[team.club], p = playerOf(team, si), role = F[team.form][si][0], w = ST.duel.picks[i];
   const ph = PHOTOS[c.id + ':' + p[0]];
   const img = ph ? `<img src="${ph}" alt="">` : shirtSVG(c.kit, p[0]);
   return `<button class="vcard${w === side ? ' sel' : w ? ' dim' : ''}" data-w="${side}"><div class="vimg">${img}</div><div class="vname">${p[2]}</div><div class="vsub"><img src="${CREST[c.id]}" alt="">${c.sigla} · ${role} · Nº ${p[0]}</div></button>`;
@@ -1561,16 +1608,18 @@ function renderDuelPlay(anim) {
   }
   d.done = false; stage.parentElement.hidden = false; fin.hidden = true;
   const i = Math.max(0, Math.min(10, d.step)); d.step = i;
-  const ra = F[A.form][i][0], rb = F[B.form][i][0];
+  const M = mapOf(), ra = F[A.form][i][0], rb = F[B.form][M[i]][0];
   const title = ra === rb ? RNAME[ra] : `${RNAME[ra]} x ${RNAME[rb]}`;
   const firstOpen = d.picks.findIndex(x => !x); const reach = firstOpen < 0 ? 10 : firstOpen;
   stage.innerHTML = `<div class="stepinfo"><span>Duelo ${i + 1} de 11</span><b>${title}</b></div>
     <div class="dots">${d.picks.map((w, k) => `<button class="${w ? 'a' : ''}${k === i ? ' cur' : ''}" data-k="${k}" ${k > reach ? 'disabled' : ''} aria-label="Duelo ${k + 1}"></button>`).join('')}</div>
-    <div class="vs${anim ? ' in' : ''}">${vcard('A', A, i)}<div class="vx">X</div>${vcard('B', B, i)}</div>
+    <div class="vs${anim ? ' in' : ''}">${vcard('A', A, i)}<div class="vx">X</div>${vcard('B', B, i, M[i])}</div>
+    <div class="dp-swap"><label>Trocar o adversário deste duelo <select id="dSwap">${pairOpts(i)}</select></label></div>
     <p class="hint">${d.picks[i] ? 'Escolhido! Toque em Próximo para seguir (ou troque tocando no outro).' : 'Toque no jogador que fica nessa posição.'}</p>
     <div class="nav"><button class="btn" id="dPrev" ${i === 0 ? 'disabled' : ''}>← Anterior</button><button class="btn pri" id="dNext" ${d.picks[i] ? '' : 'disabled'}>${i === 10 ? 'Ver meu time ✓' : 'Próximo →'}</button></div>`;
   save();
 }
+document.getElementById('duelStage').onchange = e => { if (e.target.id === 'dSwap') { swapPair(ST.duel.step, +e.target.value); renderDuelPlay(false); toast('Duelo trocado'); } };
 document.getElementById('duelStage').onclick = e => {
   const d = ST.duel;
   const c = e.target.closest('.vcard'); if (c) { d.picks[d.step] = c.dataset.w; renderDuelPlay(false); return; }
@@ -1587,6 +1636,8 @@ document.getElementById('duelReview').onclick = () => { ST.duel.done = false; ST
 document.getElementById('finalForm').onchange = e => { ST.duel.finalForm = e.target.value; renderDuelPlay(false); };
 function showDuel(play) { document.getElementById('duelBuild').hidden = play; document.getElementById('duelPlay').hidden = !play; if (play) renderDuelPlay(true); else renderDuelBuild(); }
 document.getElementById('duelStart').onclick = () => { ST.duel.started = true; if (!ST.duel.picks.some(Boolean)) { ST.duel.step = 0; ST.duel.done = false; } showDuel(true); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+document.getElementById('duelPairs').addEventListener('change', e => { const i = e.target.dataset.pi; if (i == null) return; swapPair(+i, +e.target.value); renderPairs(); toast('Duelo trocado'); });
+document.getElementById('pairAuto').onclick = () => { ST.duel.map = autoMap(ST.duel.A.form, ST.duel.B.form); ST.duel.picks = Array(11).fill(null); ST.duel.step = 0; ST.duel.done = false; save(); renderPairs(); toast('Duelos organizados'); };
 document.getElementById('duelBack').onclick = () => { showDuel(false); };
 document.getElementById('duelReset').onclick = () => { ST.duel.picks = Array(11).fill(null); ST.duel.step = 0; ST.duel.done = false; renderDuelPlay(true); };
 
@@ -1600,7 +1651,7 @@ function encTeam(t) { return [t.club, FC(t.form), t.slots.map(n => n == null ? '
 function decTeam(parts) { const [club, f, sl] = parts; if (!CLUBS[club] || !FU(f)) return null; const slots = (sl || '').split('-').map(v => v === 'x' ? null : +v); const t = { club, form: FU(f), slots }; valid(t); return t; }
 function baseUrl() { return location.href.split('#')[0].split('?')[0]; }
 function linkEsc() { return baseUrl() + '#e.' + encTeam(ST.esc); }
-function linkDuel() { const d = ST.duel; return baseUrl() + '#d.' + encTeam(d.A) + '.' + encTeam(d.B) + '.' + d.picks.map(x => x || 'x').join('') + '.' + FC(d.finalForm || d.A.form); }
+function linkDuel() { const d = ST.duel; return baseUrl() + '#d.' + encTeam(d.A) + '.' + encTeam(d.B) + '.' + d.picks.map(x => x || 'x').join('') + '.' + FC(d.finalForm || d.A.form) + '.' + mapOf().map(v => v.toString(16)).join(''); }
 function fromHash() {
   const h = decodeURIComponent(location.hash || '').slice(1); if (!h) return;
   const p = h.split('.');
@@ -1609,6 +1660,7 @@ function fromHash() {
     if (p[0] === 'd' && p.length >= 9) {
       const A = decTeam(p.slice(1, 4)), B = decTeam(p.slice(4, 7)); if (A && B) {
         ST.duel.A = A; ST.duel.B = B; ST.duel.picks = (p[7] || '').padEnd(11, 'x').slice(0, 11).split('').map(c => c === 'A' || c === 'B' ? c : null);
+        { const mm = (p[9] || '').split('').map(c => parseInt(c, 16)); ST.duel.map = okMap(mm) ? mm : autoMap(A.form, B.form); }
         ST.duel.finalForm = FU(p[8]) || A.form; { const fo = ST.duel.picks.findIndex(x => !x); ST.duel.done = fo < 0; ST.duel.step = fo < 0 ? 10 : fo; } ST.duel.started = A.slots.every(x => x != null) && B.slots.every(x => x != null); ST.tab = 'duel';
         banner(`Você abriu o 11x11 ${CLUBS[A.club].sigla} x ${CLUBS[B.club].sigla} que alguém compartilhou.`);
       }
