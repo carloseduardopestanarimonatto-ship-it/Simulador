@@ -576,6 +576,42 @@ header{gap:12px}
 .acc-it span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .acc-x{margin-top:14px}
 
+.n-by{display:flex!important;align-items:center;gap:6px;flex-wrap:wrap}
+.n-av{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid var(--g);flex:none}
+.n-ig{color:#e1306c;font-weight:700;cursor:pointer}.n-ig:hover{text-decoration:underline}
+.pf-top{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.pf-av{width:96px;height:96px;border-radius:50%;overflow:hidden;background:var(--g);display:grid;place-items:center;flex:none;border:2px solid var(--g)}
+.pf-av img{width:100%;height:100%;object-fit:cover}.pf-av i{font-style:normal;font-weight:900;font-size:30px;color:#06170c}
+.pf-prev{margin-bottom:12px}
+.pf-lb{font-family:var(--cond);color:var(--mut);font-size:13px;text-transform:uppercase;letter-spacing:.3px;margin:4px 0 4px}
+
+.cpv{margin-bottom:12px}
+.cpv-fase{background:#0e0f0e;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px}
+.cpv-fh input{background:none;border:0;border-bottom:1px dashed var(--line);color:var(--neon);font-weight:900;text-transform:uppercase;font-family:var(--head);font-size:15px;padding:2px 0 6px;margin-bottom:8px;width:100%}
+.cpv-fase{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.cpv-fase .cpv-fh{grid-column:1/-1}
+.cpv-tie{background:#141514;border:1px solid #232623;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.cpv-row{display:flex;align-items:center;gap:8px}
+.cpv-row b{min-width:26px;font-family:var(--cond);color:var(--mut)}
+.cpv-c{width:26px;height:26px;display:grid;place-items:center;flex:none}
+.cpv-c img{width:24px;height:24px;object-fit:contain}
+.cpv select,.cpv input,.cpv textarea{background:#0b0c0b;border:1px solid var(--line);border-radius:8px;color:#fff;padding:7px 8px;font-family:var(--head);font-size:13.5px;font-weight:600;min-width:0}
+.cpv select:focus,.cpv input:focus,.cpv textarea:focus{outline:none;border-color:var(--g)}
+.cpv .fl input,.cpv .fl select,.cpv .fl textarea{width:100%}
+.cpv-t{flex:1}
+.cpv-w{flex:none;width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:#0b0c0b;color:#555;font-weight:900;cursor:pointer}
+.cpv-w.on{background:var(--g);border-color:var(--g);color:#06170c}
+.cpv-sc{display:flex;gap:8px;flex-wrap:wrap}
+.cpv-sc label,.cpv-ob{display:flex;flex-direction:column;gap:3px;font-family:var(--cond);color:var(--mut);font-size:12px;text-transform:uppercase;flex:1;min-width:90px}
+.cpv-jogo{margin-bottom:10px}
+.cpv-tb{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.cpv-tr{display:grid;grid-template-columns:28px minmax(120px,1fr) repeat(var(--nc,2),64px) 56px;gap:6px;align-items:center}
+.cpv-th{font-family:var(--cond);color:var(--mut);font-size:12px;text-transform:uppercase}
+.cpv-tr>span:first-child{font-family:var(--cond);color:var(--mut);text-align:right}
+.cpv-n{text-align:center}
+.cpv-act{display:flex;gap:10px;justify-content:flex-end}
+.cpv-rk{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px;margin-bottom:10px}
+
 .n-body p{color:#cfd6d1;font-size:14px;line-height:1.5;margin-bottom:8px}
 .n-body p:last-child{margin-bottom:0}
 .n-fig{margin:10px 0 12px}
@@ -613,7 +649,8 @@ body.nt-admin>*:not(#adm):not(script):not(.acc){display:none!important}
 #admNav button.on svg{color:var(--neon)}
 .adm-me{display:flex;align-items:center;gap:8px;border-top:1px solid #1f221f;padding:12px 4px 0}
 .adm-me:empty{display:none}
-.adm-me>i{width:36px;height:36px;border-radius:50%;background:var(--g);color:#06170c;font-style:normal;font-weight:900;display:grid;place-items:center;font-size:13px;flex:none}
+.adm-me>i.ph{padding:0;overflow:hidden}.adm-me>i.ph img{width:100%;height:100%;object-fit:cover}
+.adm-me>i{cursor:pointer;width:36px;height:36px;border-radius:50%;background:var(--g);color:#06170c;font-style:normal;font-weight:900;display:grid;place-items:center;font-size:13px;flex:none}
 .adm-me div{flex:1;min-width:0}.adm-me b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.adm-me small{font-family:var(--cond);color:var(--mut);font-size:12.5px}
 .adm-me .adm-ico{width:34px;height:34px;padding:0;justify-content:center;color:var(--mut)}.adm-me .adm-ico:hover{color:#fff;background:#1a1c1a}
 .adm-main{min-width:0;display:flex;flex-direction:column}
@@ -1242,7 +1279,7 @@ a.pc-card{text-decoration:none;color:inherit;display:block}
 // Carrega as edições da equipe (Firestore) antes de abrir o site. Se não der em 2,5 s, abre com os dados embutidos.
 (() => {
   const run = () => { const o = document.getElementById('ntApp'); if (!o || o.dataset.ran) return; o.dataset.ran = 1; const s = document.createElement('script'); s.textContent = o.textContent; document.body.appendChild(s); };
-  const apply = docs => { const O = { comps: {} }; (docs || []).forEach(d => { try { const id = d.name.split('/').pop(), v = JSON.parse(d.fields.json.stringValue); if (id === 'brasileirao') O.brasileirao = v; else if (id.startsWith('comp-')) O.comps[id.slice(5)] = v; } catch (e) {} }); window.NT_OVR = O; };
+  const apply = docs => { const O = { comps: {} }; (docs || []).forEach(d => { try { const id = d.name.split('/').pop(), v = JSON.parse(d.fields.json.stringValue); if (id === 'brasileirao') O.brasileirao = v; else if (id.startsWith('comp-')) O.comps[id.slice(5)] = v; else if (id.startsWith('perfil-')) (O.perfis = O.perfis || {})[id.slice(7)] = v; } catch (e) {} }); window.NT_OVR = O; };
   let ST0 = {}; try { ST0 = JSON.parse(document.getElementById('ntData').textContent || '{}') || {}; } catch (e) {}
   window.NT_STORE = ST0;
   const stDocs = () => Object.entries(ST0.site || {}).map(([id, v]) => ({ name: 'site/' + id, fields: { json: { stringValue: v.json } } }));
@@ -2112,12 +2149,24 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     F.forEach((f, i) => { if (!used.has(i)) out.push(fig(i)); });
     return `<div class="n-body">${out.join('')}</div>`;
   }
+  const PERFIS = () => (window.NT_OVR && window.NT_OVR.perfis) || {};
+  const igHandle = v => String(v || '').trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/[/?#].*$/, '').replace(/^@/, '').slice(0, 40);
+  function perfilDe(n) {
+    const P = PERFIS();
+    if (n.autorUid && P[n.autorUid]) return P[n.autorUid];
+    return Object.values(P).find(p => p && (p.nome === n.autor || (p.nomes || []).includes(n.autor))) || null;
+  }
+  function autorLine(n) {
+    if (!n.autor) return '';
+    const p = perfilDe(n), nome = (p && p.nome) || n.autor, ig = p && igHandle(p.insta);
+    return `<span class="n-by">${p && p.foto ? `<img class="n-av" src="${p.foto}" alt="">` : ''}<span>Por ${esc(nome)}</span>${ig ? `<span class="n-ig" data-ig="${esc(ig)}">@${esc(ig)}</span>` : ''}</span>`;
+  }
   function newsCard(n, small) {
     const v = newsVis(n);
     const f0 = Array.isArray(n.fotos) && n.fotos[0] && n.fotos[0].src;
     const crest = v ? `<div class="n-crests">${chip(v.a)}<b>${esc(v.mid)}</b>${chip(v.b)}</div>` : f0 && small ? `<div class="n-crests ph"><img src="${f0}" alt=""></div>` : `<div class="n-crests"><img src="${LOGO}" alt=""></div>`;
     const lk = n.fk && S.FICHAS[n.fk] ? 'Ver ficha do jogo ›' : n.go ? 'Ver chaveamento ›' : '';
-    return `<button class="n-item${small ? ' sm' : ''}"${newsAttr(n)}>${crest}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5>${n.autor ? `<span class="n-by">Por ${esc(n.autor)}</span>` : ''}${small ? `<p>${esc(plainTxt(n.texto))}</p>` : newsBody(n)}${lk ? `<span class="lk">${lk}</span>` : ''}</div></button>`;
+    return `<button class="n-item${small ? ' sm' : ''}"${newsAttr(n)}>${crest}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5>${autorLine(n)}${small ? `<p>${esc(plainTxt(n.texto))}</p>` : newsBody(n)}${lk ? `<span class="lk">${lk}</span>` : ''}</div></button>`;
   }
   function nextGame() {
     const key = j => { const m = /(\d{2})\/(\d{2})/.exec(j.d) || [0, '99', '99']; return m[2] + m[1] + (j.h || '99'); };
@@ -2151,7 +2200,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const tr = (r, i) => `<tr class="${i >= 16 ? 'z4' : ''}${i === 5 ? ' sep' : ''}"><td class="i">${i + 1}</td><td><img src="${CREST[r.id]}" alt="">${T[r.id].nome}</td><td class="p">${r.p}</td></tr>`;
     const mini = rows.slice(0, 6).map(tr).join('') + rows.slice(16).map((r, k) => tr(r, k + 16)).join('');
     const car = NEWS.slice(0, 5), three = NEWS.slice(0, 3);
-    const slide = (n, i) => { const v = newsVis(n); return `<div class="sl${i === 0 ? ' on' : ''}"${newsAttr(n)}>${v ? `<div class="crs">${chip(v.a)}<b>${esc(v.mid)}</b>${chip(v.b)}</div>` : `<div class="crs"><img src="${LOGO}" alt="" style="width:60px"></div>`}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5>${n.autor ? `<span class="n-by">Por ${esc(n.autor)}</span>` : ''}<p>${esc(plainTxt(n.texto))}</p></div></div>`; };
+    const slide = (n, i) => { const v = newsVis(n); return `<div class="sl${i === 0 ? ' on' : ''}"${newsAttr(n)}>${v ? `<div class="crs">${chip(v.a)}<b>${esc(v.mid)}</b>${chip(v.b)}</div>` : `<div class="crs"><img src="${LOGO}" alt="" style="width:60px"></div>`}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5>${autorLine(n)}<p>${esc(plainTxt(n.texto))}</p></div></div>`; };
     const SL = COMPS.selecao, slOn = SL && (!SL.ate || new Date() <= new Date(SL.ate + 'T23:59:00-03:00'));
     const selHtml = slOn ? `<div class="h-card h-sel"><h4><span class="sel-tag"><svg class="sel-flag" viewBox="0 0 28 20"><rect width="28" height="20" rx="3" fill="#009c3b"/><path d="M14 3 25 10 14 17 3 10z" fill="#fedd00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/><path d="M10 9.2c2.6-.6 5.4-.3 8 .9" stroke="#fff" stroke-width=".9" fill="none"/></svg>Seleção Brasileira</span>${esc(SL.titulo)}</h4><p class="sel-sub">${esc(SL.sub || '')}</p>
       <div class="sel-g">${SL.jogos.map(j => { const ta = tinfo(j.a), tb = tinfo(j.b); return `<div class="sel-m"><div class="sel-d"><b>${esc(j.d)}</b><span>${esc(j.h)}</span></div><div class="sel-t">${chip(j.a)}<b>${esc(ta.nome)}</b></div><div class="sel-x">${j.placar ? esc(j.placar) : 'x'}</div><div class="sel-t r"><b>${esc(tb.nome)}</b>${chip(j.b)}</div><small>${esc(j.local || '')}</small></div>`; }).join('')}</div>
@@ -3252,6 +3301,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   function lastGame() { try { const g = localStorage.getItem('notatico-game'); if (GAMES.includes(g)) return g; } catch (e) {} return 'sim'; }
   $('mainnav').onclick = e => { const b = e.target.closest('[data-sec]'); if (!b) return; go(b.dataset.sec); window.scrollTo({ top: 0 }); };
   $('gamesnav').onclick = e => { const b = e.target.closest('[data-app]'); if (b) { go(b.dataset.app); window.scrollTo({ top: 0 }); } };
+  document.addEventListener('click', e => { const ig = e.target.closest('[data-ig]'); if (ig) { e.preventDefault(); e.stopPropagation(); window.open('https://instagram.com/' + encodeURIComponent(ig.dataset.ig), '_blank', 'noopener'); } }, true);
   document.addEventListener('click', e => {
     const n = e.target.closest('.sec [data-fk]'); if (n) { S.openMatch(n.dataset.fk); return; }
     const gb = e.target.closest('.sec [data-go="bra"]'); if (gb) { go('bra'); window.scrollTo({ top: 0 }); return; }
@@ -3503,9 +3553,9 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   function subscribeContent() {
     const q = (c, n) => F.query(F.collection(F.db, c), F.orderBy('ts', 'desc'), F.limit(n));
     // no site independente (Firebase), o que a equipe publicou no link do Claude continua aparecendo
-    const emb = c => CLM ? [] : Object.entries((window.NT_STORE || {})[c] || {}).sort((a, b) => (b[1].ts || 0) - (a[1].ts || 0)).map(([id, x]) => ({ id: 'c-' + id, data: () => Object.assign({}, x, { ts: x.ts ? { toMillis: () => x.ts } : null }) }));
+    const emb = c => CLM ? [] : Object.entries((window.NT_STORE || {})[c] || {}).filter(([id]) => !(((COMPS.home || {}).apagadas) || []).includes(c + '/c-' + id)).sort((a, b) => (b[1].ts || 0) - (a[1].ts || 0)).map(([id, x]) => ({ id: 'c-' + id, data: () => Object.assign({}, x, { ts: x.ts ? { toMillis: () => x.ts } : null }) }));
     const both = (s, c) => ({ docs: s.docs.concat(emb(c)) });
-    F.onSnapshot(q('noticias', 25), s0 => { const s = both(s0, 'noticias'); FB_NEWS = s.docs.map(d => { const x = d.data(); return { id: d.id, d: x.d, tag: x.tag, titulo: x.titulo, texto: x.texto, go: x.comp || '', times: x.timeA && x.timeB ? [x.timeA, x.timeB] : null, placar: x.placar || '', autor: x.autor, fotos: Array.isArray(x.fotos) ? x.fotos : [], _ts: x.ts ? x.ts.toMillis() : Date.now() }; }); remix(); }, e => console.warn(e));
+    F.onSnapshot(q('noticias', 25), s0 => { const s = both(s0, 'noticias'); FB_NEWS = s.docs.map(d => { const x = d.data(); return { id: d.id, d: x.d, tag: x.tag, titulo: x.titulo, texto: x.texto, go: x.comp || '', times: x.timeA && x.timeB ? [x.timeA, x.timeB] : null, placar: x.placar || '', autor: x.autor, fotos: Array.isArray(x.fotos) ? x.fotos : [], autorUid: x.autorUid || '', _ts: x.ts ? x.ts.toMillis() : Date.now() }; }); remix(); if (typeof ADM !== 'undefined' && ADM && me && (panelTab === 'dash' || (panelTab === 'news' && admView !== 'edit'))) renderAcc(); }, e => console.warn(e));
     F.onSnapshot(q('podcasts', 12), s0 => { const s = both(s0, 'podcasts'); FB_POD = s.docs.map(d => { const x = d.data(); return { id: d.id, titulo: x.titulo, data: x.data, yt: x.yt, desc: x.desc }; }); remix(); }, e => console.warn(e));
     F.onSnapshot(q('dicas', 15), s0 => { const s = both(s0, 'dicas'); FB_DICAS = s.docs.map(d => { const x = d.data(); return { id: d.id, a: x.casa, b: x.fora, comp: x.comp, d: x.d, h: x.h, onde: x.onde, porque: x.porque, autor: x.autor }; }); remix(); }, e => console.warn(e));
   }
@@ -3533,6 +3583,13 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   }
   const fld = (id, lab, tag = 'input', extra = '') => `<label class="fl"><span>${lab}</span><${tag} id="${id}" ${extra}>${tag === 'select' || tag === 'textarea' ? `</${tag}>` : ''}</label>`;
   function teamOpts() { const ids = Object.keys(CREST).sort().concat(Object.keys(COMPS.times)); return '<option value="">—</option>' + ids.map(i => `<option value="${i}">${esc(tinfo(i).nome)}</option>`).join(''); }
+  async function apagaEmb(path) {
+    const H = JSON.parse(JSON.stringify(HOME())), a = new Set(H.apagadas || []); a.add(path); H.apagadas = [...a];
+    await saveSite('comp-home', H); COMPS.home = H;
+    const id = path.split('/')[1];
+    FB_NEWS = FB_NEWS.filter(x => x.id !== id); FB_POD = FB_POD.filter(x => x.id !== id); FB_DICAS = FB_DICAS.filter(x => x.id !== id);
+    remix();
+  }
   // ===== fotos na notícia (comprimidas no navegador e guardadas junto da matéria) =====
   const FOTO_MAX = 5, FOTO_BYTES = 170000;
   let nFotos = [], nFotosFor = null;
@@ -3602,14 +3659,15 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     pod: AI('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
     dicas: AI('<path d="m12 3 2.6 5.6 6 .7-4.4 4.1 1.2 6L12 16.6 6.6 19.4l1.2-6L3.4 9.3l6-.7z"/>'),
     comp: AI('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/>'),
+    perfil: AI('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),
     team: AI('<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15 15a5 5 0 0 1 6 5"/>'),
     senha: AI('<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l2 2M15 8l2 2"/>'),
     out: AI('<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>'),
     ext: AI('<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>'),
     plus: AI('<path d="M12 5v14M5 12h14"/>')
   };
-  const ADM_T = { dash: 'Início', news: 'Notícias', tab: 'Tabela do Brasileirão', home: 'Home do site', pod: 'Programa', dicas: 'Dicas do Chefe', comp: 'Competições', team: 'Equipe', senha: 'Minha senha' };
-  const ADM_SUB = { news: 'Tudo o que aparece no carrossel da Home e na aba News.', tab: 'Lance os placares: tabela, simulador, bolão e Home se atualizam sozinhos.', home: 'Aviso do topo, textos das copas e o card da Seleção.', pod: 'Episódios que aparecem na Home e em Programas.', dicas: 'Os jogos que a equipe recomenda.', comp: 'Chaves e placares das copas e estaduais.', team: 'Quem tem acesso ao painel.', senha: 'Troque a sua senha de acesso.' };
+  const ADM_T = { dash: 'Início', news: 'Notícias', tab: 'Tabela do Brasileirão', home: 'Home do site', pod: 'Programa', dicas: 'Dicas do Chefe', comp: 'Competições', perfil: 'Meu perfil', team: 'Equipe', senha: 'Minha senha' };
+  const ADM_SUB = { news: 'Tudo o que aparece no carrossel da Home e na aba News.', tab: 'Lance os placares: tabela, simulador, bolão e Home se atualizam sozinhos.', home: 'Aviso do topo, textos das copas e o card da Seleção.', pod: 'Episódios que aparecem na Home e em Programas.', dicas: 'Os jogos que a equipe recomenda.', comp: 'Chaves e placares das copas e estaduais.', team: 'Quem tem acesso ao painel.', perfil: 'Sua foto, seu nome e seu Instagram aparecem nas notícias que você escrever.', senha: 'Troque a sua senha de acesso.' };
   function admInit() {
     document.body.classList.add('nt-admin');
     document.title = 'Painel · Nó Tático';
@@ -3680,12 +3738,13 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const tabsEl = el.querySelector('.c-tabs.sm'), head = el.querySelector('.acc-who');
     const keys = ['dash'].concat(tabsEl ? [...tabsEl.querySelectorAll('[data-at]')].map(b => b.dataset.at) : []);
     if (tabsEl) tabsEl.remove(); if (head) head.style.display = 'none';
-    const grp = k => k === 'dash' ? '' : k === 'team' ? 'Administração' : ['news', 'tab', 'home'].includes(k) ? 'Dia a dia' : 'Conteúdo';
+    const grp = k => k === 'dash' ? '' : k === 'team' || k === 'perfil' ? 'Sua conta' : ['news', 'tab', 'home'].includes(k) ? 'Dia a dia' : 'Conteúdo';
     let last = null;
     $('admNav').innerHTML = keys.map(k => { const g = grp(k); const h = g && g !== last ? `<p class="adm-grp">${g}</p>` : ''; last = g || last; return h + `<button data-at="${k}" class="${k === panelTab ? 'on' : ''}">${ADM_I[k] || ''}<span>${ADM_T[k] || k}</span></button>`; }).join('');
     const nm = me.displayName || me.email || '';
     $('admHello').innerHTML = `Olá, <b>${esc(nm.split(' ')[0])}</b>`;
-    $('admMe').innerHTML = `<i>${esc(nm.split(' ').map(x => x[0]).slice(0, 2).join('').toUpperCase())}</i><div><b>${esc(nm)}</b><small>${role === 'host' ? 'Host' : 'Editor'}</small></div>${CLM ? `<button data-at="senha" title="Trocar senha" class="adm-ico">${ADM_I.senha}</button>` : ''}<button id="admOut" title="Sair" class="adm-ico">${ADM_I.out}</button>`;
+    const myP = PERFIS()[me.uid] || {};
+    $('admMe').innerHTML = `${myP.foto ? `<i class="ph" data-at="perfil" title="Meu perfil"><img src="${myP.foto}" alt=""></i>` : `<i data-at="perfil" title="Meu perfil">${esc(nm.split(' ').map(x => x[0]).slice(0, 2).join('').toUpperCase())}</i>`}<div data-at="perfil" style="cursor:pointer"><b>${esc(myP.nome || nm)}</b><small>${role === 'host' ? 'Host' : 'Editor'}</small></div>${CLM ? `<button data-at="senha" title="Trocar senha" class="adm-ico">${ADM_I.senha}</button>` : ''}<button id="admOut" title="Sair" class="adm-ico">${ADM_I.out}</button>`;
     $('admMe').querySelectorAll('[data-at]').forEach(b => b.onclick = () => { panelTab = b.dataset.at; renderAcc(); });
     $('admTitle').textContent = panelTab === 'dash' ? `Olá, ${nm.split(' ')[0]}` : panelTab === 'news' && admView === 'edit' ? (nEdit ? 'Editar notícia' : 'Nova notícia') : ADM_T[panelTab] || '';
     $('admSub').textContent = panelTab === 'dash' ? 'Painel do Nó Tático. Aqui o futebol é mais fácil.' : ADM_SUB[panelTab] || '';
@@ -3727,7 +3786,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (role === 'verify') { el.innerHTML = head + '<p>Confirme seu e-mail pelo link que enviamos para liberar o painel do host. Depois de confirmar, saia e entre de novo.</p><button class="h-btn" id="aVer">Reenviar link</button><p class="acc-st" id="aSt"></p>'; return; }
     if (role === 'pending') { el.innerHTML = head + '<p>Seu pedido está aguardando a aprovação do host. Assim que ele aprovar, saia e entre de novo para abrir o painel.</p>'; return; }
     if (!role) { el.innerHTML = head + '<p>Verificando acesso…</p>'; return; }
-    const tabs = [['news', 'Notícia'], ['tab', 'Tabela'], ['home', 'Home'], ['pod', 'Programa'], ['dicas', 'Dica do Chefe'], ['comp', 'Competições']].concat(role === 'host' ? [['team', 'Equipe']] : []);
+    const tabs = [['news', 'Notícia'], ['tab', 'Tabela'], ['home', 'Home'], ['pod', 'Programa'], ['dicas', 'Dica do Chefe'], ['comp', 'Competições'], ['perfil', 'Meu perfil']].concat(role === 'host' ? [['team', 'Equipe']] : []);
     if (ADM && panelTab === 'dash') { el.innerHTML = '<div class="c-tabs sm">' + tabs.map(t => `<button data-at="${t[0]}">${t[1]}</button>`).join('') + '</div>'; return; }
     if (!tabs.some(t => t[0] === panelTab) && !(CLM && panelTab === 'senha')) panelTab = ADM ? 'dash' : 'news';
     let body = '';
@@ -3738,6 +3797,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (panelTab === 'tab') body = tabBody();
     if (panelTab === 'home') body = homeBody();
     if (panelTab === 'comp') body = compBody();
+    if (panelTab === 'perfil') body = perfilBody();
     if (panelTab === 'pod') body = fld('pTit', 'Título do episódio') + fld('pYt', 'Link do YouTube') + fld('pDesc', 'Descrição (opcional)', 'textarea', 'rows="3"') +
       `<button class="h-btn pri" id="pGo">Publicar episódio</button><p class="acc-st" id="aSt"></p><h5 class="acc-h">Episódios</h5>${FB_POD.map(p => `<div class="acc-it"><span>${esc(p.data || '')} · ${esc(p.titulo)}</span><button class="lnk del" data-del="podcasts/${p.id}">Apagar</button></div>`).join('') || '<p class="acc-st">Nenhum ainda.</p>'}`;
     if (panelTab === 'dicas') body = `<div class="fl2">${fld('mA', 'Mandante')}${fld('mB', 'Visitante')}</div><div class="fl2">${fld('mD', 'Data (ex: 15/11)')}${fld('mH', 'Horário (ex: 16h)')}</div><div class="fl2">${fld('mC', 'Competição (ex: Champions League)')}${fld('mO', 'Onde assistir (ex: TNT, ge TV)')}</div>${fld('mP', 'Por que assistir (a dica do chefe)', 'textarea', 'rows="3"')}` +
@@ -3756,6 +3816,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (panelTab === 'team' && !CLM) loadTeam();
     if (panelTab === 'home') homeFill();
     if (panelTab === 'comp') compFill();
+    if (panelTab === 'perfil') perfilFill();
     if (panelTab === 'news' && nEdit) { const n = FB_NEWS.find(x => x.id === nEdit); if (n) { $('nTit').value = n.titulo; $('nTxt').value = n.texto || ''; $('nTag').value = n.tag || 'Brasileirão'; $('nComp').value = n.go || ''; if (n.times) { $('nA').value = n.times[0]; $('nB').value = n.times[1]; } $('nPl').value = n.placar || ''; $('nGo').textContent = 'Salvar alterações'; if (nFotosFor !== nEdit) { nFotos = (n.fotos || []).map(f => ({ src: f.src, leg: f.leg || '' })); nFotosFor = nEdit; } fotosList(); } }
     if (panelTab === 'news' && !nEdit) { if (nFotosFor !== 'new') { nFotos = []; nFotosFor = 'new'; } fotosList(); }
   }
@@ -3797,18 +3858,156 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     $('sTi').value = SL.titulo || ''; $('sSu').value = SL.sub || ''; $('sAte').value = SL.ate || ''; $('sNo').value = SL.nota || '';
     [0, 1, 2].forEach(k => { const j = SL.jogos[k] || {}; $('sA' + k).innerHTML = $('sB' + k).innerHTML = teamOpts(); $('sA' + k).value = j.a || ''; $('sB' + k).value = j.b || ''; $('sD' + k).value = j.d || ''; $('sH' + k).value = j.h || ''; $('sL' + k).value = j.local || ''; $('sP' + k).value = j.placar || ''; });
   }
-  const COMP_KEYS = () => [['brasileirao', 'Brasileirão (dados completos)']].concat(COMPS.cats.flatMap(c => c.items).filter(k => k !== 'bra' && COMPS[k]).map(k => [k, COMPS[k].nome || k]), [['selecao', 'Card da Seleção'], ['home', 'Avisos da Home']]);
-  function compBody() {
-    return `<p class="acc-st" style="color:var(--mut)">Modo avançado: edite qualquer competição (fases, confrontos, placares, datas). Mude só os textos e números entre aspas e mantenha vírgulas e chaves. Se algo der errado, use "Desfazer" ou "Voltar ao original".</p>
-      <label class="fl"><span>Competição</span><select id="cpK">${COMP_KEYS().map(([k, n]) => `<option value="${k}"${k === compKey ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select></label>
-      <textarea id="cpJ" class="ed-json" spellcheck="false" rows="18"></textarea>
-      <div class="acc-row"><button class="h-btn pri" id="cpGo">Salvar</button><button class="lnk" id="cpUndo">Desfazer última alteração</button><button class="lnk del" id="cpReset">Voltar ao original</button></div><p class="acc-st" id="aSt"></p>`;
+  // ===== Meu perfil: foto, nome e Instagram que aparecem nas notícias =====
+  let pfDraft = null;
+  const meuPerfil = () => Object.assign({ nome: nomeDe(), insta: '', foto: '' }, PERFIS()[me.uid] || {});
+  function perfilBody() {
+    return `<div class="pf-top"><div class="pf-av" id="pfAv"></div><div><label class="h-btn nf-add"><input type="file" id="pfFoto" accept="image/*" hidden>Escolher foto</label><button type="button" class="lnk del" id="pfFotoX" style="margin-left:12px">Tirar foto</button><p class="nf-help" style="margin-top:6px">Use uma foto do rosto. Ela aparece pequena e redonda ao lado do seu nome.</p></div></div>
+      ${fld('pfNome', 'Nome que aparece nas notícias')}${fld('pfIg', 'Instagram (ex.: @notaticofootball)')}
+      <p class="pf-lb">Como fica na notícia</p><div id="pfPrev" class="pf-prev"></div>
+      <button class="h-btn pri" id="pfGo">Salvar perfil</button><p class="acc-st" id="aSt"></p>`;
   }
-  function compFill() { const v = compKey === 'brasileirao' ? S.DATA : COMPS[compKey]; $('cpJ').value = JSON.stringify(v, null, 1); }
+  function perfilFill() {
+    if (!pfDraft || pfDraft.uid !== me.uid) pfDraft = Object.assign({ uid: me.uid }, meuPerfil());
+    $('pfNome').value = pfDraft.nome || ''; $('pfIg').value = pfDraft.insta ? '@' + igHandle(pfDraft.insta) : ''; pfShow();
+  }
+  function pfShow() {
+    const a = $('pfAv'); if (!a) return;
+    const ini = (pfDraft.nome || '?').split(' ').map(x => x[0]).slice(0, 2).join('').toUpperCase();
+    a.innerHTML = pfDraft.foto ? `<img src="${pfDraft.foto}" alt="">` : `<i>${esc(ini)}</i>`;
+    $('pfFotoX').style.display = pfDraft.foto ? '' : 'none';
+    const P = PERFIS(), old = P[me.uid]; P[me.uid] = pfDraft; if (!window.NT_OVR) window.NT_OVR = { comps: {} }; window.NT_OVR.perfis = P;
+    $('pfPrev').innerHTML = `<div class="n-list">${newsCard({ titulo: 'Título da sua notícia', texto: 'O texto da matéria aparece aqui.', tag: 'Brasileirão', d: ddmm(new Date()), autor: pfDraft.nome || nomeDe(), autorUid: me.uid })}</div>`;
+    if (old) P[me.uid] = old; else delete P[me.uid];
+  }
+  function fotoQuadrada(file) {
+    return new Promise((ok, bad) => { const r = new FileReader(); r.onerror = bad; r.onload = () => { const im = new Image(); im.onerror = bad; im.onload = () => {
+      const s0 = Math.min(im.width, im.height), c = document.createElement('canvas'); c.width = c.height = 240;
+      c.getContext('2d').drawImage(im, (im.width - s0) / 2, (im.height - s0) / 2, s0, s0, 0, 0, 240, 240); ok(c.toDataURL('image/jpeg', 0.82)); }; im.src = r.result; }; r.readAsDataURL(file); });
+  }
+  function perfilWire() {
+    const ab = $('accBox'); if (!ab || ab.dataset.pfw) return; ab.dataset.pfw = 1;
+    ab.addEventListener('change', async e => { if (e.target.id !== 'pfFoto' || !e.target.files[0]) return; try { pfDraft.foto = await fotoQuadrada(e.target.files[0]); pfShow(); st('Foto pronta. Clique em "Salvar perfil".'); } catch (er) { st('Não consegui abrir essa imagem.', 1); } e.target.value = ''; });
+    ab.addEventListener('input', e => { if (!pfDraft) return; if (e.target.id === 'pfNome') { pfDraft.nome = e.target.value.trim(); pfShow(); } if (e.target.id === 'pfIg') { pfDraft.insta = igHandle(e.target.value); pfShow(); } });
+    ab.addEventListener('click', async e => {
+      const b = e.target.closest('#pfFotoX,#pfGo'); if (!b) return; e.preventDefault(); e.stopPropagation();
+      if (b.id === 'pfFotoX') { pfDraft.foto = ''; return pfShow(); }
+      const nome = (pfDraft.nome || '').trim(); if (!nome) return st('Coloque o seu nome.', 1);
+      b.disabled = true;
+      try {
+        const old = PERFIS()[me.uid], nomes = [...new Set([].concat((old && old.nomes) || [], old && old.nome ? [old.nome] : [], nomeDe() ? [nomeDe()] : []))].filter(x => x && x !== nome).slice(0, 6);
+        const v = { uid: me.uid, nome: nome.slice(0, 60), insta: igHandle(pfDraft.insta), foto: pfDraft.foto || '', nomes };
+        await saveSite('perfil-' + me.uid, v);
+        if (!window.NT_OVR) window.NT_OVR = { comps: {} }; window.NT_OVR.perfis = Object.assign({}, PERFIS(), { [me.uid]: v });
+        if (!CLM && F.updateProfile && me.displayName !== v.nome) { try { await F.updateProfile(me, { displayName: v.nome }); } catch (er) {} }
+        if (CLM && typeof CONTAS === 'function') { /* no modo Claude o nome da conta continua o mesmo; o perfil manda na exibição */ }
+        pfDraft = null; remix(); renderAcc(); st('Perfil salvo! Suas notícias já mostram foto, nome e Instagram.');
+      } catch (er) { b.disabled = false; st('Não consegui salvar: ' + (er.message || er), 1); }
+    }, true);
+  }
+  // ===== Competições: editor visual (o código só no "modo avançado") =====
+  let cpAdv = false, cpDraft = null, cpDraftKey = null;
+  const cpGet = (o, p) => p.split('.').reduce((a, k) => a == null ? a : a[k], o);
+  const cpSet = (o, p, v) => { const ks = p.split('.'), last = ks.pop(), t = ks.reduce((a, k) => a[k], o); t[last] = v; };
+  const COMP_KEYS = () => {
+    const seen = new Set(), out = [];
+    const add = k => { if (seen.has(k) || !COMPS[k] || typeof COMPS[k] !== 'object') return; seen.add(k); out.push([k, COMPS[k].nome || k]); };
+    COMPS.cats.flatMap(c => c.items).filter(k => k !== 'bra').forEach(add);
+    Object.keys(COMPS).forEach(k => { const c = COMPS[k]; if (c && (c.fases || c.tipo) && !['home', 'selecao', 'dicas', 'times', 'kits', 'escudos'].includes(k)) add(k); });
+    return out;
+  };
+  function compBody() {
+    const keys = COMP_KEYS().concat(cpAdv ? [['brasileirao', 'Brasileirão (dados completos)'], ['selecao', 'Card da Seleção'], ['home', 'Avisos da Home']] : []);
+    if (!keys.some(k => k[0] === compKey)) compKey = keys[0][0];
+    return `<label class="fl"><span>Competição</span><select id="cpK">${keys.map(([k, n]) => `<option value="${k}"${k === compKey ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select></label>
+      ${cpAdv ? `<p class="acc-st" style="color:var(--mut)">Modo avançado (código). Mude só os textos e números entre aspas e mantenha vírgulas e chaves.</p><textarea id="cpJ" class="ed-json" spellcheck="false" rows="18"></textarea>` : '<div id="cpV" class="cpv"></div>'}
+      <div class="acc-row"><button class="h-btn pri" id="cpGo">Salvar</button><button class="lnk" id="cpUndo">Desfazer última alteração</button><button class="lnk del" id="cpReset">Voltar ao original</button><span style="flex:1"></span><button class="lnk" id="cpAdvT" style="color:var(--mut)">${cpAdv ? '← Voltar ao editor visual' : 'Modo avançado (código)'}</button></div><p class="acc-st" id="aSt"></p>`;
+  }
+  function compFill() {
+    if (cpAdv) { const v = compKey === 'brasileirao' ? S.DATA : COMPS[compKey]; $('cpJ').value = JSON.stringify(v, null, 1); return; }
+    if (cpDraftKey !== compKey) { cpDraft = JSON.parse(JSON.stringify(COMPS[compKey] || {})); cpDraftKey = compKey; }
+    cpRender();
+  }
+  function cpRender() {
+    const box = $('cpV'); if (!box) return;
+    const c = cpDraft, TO = teamOpts();
+    const sel = (p, cls) => `<select class="cpv-t${cls ? ' ' + cls : ''}" data-cp="${p}">${TO}</select>`;
+    const inp = (p, ph, cls, num) => { const v = cpGet(c, p); return `<input class="${cls || ''}" data-cp="${p}"${num ? ' data-num="1" inputmode="numeric"' : ''} placeholder="${esc(ph || '')}" value="${esc(v == null ? '' : v)}">`; };
+    const txt = (p, label, ph) => `<label class="fl"><span>${label}</span>${inp(p, ph)}</label>`;
+    let h = '';
+    if (c.nota !== undefined || c.fases || c.tipo) h += txt('nota', 'Texto de cima (aviso da competição)', 'Ex.: Final no dia 06/12');
+    if (c.fases || c.tipo === 'final' || c.tipo === 'agenda') h += `<label class="fl"><span>Campeão</span>${sel('campeao')}</label>`;
+    if (c.fases) {
+      c.fases.forEach((f, fi) => {
+        h += `<div class="cpv-fase"><div class="cpv-fh">${inp(`fases.${fi}.nome`, 'Nome da fase', 'cpv-fn')}</div>`;
+        f.ties.forEach((t, ti) => {
+          const p = `fases.${fi}.ties.${ti}`, w = t.w;
+          h += `<div class="cpv-tie">
+            <div class="cpv-row"><span class="cpv-c">${chip(t.a || '')}</span>${sel(p + '.a')}<button type="button" class="cpv-w${w === 'a' ? ' on' : ''}" data-cpw="${p}" data-v="a" title="Passou">✓</button></div>
+            <div class="cpv-row"><span class="cpv-c">${chip(t.b || '')}</span>${sel(p + '.b')}<button type="button" class="cpv-w${w === 'b' ? ' on' : ''}" data-cpw="${p}" data-v="b" title="Passou">✓</button></div>
+            <div class="cpv-sc"><label>Placar / agregado ${inp(p + '.agg', 'ex.: 2-1')}</label><label>Pênaltis ${inp(p + '.pen', 'ex.: 4-3')}</label></div>
+            <label class="cpv-ob">Observação ${inp(p + '.obs', 'ex.: Ida 1x0 · Volta 1x1')}</label>
+          </div>`;
+        });
+        h += '</div>';
+      });
+      h += '<p class="nf-help">Toque no ✓ ao lado do time que passou. O placar vale "time de cima - time de baixo".</p>';
+    } else if (c.tipo === 'final' || c.tipo === 'agenda') {
+      (c.jogos || []).forEach((j, i) => {
+        const p = `jogos.${i}`;
+        h += `<div class="cpv-tie cpv-jogo"><div class="cpv-sc"><label>Fase ${inp(p + '.fase', 'Final')}</label><label>Data ${inp(p + '.d', 'dd/mm')}</label><label>Local ${inp(p + '.local', '')}</label></div>
+          <div class="cpv-row"><span class="cpv-c">${chip(j.a || '')}</span>${sel(p + '.a')}</div><div class="cpv-row"><span class="cpv-c">${chip(j.b || '')}</span>${sel(p + '.b')}</div>
+          <div class="cpv-sc"><label>Placar ${inp(p + '.s', 'ex.: 2x1')}</label><label>Pênaltis ${inp(p + '.pen', '')}</label><label>Obs. ${inp(p + '.obs', '')}</label></div>
+          <div class="nf-b"><button type="button" class="lnk del" data-cprm="jogos.${i}">Remover jogo</button></div></div>`;
+      });
+      h += `<button type="button" class="h-btn" data-cpadd="jogos">+ Adicionar jogo</button>`;
+    } else if (c.tipo === 'tabela') {
+      const cols = c.cols || ['p', 'j'], NM = { p: 'Pts', j: 'J', v: 'V', e: 'E', d: 'D', sg: 'SG', gp: 'GP', gc: 'GC' };
+      h += txt('rodada', 'Rodada', 'Após a 12ª rodada');
+      h += `<div class="cpv-tb" style="--nc:${cols.length}"><div class="cpv-tr cpv-th"><span>#</span><span>Time</span>${cols.map(k => `<span>${NM[k] || k}</span>`).join('')}<span></span></div>${(c.rows || []).map((r, i) => `<div class="cpv-tr"><span>${i + 1}</span>${inp(`rows.${i}.0`, 'Time')}${cols.map((k, ci) => inp(`rows.${i}.${ci + 1}`, '', 'cpv-n', 1)).join('')}<span class="cpv-act">${i ? `<button type="button" class="lnk" data-cpup="rows.${i}" title="Subir">↑</button>` : ''}<button type="button" class="lnk del" data-cprm="rows.${i}" title="Remover">✕</button></span></div>`).join('')}</div>
+        <button type="button" class="h-btn" data-cpadd="rows">+ Adicionar time</button><button type="button" class="lnk" data-cpsort="1" style="margin-left:12px">Ordenar por pontos</button>`;
+    } else if (c.tipo === 'ranking') {
+      h += txt('rodada', 'Atualização', 'Atualização de dd/mm/aaaa');
+      h += `<div class="cpv-rk">${(c.ids || []).map((id, i) => `<div class="cpv-row"><b>${i + 1}º</b><span class="cpv-c">${chip(id)}</span>${sel('ids.' + i)}</div>`).join('')}</div>`;
+    } else if (c.tipo === 'temporada') {
+      (c.blocos || []).forEach((b, i) => {
+        h += `<div class="cpv-tie"><label class="fl"><span>Título</span>${inp(`blocos.${i}.titulo`)}</label>
+          <label class="fl"><span>Linhas (uma por linha)</span><textarea data-cp="blocos.${i}.linhas" data-lines="1" rows="3">${esc((b.linhas || []).join('\n'))}</textarea></label>
+          ${b.times ? `<label class="fl"><span>${esc(b.times_titulo || 'Times')} (um por linha)</span><textarea data-cp="blocos.${i}.times" data-lines="1" rows="4">${esc(b.times.join('\n'))}</textarea></label>` : ''}
+          <label class="fl"><span>Nota</span><textarea data-cp="blocos.${i}.nota" rows="2">${esc(b.nota || '')}</textarea></label></div>`;
+      });
+    } else h += '<p class="acc-st">Esta competição só pode ser editada no modo avançado.</p>';
+    box.innerHTML = h;
+    box.querySelectorAll('select[data-cp]').forEach(s => { s.value = cpGet(c, s.dataset.cp) || ''; });
+  }
+  function cpWire() {
+    const ab = $('accBox'); if (!ab || ab.dataset.cpw) return; ab.dataset.cpw = 1;
+    const upd = e => {
+      const el = e.target; if (!el.dataset || el.dataset.cp == null || !cpDraft || !el.closest('#cpV')) return;
+      let v = el.value;
+      if (el.dataset.lines) v = v.split('\n').map(x => x.trim()).filter(Boolean);
+      else if (el.dataset.num) v = v.trim() === '' ? 0 : (isNaN(+v) ? v : +v);
+      else if (el.tagName === 'SELECT') v = v || null;
+      else if (v.trim() === '' && /\.(agg|pen|obs)$/.test(el.dataset.cp)) v = undefined;
+      if (v === undefined) { const ks = el.dataset.cp.split('.'), last = ks.pop(); delete cpGet(cpDraft, ks.join('.'))[last]; } else cpSet(cpDraft, el.dataset.cp, v);
+      if (el.tagName === 'SELECT') { const r = el.closest('.cpv-row'), cc = r && r.querySelector('.cpv-c'); if (cc) cc.innerHTML = chip(v || ''); }
+    };
+    ab.addEventListener('input', upd); ab.addEventListener('change', upd);
+    ab.addEventListener('click', e => {
+      const b = e.target.closest('[data-cpw],[data-cpadd],[data-cprm],[data-cpup],[data-cpsort]'); if (!b || !b.closest('#cpV, .acc-row') || !cpDraft) return;
+      e.preventDefault(); e.stopPropagation();
+      if (b.dataset.cpw) { const t = cpGet(cpDraft, b.dataset.cpw); t.w = t.w === b.dataset.v ? null : b.dataset.v; }
+      if (b.dataset.cpadd) { const L = cpDraft[b.dataset.cpadd] = cpDraft[b.dataset.cpadd] || []; L.push(b.dataset.cpadd === 'rows' ? [''].concat((cpDraft.cols || ['p', 'j']).map(() => 0)) : { fase: '', d: '', a: '', b: '', s: '', local: '' }); }
+      if (b.dataset.cprm) { const ks = b.dataset.cprm.split('.'), i = +ks.pop(); cpGet(cpDraft, ks.join('.')).splice(i, 1); }
+      if (b.dataset.cpup) { const ks = b.dataset.cpup.split('.'), i = +ks.pop(), L = cpGet(cpDraft, ks.join('.')); [L[i - 1], L[i]] = [L[i], L[i - 1]]; }
+      if (b.dataset.cpsort) cpDraft.rows.sort((x, y) => (+y[1] || 0) - (+x[1] || 0));
+      cpRender();
+    }, true);
+  }
   $('accBox').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.target.id === 'aPass' || e.target.id === 'aEmail') && $('cGo')) $('cGo').click(); });
   $('accBox').addEventListener('change', e => {
     if (e.target.id === 'tbR') { tabRound = +e.target.value; renderAcc(); }
-    if (e.target.id === 'cpK') { compKey = e.target.value; compFill(); }
+    if (e.target.id === 'cpK') { compKey = e.target.value; cpDraftKey = null; renderAcc(); }
   });
   let ED_N = 0; const ED_MAX = 4;
   const edCap = () => { const p = $('tPed'); if (!p) return; p.querySelectorAll('[data-ok]').forEach(b => { b.disabled = ED_N >= ED_MAX; b.title = ED_N >= ED_MAX ? 'Limite de 4 editores' : ''; }); const n = $('tCap'); if (n) n.textContent = ED_N >= ED_MAX ? `Limite atingido: ${ED_MAX} editores. Remova alguém para aprovar outro pedido.` : `${ED_N} de ${ED_MAX} editores aprovados.`; };
@@ -3892,6 +4091,10 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
         const SL = { titulo: $('sTi').value.trim() || 'Seleção Brasileira', sub: $('sSu').value.trim(), ate: on ? (ate || '2099-12-31') : '2000-01-01', jogos, nota: $('sNo').value.trim() };
         t.disabled = true; await saveSite('comp-home', H); await saveSite('comp-selecao', SL); return reloadSoon('Home salva!');
       }
+      if (t.id === 'cpAdvT') { cpAdv = !cpAdv; cpDraftKey = null; renderAcc(); return; }
+      if (t.id === 'cpGo' && !cpAdv) {
+        if (!cpDraft) return; t.disabled = true; await saveSite('comp-' + compKey, cpDraft); cpDraftKey = null; return reloadSoon('Salvo!');
+      }
       if (t.id === 'cpGo') {
         let v; try { v = JSON.parse($('cpJ').value); } catch (er) { return st('Tem um erro de digitação (vírgula, aspas ou chave). Nada foi salvo. ' + (er.message || ''), 1); }
         if (compKey === 'brasileirao' && !(v && Array.isArray(v.jogos) && v.base)) return st('Os dados do Brasileirão precisam ter "base" e "jogos".', 1);
@@ -3912,6 +4115,11 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
         const A = $('nA').value, B = $('nB').value;
         if (JSON.stringify(fotosOut()).length > 900000) return st('As fotos ficaram pesadas demais. Remova uma e tente de novo.', 1);
         t.disabled = true;
+        if (nEdit && nEdit.startsWith('c-')) {
+          const o = FB_NEWS.find(x => x.id === nEdit) || {};
+          await F.addDoc(F.collection(F.db, 'noticias'), { titulo: titulo.slice(0, 160), texto: texto.slice(0, 3000), tag: $('nTag').value, comp: $('nComp').value, timeA: A && B ? A : '', timeB: A && B ? B : '', placar: $('nPl').value.trim().slice(0, 12), fotos: fotosOut(), d: o.d || ddmm(new Date()), autor: o.autor || nomeDe(), autorUid: me.uid, ts: F.serverTimestamp() });
+          await apagaEmb('noticias/' + nEdit); nEdit = null; nFotosFor = null; admView = 'list'; renderAcc(); return st('Notícia atualizada!');
+        }
         if (nEdit) { await F.updateDoc(F.doc(F.db, 'noticias', nEdit), { titulo: titulo.slice(0, 160), texto: texto.slice(0, 3000), tag: $('nTag').value, comp: $('nComp').value, timeA: A && B ? A : '', timeB: A && B ? B : '', placar: $('nPl').value.trim().slice(0, 12), fotos: fotosOut() }); nEdit = null; nFotosFor = null; admView = 'list'; renderAcc(); return st('Notícia atualizada!'); }
         await F.addDoc(F.collection(F.db, 'noticias'), { titulo: titulo.slice(0, 160), texto: texto.slice(0, 3000), tag: $('nTag').value, comp: $('nComp').value, timeA: A && B ? A : '', timeB: A && B ? B : '', placar: $('nPl').value.trim().slice(0, 12), fotos: fotosOut(), d: ddmm(new Date()), autor: nomeDe(), autorUid: me.uid, ts: F.serverTimestamp() }); nFotosFor = null;
         admView = 'list'; renderAcc(); return st('Notícia publicada!');
@@ -3934,6 +4142,10 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
         await F.setDoc(F.doc(F.db, 'editores', t.dataset.ok), { nome: p.nome || '', email: p.email || '', desde: F.serverTimestamp() });
         await F.deleteDoc(ref); return;
       }
+      if (t.dataset.del && /^(noticias|podcasts|dicas)\/c-/.test(t.dataset.del)) {
+        if (!confirm('Tem certeza que quer excluir?')) return;
+        t.disabled = true; await apagaEmb(t.dataset.del); renderAcc(); return st('Excluída!');
+      }
       if (t.dataset.del) { if (!confirm('Tem certeza?')) return; await F.deleteDoc(F.doc(F.db, ...t.dataset.del.split('/'))); if (!t.dataset.del.startsWith('pedidos') && !t.dataset.del.startsWith('editores')) renderAcc(); return; }
     } catch (er) { console.warn(er); st(errMsg(er), 1); t.disabled = false; }
   });
@@ -3942,7 +4154,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   if (ADM) { admInit(); renderAcc(); }
   $('ytClose').onclick = () => { $('ytBox').hidden = true; $('ytW').innerHTML = ''; };
   $('accClose').onclick = () => { $('accBox').hidden = true; };
-  fotosWire();
+  fotosWire(); cpWire(); perfilWire();
   $('accBox').onclick = e => { if (e.target === $('accBox')) $('accBox').hidden = true; };
   renderNews(); renderPodcast(); renderPart();
   let a = 'home'; try { a = localStorage.getItem('notatico-app') || 'home'; } catch (e) {}
