@@ -576,6 +576,40 @@ header{gap:12px}
 .acc-it span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .acc-x{margin-top:14px}
 
+.hero{position:relative;overflow:hidden;border-radius:22px;padding:22px 24px;margin-bottom:16px;border:1px solid rgba(61,255,128,.35);background:radial-gradient(120% 140% at 0% 0%,rgba(61,255,128,.22),transparent 55%),linear-gradient(135deg,#0f2a19,#0b0d0b 70%);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.hero.has-ph{background:linear-gradient(90deg,rgba(6,10,7,.94) 0%,rgba(6,10,7,.78) 55%,rgba(6,10,7,.35) 100%),var(--ph) center/cover no-repeat}
+.hero-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.hero-et{background:var(--g);color:#06170c;font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.6px;font-size:13px;border-radius:20px;padding:3px 11px}
+.hero-cd{font-family:var(--cond);font-weight:700;font-size:13px;color:#fbbf24;text-transform:uppercase;letter-spacing:.4px}
+.hero-cd.soft{color:#cfd6d1}
+.hero h2{font-weight:900;font-size:clamp(22px,3.2vw,34px);line-height:1.08;text-transform:uppercase;letter-spacing:-.3px;margin-bottom:6px;max-width:760px}
+.hero-tx{color:#d7ddd9;font-size:15px;line-height:1.45;margin-top:6px;max-width:680px}
+.hero-acts{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.hero-btn{display:inline-flex;align-items:center;background:var(--g);color:#06170c!important;border:0;border-radius:12px;padding:10px 16px;font-family:var(--cond);font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.4px;text-decoration:none;cursor:pointer}
+.hero-btn:hover{filter:brightness(1.1)}
+.hero-comp{text-align:center;font-family:var(--cond);font-weight:800;color:var(--neon);text-transform:uppercase;letter-spacing:.8px;font-size:16px}
+.hero-vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin:12px auto 6px;max-width:620px}
+.hero-tm{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.hero-tm .tm-chip{width:84px!important;height:84px!important;display:grid;place-items:center}.hero-tm .tm-chip img{width:100%!important;height:100%!important;object-fit:contain}.hero-tm .tm-chip i{width:100%!important;height:100%!important;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:900;font-size:20px}
+.hero-tm b{font-weight:900;text-transform:uppercase;font-size:clamp(14px,2vw,19px)}
+.hero-mid i{font-style:normal;font-weight:900;font-size:30px;color:var(--mut)}
+.hero-mid strong{font-weight:900;font-size:clamp(34px,5vw,50px);letter-spacing:1px}
+.hero-info{text-align:center;color:#d7ddd9;font-family:var(--cond);font-size:16px}
+.hero-jogo .hero-tx,.hero-jogo .hero-acts{text-align:center;justify-content:center;margin-left:auto;margin-right:auto}
+.hero-nw{display:flex;gap:18px;align-items:center}
+.hero-crs{display:flex;align-items:center;gap:8px;flex:none}.hero-crs .tm-chip,.hero-crs img{width:64px!important;height:64px!important}.hero-crs b{font-weight:900;font-size:22px}
+.hero-pw{display:flex;gap:18px;align-items:center}
+.hero-thumb{position:relative;flex:none;width:min(320px,42%);aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;display:block}
+.hero-thumb img{width:100%;height:100%;object-fit:cover}
+.hero-play{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;background:rgba(0,0,0,.6);border:2px solid #fff;color:#fff;display:grid;place-items:center;font-size:22px;padding-left:4px}
+.hero .n-by{margin-top:2px}
+.n-flash{outline:2px solid var(--g);outline-offset:3px;transition:outline .3s}
+.ev-tipos{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.ev-t{border:1px solid var(--line);background:#0e0f0e;color:#e6ebe7;border-radius:10px;padding:9px 14px;font-family:var(--cond);font-weight:800;font-size:15px;text-transform:uppercase;cursor:pointer}
+.ev-t.on{background:var(--g);border-color:var(--g);color:#06170c}
+.ev-prev{margin-bottom:12px}
+@media (max-width:640px){.hero{padding:18px 16px}.hero-tm .tm-chip{width:60px!important;height:60px!important}.hero-nw,.hero-pw{flex-direction:column;align-items:flex-start}.hero-thumb{width:100%}}
+
 .n-by{display:flex!important;align-items:center;gap:6px;flex-wrap:wrap}
 .n-av{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid var(--g);flex:none}
 .n-ig{color:#e1306c;font-weight:700;cursor:pointer}.n-ig:hover{text-decoration:underline}
@@ -2166,7 +2200,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const f0 = Array.isArray(n.fotos) && n.fotos[0] && n.fotos[0].src;
     const crest = v ? `<div class="n-crests">${chip(v.a)}<b>${esc(v.mid)}</b>${chip(v.b)}</div>` : f0 && small ? `<div class="n-crests ph"><img src="${f0}" alt=""></div>` : `<div class="n-crests"><img src="${LOGO}" alt=""></div>`;
     const lk = n.fk && S.FICHAS[n.fk] ? 'Ver ficha do jogo ›' : n.go ? 'Ver chaveamento ›' : '';
-    return `<button class="n-item${small ? ' sm' : ''}"${newsAttr(n)}>${crest}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5>${autorLine(n)}${small ? `<p>${esc(plainTxt(n.texto))}</p>` : newsBody(n)}${lk ? `<span class="lk">${lk}</span>` : ''}</div></button>`;
+    return `<button class="n-item${small ? ' sm' : ''}" data-nk="${esc(n.id || ('t:' + n.titulo))}"${newsAttr(n)}>${crest}<div><div class="n-meta"><span class="t">${esc(n.tag)}</span><span>${esc(n.d)}</span></div><h5>${esc(n.titulo)}</h5>${autorLine(n)}${small ? `<p>${esc(plainTxt(n.texto))}</p>` : newsBody(n)}${lk ? `<span class="lk">${lk}</span>` : ''}</div></button>`;
   }
   function nextGame() {
     const key = j => { const m = /(\d{2})\/(\d{2})/.exec(j.d) || [0, '99', '99']; return m[2] + m[1] + (j.h || '99'); };
@@ -2195,6 +2229,51 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     return `<div class="bf" style="--n:${c.fases.length}">${c.fases.map((p, i) => `<div class="ph"><h6>${esc(p.nome)}</h6><div class="ties">${p.ties.map(t => tie(t, i === L)).join('')}</div></div>`).join('')}</div>`;
   }
   let carT = null, carI = 0;
+  // ===== Destaque da Home (evento escolhido pela equipe) =====
+  const EVT = () => COMPS.evento || null;
+  const evNewsKey = n => n.id || ('t:' + n.titulo);
+  function evAlive(e) {
+    if (!e || !e.ativo) return false;
+    if (e.ate) { const lim = new Date(e.ate + 'T23:59:00-03:00'); if (!isNaN(lim) && new Date() > lim) return false; }
+    return true;
+  }
+  function evQuando(e) {
+    if (!e.data) return '';
+    const dt = new Date(e.data + 'T' + (e.hora || '12:00') + ':00-03:00'); if (isNaN(dt)) return '';
+    const d0 = new Date(); d0.setHours(0, 0, 0, 0); const d1 = new Date(dt); d1.setHours(0, 0, 0, 0);
+    const dd = Math.round((d1 - d0) / 864e5);
+    const wd = dt.toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: '2-digit' });
+    const tag = dd < 0 ? '' : dd === 0 ? 'É hoje!' : dd === 1 ? 'É amanhã!' : `Faltam ${dd} dias`;
+    return { txt: wd.charAt(0).toUpperCase() + wd.slice(1) + (e.hora ? ' · ' + e.hora.replace(':', 'h').replace('h00', 'h') : ''), tag };
+  }
+  function heroHtml(e, preview) {
+    if (!e || (!preview && !evAlive(e))) return '';
+    const et = esc(e.etiqueta || 'Destaque');
+    const btn = e.botao && e.link ? `<a class="hero-btn" href="${esc(e.link)}" target="_blank" rel="noopener">${esc(e.botao)} ›</a>` : '';
+    if (e.tipo === 'jogo') {
+      const q = evQuando(e), A = tinfo(e.a || ''), B = tinfo(e.b || '');
+      return `<section class="hero hero-jogo"><div class="hero-top"><span class="hero-et">${et}</span>${q && q.tag ? `<span class="hero-cd">${q.tag}</span>` : ''}</div>
+        ${e.comp ? `<p class="hero-comp">${esc(e.comp)}</p>` : ''}
+        <div class="hero-vs"><div class="hero-tm">${chip(e.a || '', 'big')}<b>${esc(A.nome || '')}</b></div><div class="hero-mid">${e.placar ? `<strong>${esc(e.placar)}</strong>` : '<i>x</i>'}</div><div class="hero-tm">${chip(e.b || '', 'big')}<b>${esc(B.nome || '')}</b></div></div>
+        <p class="hero-info">${[q && q.txt, e.local].filter(Boolean).map(esc).join(' · ')}</p>${e.texto ? `<p class="hero-tx">${esc(e.texto)}</p>` : ''}${btn ? `<div class="hero-acts">${btn}</div>` : ''}</section>`;
+    }
+    if (e.tipo === 'noticia') {
+      const n = NEWS.find(x => evNewsKey(x) === e.ref) || e.snap; if (!n) return '';
+      const f0 = Array.isArray(n.fotos) && n.fotos[0] && n.fotos[0].src, v = newsVis(n);
+      return `<section class="hero hero-news${f0 ? ' has-ph' : ''}"${f0 ? ` style="--ph:url('${f0}')"` : ''}><div class="hero-top"><span class="hero-et">${et}</span><span class="hero-cd soft">${esc(n.tag || '')}</span></div>
+        <div class="hero-nw">${!f0 && v ? `<div class="hero-crs">${chip(v.a, 'big')}<b>${esc(v.mid)}</b>${chip(v.b, 'big')}</div>` : ''}<div><h2>${esc(n.titulo)}</h2>${autorLine(n)}<p class="hero-tx">${esc(plainTxt(n.texto).slice(0, 220))}${plainTxt(n.texto).length > 220 ? '…' : ''}</p>
+        <div class="hero-acts"><button class="hero-btn" data-nread="${esc(evNewsKey(n))}">Ler notícia ›</button></div></div></div></section>`;
+    }
+    if (e.tipo === 'programa') {
+      const p = PODCAST.find(x => (x.yt || x.titulo) === e.ref) || e.snap; if (!p) return '';
+      const url = p.yt ? `https://www.youtube.com/watch?v=${p.yt}` : (p.link || YTCH);
+      return `<section class="hero hero-pod"><div class="hero-top"><span class="hero-et">${et}</span><span class="hero-cd soft">Programa</span></div>
+        <div class="hero-pw"><a class="hero-thumb" href="${esc(url)}" target="_blank" rel="noopener"${p.yt ? ` data-hyt="${p.yt}"` : ''}>${p.yt ? `<img src="https://i.ytimg.com/vi/${p.yt}/hqdefault.jpg" alt="" onerror="this.src='${LOGO}'">` : `<img src="${LOGO}" alt="">`}<span class="hero-play">▶</span></a>
+        <div><h2>${esc(p.titulo)}</h2>${p.desc ? `<p class="hero-tx">${esc(p.desc)}</p>` : ''}${e.texto ? `<p class="hero-tx">${esc(e.texto)}</p>` : ''}<div class="hero-acts"><a class="hero-btn" href="${esc(url)}" target="_blank" rel="noopener"${p.yt ? ` data-hyt="${p.yt}"` : ''}>Assistir ›</a></div></div></div></section>`;
+    }
+    return `<section class="hero hero-livre${e.img ? ' has-ph' : ''}"${e.img ? ` style="--ph:url('${e.img}')"` : ''}><div class="hero-top"><span class="hero-et">${et}</span></div>
+      <div><h2>${esc(e.titulo || 'Título do destaque')}</h2>${e.texto ? `<p class="hero-tx">${esc(e.texto)}</p>` : ''}${btn ? `<div class="hero-acts">${btn}</div>` : ''}</div></section>`;
+  }
   function renderHome() {
     const rows = S.table(), T = S.TEAMS, ng = nextGame();
     const tr = (r, i) => `<tr class="${i >= 16 ? 'z4' : ''}${i === 5 ? ' sep' : ''}"><td class="i">${i + 1}</td><td><img src="${CREST[r.id]}" alt="">${T[r.id].nome}</td><td class="p">${r.p}</td></tr>`;
@@ -2223,7 +2302,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const dc = (COMPS.dicas.jogos || []).slice(0, 3);
     const dcHtml = dc.length ? `<div class="hd-grid">${dc.map(j => `<button class="hd-c" data-sec="dicas"><small>${esc(j.comp || 'Futebol')} · ${esc([j.d, j.h].filter(Boolean).join(' · '))}</small><div>${nameChip(j.a)}<b>${esc(j.a)}</b><i>x</i><b>${esc(j.b)}</b>${nameChip(j.b)}</div>${j.onde ? `<span>Onde ver: ${esc(j.onde)}</span>` : ''}${j.autor ? `<span class="by">Dica de ${esc(j.autor)}</span>` : ''}</button>`).join('')}</div>` : '<p class="hp-soon">Em breve os jogos que a equipe recomenda para a semana.</p>';
     const half = Math.ceil(rows.length / 2), trF = (r, i) => `<tr class="${i < 4 ? 'g4' : i >= 16 ? 'z4' : ''}"><td class="i">${i + 1}</td><td><img src="${CREST[r.id]}" alt="">${T[r.id].nome}</td><td class="p">${r.p}</td></tr>`;
-    $('sec-home').innerHTML = (AV ? `<div class="h-aviso">${esc(AV)}</div>` : '') + selHtml + `
+    $('sec-home').innerHTML = (AV ? `<div class="h-aviso">${esc(AV)}</div>` : '') + heroHtml(EVT()) + selHtml + `
       <div class="dest">
         <div class="car" id="car">${car.map(slide).join('')}<div class="dots">${car.map((n, i) => `<button data-ci="${i}" class="${i === 0 ? 'on' : ''}" aria-label="Notícia ${i + 1}"></button>`).join('')}</div></div>
         <div class="h-card"><h4><span>News</span><button class="more" data-sec="news">Ver todas ›</button></h4><div class="n-list">${three.map(n => newsCard(n, true)).join('')}</div></div>
@@ -2246,6 +2325,10 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     carI = (i + sl.length) % sl.length;
     sl.forEach((x, k) => x.classList.toggle('on', k === carI)); dt.forEach((x, k) => x.classList.toggle('on', k === carI));
   }
+  $('sec-home').addEventListener('click', e => {
+    const y = e.target.closest('[data-hyt]'); if (y && !IN_FRAME0) { e.preventDefault(); e.stopPropagation(); $('ytW').innerHTML = `<iframe src="https://www.youtube.com/embed/${y.dataset.hyt}?autoplay=1" title="Programa Nó Tático" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`; $('ytBox').hidden = false; return; }
+    const r = e.target.closest('[data-nread]'); if (r) { e.preventDefault(); e.stopPropagation(); const k = r.dataset.nread; const nb = document.querySelector('[data-sec="news"]'); if (nb) nb.click(); setTimeout(() => { const it = [...document.querySelectorAll('#sec-news [data-nk]')].find(x => x.dataset.nk === k); if (it) { it.scrollIntoView({ behavior: 'smooth', block: 'center' }); it.classList.add('n-flash'); setTimeout(() => it.classList.remove('n-flash'), 2200); } }, 250); }
+  }, true);
   $('sec-home').addEventListener('click', e => { const d = e.target.closest('[data-ci]'); if (d) { e.stopPropagation(); carGo(+d.dataset.ci); clearInterval(carT); carT = setInterval(() => carGo(carI + 1), 6000); } }, true);
   function renderNews() {
     $('sec-news').innerHTML = `<h3 class="sec-title">News <span>Nó Tático</span></h3><p class="sec-sub">Jogos, polêmicas e o que rola no futebol. Toque numa notícia para ver a ficha ou o chaveamento.</p><div class="n-list">${NEWS.map(n => newsCard(n)).join('')}</div>`;
@@ -3659,6 +3742,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     pod: AI('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
     dicas: AI('<path d="m12 3 2.6 5.6 6 .7-4.4 4.1 1.2 6L12 16.6 6.6 19.4l1.2-6L3.4 9.3l6-.7z"/>'),
     comp: AI('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/>'),
+    evento: AI('<path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.5L12 14.6 7.1 17.2l.9-5.5-4-3.9 5.6-.8z"/><path d="M5 21h14"/>'),
     perfil: AI('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),
     team: AI('<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15 15a5 5 0 0 1 6 5"/>'),
     senha: AI('<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l2 2M15 8l2 2"/>'),
@@ -3666,8 +3750,8 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     ext: AI('<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>'),
     plus: AI('<path d="M12 5v14M5 12h14"/>')
   };
-  const ADM_T = { dash: 'Início', news: 'Notícias', tab: 'Tabela do Brasileirão', home: 'Home do site', pod: 'Programa', dicas: 'Dicas do Chefe', comp: 'Competições', perfil: 'Meu perfil', team: 'Equipe', senha: 'Minha senha' };
-  const ADM_SUB = { news: 'Tudo o que aparece no carrossel da Home e na aba News.', tab: 'Lance os placares: tabela, simulador, bolão e Home se atualizam sozinhos.', home: 'Aviso do topo, textos das copas e o card da Seleção.', pod: 'Episódios que aparecem na Home e em Programas.', dicas: 'Os jogos que a equipe recomenda.', comp: 'Chaves e placares das copas e estaduais.', team: 'Quem tem acesso ao painel.', perfil: 'Sua foto, seu nome e seu Instagram aparecem nas notícias que você escrever.', senha: 'Troque a sua senha de acesso.' };
+  const ADM_T = { dash: 'Início', news: 'Notícias', tab: 'Tabela do Brasileirão', home: 'Home do site', pod: 'Programa', dicas: 'Dicas do Chefe', comp: 'Competições', evento: 'Destaque da Home', perfil: 'Meu perfil', team: 'Equipe', senha: 'Minha senha' };
+  const ADM_SUB = { news: 'Tudo o que aparece no carrossel da Home e na aba News.', tab: 'Lance os placares: tabela, simulador, bolão e Home se atualizam sozinhos.', home: 'Aviso do topo, textos das copas e o card da Seleção.', pod: 'Episódios que aparecem na Home e em Programas.', dicas: 'Os jogos que a equipe recomenda.', comp: 'Chaves e placares das copas e estaduais.', team: 'Quem tem acesso ao painel.', perfil: 'Sua foto, seu nome e seu Instagram aparecem nas notícias que você escrever.', evento: 'O que a equipe escolher aqui (jogo, notícia, programa ou outro) fica em destaque no topo da Home.', senha: 'Troque a sua senha de acesso.' };
   function admInit() {
     document.body.classList.add('nt-admin');
     document.title = 'Painel · Nó Tático';
@@ -3710,7 +3794,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (!(COMPS.home || {}).aviso) att.push(['i', 'a Home está sem aviso no topo (opcional)', 'home']);
     const wd = now.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
     return `<p class="adm-lead">${wd.charAt(0).toUpperCase() + wd.slice(1)}. ${S.DATA.atualizado ? 'Tabela atualizada em ' + esc(S.DATA.atualizado) + '.' : ''}</p>
-      <div class="adm-scs">${sc('news', 'news', 'Notícias', '+ Nova notícia')}${sc('tab', 'tab', 'Tabela', 'Lançar placares', late.length || '')}${sc('home', 'home', 'Home', 'Aviso e Seleção')}${sc('pod', 'pod', 'Programa', 'Novo episódio')}${sc('dicas', 'dicas', 'Dicas', 'Nova dica')}${sc('comp', 'comp', 'Competições', 'Chaves e placares')}</div>
+      <div class="adm-scs">${sc('news', 'news', 'Notícias', '+ Nova notícia')}${sc('evento', 'evento', 'Destaque', evAlive(EVT()) ? 'No ar agora' : 'Nada em destaque')}${sc('tab', 'tab', 'Tabela', 'Lançar placares', late.length || '')}${sc('home', 'home', 'Home', 'Aviso e Seleção')}${sc('pod', 'pod', 'Programa', 'Novo episódio')}${sc('dicas', 'dicas', 'Dicas', 'Nova dica')}${sc('comp', 'comp', 'Competições', 'Chaves e placares')}</div>
       <div class="adm-2">
         <div class="adm-card"><h3>O que precisa de atenção</h3><p class="adm-mut">Clique para resolver.</p>${att.length ? att.map(a => `<button class="adm-att" data-go2="${a[2]}"><i>${a[0]}</i><span>${a[1]}</span><em>›</em></button>`).join('') : '<p class="adm-ok">Tudo em dia. 👏</p>'}</div>
         <div class="adm-card"><h3>Números do site</h3><p class="adm-mut">O que está publicado agora.</p><div class="adm-nums">
@@ -3738,7 +3822,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const tabsEl = el.querySelector('.c-tabs.sm'), head = el.querySelector('.acc-who');
     const keys = ['dash'].concat(tabsEl ? [...tabsEl.querySelectorAll('[data-at]')].map(b => b.dataset.at) : []);
     if (tabsEl) tabsEl.remove(); if (head) head.style.display = 'none';
-    const grp = k => k === 'dash' ? '' : k === 'team' || k === 'perfil' ? 'Sua conta' : ['news', 'tab', 'home'].includes(k) ? 'Dia a dia' : 'Conteúdo';
+    const grp = k => k === 'dash' ? '' : k === 'team' || k === 'perfil' ? 'Sua conta' : ['news', 'evento', 'tab', 'home'].includes(k) ? 'Dia a dia' : 'Conteúdo';
     let last = null;
     $('admNav').innerHTML = keys.map(k => { const g = grp(k); const h = g && g !== last ? `<p class="adm-grp">${g}</p>` : ''; last = g || last; return h + `<button data-at="${k}" class="${k === panelTab ? 'on' : ''}">${ADM_I[k] || ''}<span>${ADM_T[k] || k}</span></button>`; }).join('');
     const nm = me.displayName || me.email || '';
@@ -3786,7 +3870,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (role === 'verify') { el.innerHTML = head + '<p>Confirme seu e-mail pelo link que enviamos para liberar o painel do host. Depois de confirmar, saia e entre de novo.</p><button class="h-btn" id="aVer">Reenviar link</button><p class="acc-st" id="aSt"></p>'; return; }
     if (role === 'pending') { el.innerHTML = head + '<p>Seu pedido está aguardando a aprovação do host. Assim que ele aprovar, saia e entre de novo para abrir o painel.</p>'; return; }
     if (!role) { el.innerHTML = head + '<p>Verificando acesso…</p>'; return; }
-    const tabs = [['news', 'Notícia'], ['tab', 'Tabela'], ['home', 'Home'], ['pod', 'Programa'], ['dicas', 'Dica do Chefe'], ['comp', 'Competições'], ['perfil', 'Meu perfil']].concat(role === 'host' ? [['team', 'Equipe']] : []);
+    const tabs = [['news', 'Notícia'], ['evento', 'Destaque'], ['tab', 'Tabela'], ['home', 'Home'], ['pod', 'Programa'], ['dicas', 'Dica do Chefe'], ['comp', 'Competições'], ['perfil', 'Meu perfil']].concat(role === 'host' ? [['team', 'Equipe']] : []);
     if (ADM && panelTab === 'dash') { el.innerHTML = '<div class="c-tabs sm">' + tabs.map(t => `<button data-at="${t[0]}">${t[1]}</button>`).join('') + '</div>'; return; }
     if (!tabs.some(t => t[0] === panelTab) && !(CLM && panelTab === 'senha')) panelTab = ADM ? 'dash' : 'news';
     let body = '';
@@ -3798,6 +3882,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (panelTab === 'home') body = homeBody();
     if (panelTab === 'comp') body = compBody();
     if (panelTab === 'perfil') body = perfilBody();
+    if (panelTab === 'evento') body = eventoBody();
     if (panelTab === 'pod') body = fld('pTit', 'Título do episódio') + fld('pYt', 'Link do YouTube') + fld('pDesc', 'Descrição (opcional)', 'textarea', 'rows="3"') +
       `<button class="h-btn pri" id="pGo">Publicar episódio</button><p class="acc-st" id="aSt"></p><h5 class="acc-h">Episódios</h5>${FB_POD.map(p => `<div class="acc-it"><span>${esc(p.data || '')} · ${esc(p.titulo)}</span><button class="lnk del" data-del="podcasts/${p.id}">Apagar</button></div>`).join('') || '<p class="acc-st">Nenhum ainda.</p>'}`;
     if (panelTab === 'dicas') body = `<div class="fl2">${fld('mA', 'Mandante')}${fld('mB', 'Visitante')}</div><div class="fl2">${fld('mD', 'Data (ex: 15/11)')}${fld('mH', 'Horário (ex: 16h)')}</div><div class="fl2">${fld('mC', 'Competição (ex: Champions League)')}${fld('mO', 'Onde assistir (ex: TNT, ge TV)')}</div>${fld('mP', 'Por que assistir (a dica do chefe)', 'textarea', 'rows="3"')}` +
@@ -3817,6 +3902,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (panelTab === 'home') homeFill();
     if (panelTab === 'comp') compFill();
     if (panelTab === 'perfil') perfilFill();
+    if (panelTab === 'evento') eventoFill();
     if (panelTab === 'news' && nEdit) { const n = FB_NEWS.find(x => x.id === nEdit); if (n) { $('nTit').value = n.titulo; $('nTxt').value = n.texto || ''; $('nTag').value = n.tag || 'Brasileirão'; $('nComp').value = n.go || ''; if (n.times) { $('nA').value = n.times[0]; $('nB').value = n.times[1]; } $('nPl').value = n.placar || ''; $('nGo').textContent = 'Salvar alterações'; if (nFotosFor !== nEdit) { nFotos = (n.fotos || []).map(f => ({ src: f.src, leg: f.leg || '' })); nFotosFor = nEdit; } fotosList(); } }
     if (panelTab === 'news' && !nEdit) { if (nFotosFor !== 'new') { nFotos = []; nFotosFor = 'new'; } fotosList(); }
   }
@@ -3857,6 +3943,60 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     $('sOn').checked = !!SL.titulo && (!SL.ate || new Date() <= new Date(SL.ate + 'T23:59:00-03:00'));
     $('sTi').value = SL.titulo || ''; $('sSu').value = SL.sub || ''; $('sAte').value = SL.ate || ''; $('sNo').value = SL.nota || '';
     [0, 1, 2].forEach(k => { const j = SL.jogos[k] || {}; $('sA' + k).innerHTML = $('sB' + k).innerHTML = teamOpts(); $('sA' + k).value = j.a || ''; $('sB' + k).value = j.b || ''; $('sD' + k).value = j.d || ''; $('sH' + k).value = j.h || ''; $('sL' + k).value = j.local || ''; $('sP' + k).value = j.placar || ''; });
+  }
+  // ===== painel: Destaque da Home =====
+  let evDraft = null;
+  const EV_T = [['jogo', 'Jogo'], ['noticia', 'Notícia'], ['programa', 'Programa'], ['livre', 'Outro (livre)']];
+  function eventoBody() {
+    if (!evDraft) evDraft = Object.assign({ tipo: 'jogo', ativo: true, etiqueta: '' }, JSON.parse(JSON.stringify(EVT() || {})));
+    const e = evDraft, t = e.tipo;
+    const nOpts = NEWS.map(n => `<option value="${esc(evNewsKey(n))}">${esc((n.d ? n.d + ' · ' : '') + n.titulo)}</option>`).join('');
+    const pOpts = PODCAST.map(p => `<option value="${esc(p.yt || p.titulo)}">${esc((p.d ? p.d + ' · ' : '') + p.titulo)}</option>`).join('');
+    let f = '';
+    if (t === 'jogo') f = `${fld('evComp', 'Competição / chamada (ex.: Final da Libertadores)')}<div class="fl2">${fld('evA', 'Time 1', 'select')}${fld('evB', 'Time 2', 'select')}</div>
+      <div class="fl2">${fld('evData', 'Dia', 'input', 'type="date"')}${fld('evHora', 'Horário', 'input', 'type="time"')}</div><div class="fl2">${fld('evLocal', 'Local (ex.: Centenário, Montevidéu)')}${fld('evPl', 'Placar (preencha depois do jogo)')}</div>${fld('evTx', 'Texto curto (opcional)', 'textarea', 'rows="2"')}`;
+    if (t === 'noticia') f = `<label class="fl"><span>Qual notícia?</span><select id="evRef">${nOpts}</select></label>`;
+    if (t === 'programa') f = `<label class="fl"><span>Qual episódio?</span><select id="evRef">${pOpts}</select></label>${fld('evTx', 'Texto extra (opcional)', 'textarea', 'rows="2"')}`;
+    if (t === 'livre') f = `${fld('evTit', 'Título')}${fld('evTx', 'Texto', 'textarea', 'rows="3"')}<div class="fl"><span>Imagem de fundo (opcional)</span><label class="h-btn nf-add"><input type="file" id="evImg" accept="image/*" hidden>${e.img ? 'Trocar imagem' : 'Escolher imagem'}</label>${e.img ? ' <button type="button" class="lnk del" id="evImgX">Tirar imagem</button>' : ''}</div>`;
+    const btnF = t === 'jogo' || t === 'livre' ? `<div class="fl2">${fld('evBt', 'Texto do botão (opcional, ex.: Onde assistir)')}${fld('evLk', 'Link do botão')}</div>` : '';
+    return `<p class="nf-help">O destaque fica no topo da Home, acima de tudo. Escolha o que quer destacar:</p>
+      <div class="ev-tipos">${EV_T.map(([k, n]) => `<button type="button" class="ev-t${k === t ? ' on' : ''}" data-evt="${k}">${n}</button>`).join('')}</div>
+      ${fld('evEt', 'Etiqueta (ex.: Evento, Imperdível, Sábado tem!)')}${f}${btnF}
+      <div class="fl2"><label class="ck"><input type="checkbox" id="evOn"${e.ativo ? ' checked' : ''}> Mostrar na Home</label>${fld('evAte', 'Sai da Home depois de (opcional)', 'input', 'type="date"')}</div>
+      <p class="pf-lb">Prévia</p><div id="evPrev" class="ev-prev"></div>
+      <div class="acc-row"><button class="h-btn pri" id="evGo">Publicar destaque</button><button class="lnk del" id="evOff">Tirar da Home</button></div><p class="acc-st" id="aSt"></p>`;
+  }
+  const EV_F = { evEt: 'etiqueta', evComp: 'comp', evA: 'a', evB: 'b', evData: 'data', evHora: 'hora', evLocal: 'local', evPl: 'placar', evTx: 'texto', evTit: 'titulo', evBt: 'botao', evLk: 'link', evAte: 'ate', evRef: 'ref' };
+  function eventoFill() {
+    const e = evDraft; ['evA', 'evB'].forEach(id => { if ($(id)) $(id).innerHTML = teamOpts(); });
+    Object.entries(EV_F).forEach(([id, k]) => { const el = $(id); if (el && id !== 'evRef') el.value = e[k] || ''; });
+    const rf = $('evRef'); if (rf) { if (e.ref && [...rf.options].some(o => o.value === e.ref)) rf.value = e.ref; else e.ref = rf.value; }
+    evShow();
+  }
+  function evShow() { const p = $('evPrev'); if (p) p.innerHTML = heroHtml(evDraft, true) || '<p class="acc-st">Preencha os campos para ver a prévia.</p>'; }
+  function eventoWire() {
+    const ab = $('accBox'); if (!ab || ab.dataset.evw) return; ab.dataset.evw = 1;
+    const upd = e => { if (!evDraft || panelTab !== 'evento') return; const k = EV_F[e.target.id]; if (k) { evDraft[k] = e.target.value.trim(); evShow(); } if (e.target.id === 'evOn') { evDraft.ativo = e.target.checked; evShow(); } };
+    ab.addEventListener('input', upd); ab.addEventListener('change', upd);
+    ab.addEventListener('change', async e => { if (e.target.id !== 'evImg' || !e.target.files[0]) return; try { evDraft.img = await fotoShrink(e.target.files[0]); renderAcc(); st('Imagem pronta.'); } catch (er) { st('Não consegui abrir essa imagem.', 1); } });
+    ab.addEventListener('click', async e => {
+      const b = e.target.closest('[data-evt],#evGo,#evOff,#evImgX'); if (!b || !evDraft) return; e.preventDefault(); e.stopPropagation();
+      if (b.dataset.evt) { evDraft.tipo = b.dataset.evt; evDraft.ref = ''; return renderAcc(); }
+      if (b.id === 'evImgX') { delete evDraft.img; return renderAcc(); }
+      const v = JSON.parse(JSON.stringify(evDraft));
+      if (b.id === 'evOff') { if (!confirm('Tirar o destaque da Home?')) return; v.ativo = false; }
+      else {
+        if (v.tipo === 'jogo' && !(v.a && v.b)) return st('Escolha os dois times.', 1);
+        if (v.tipo === 'livre' && !v.titulo) return st('Coloque um título.', 1);
+        if ((v.tipo === 'noticia' || v.tipo === 'programa') && !v.ref) return st('Escolha qual vai ficar em destaque.', 1);
+        v.ativo = true;
+        if (v.tipo === 'noticia') { const n = NEWS.find(x => evNewsKey(x) === v.ref); if (n) v.snap = { titulo: n.titulo, texto: plainTxt(n.texto).slice(0, 400), tag: n.tag, d: n.d, autor: n.autor, autorUid: n.autorUid || '', times: n.times || null, placar: n.placar || '' }; }
+        if (v.tipo === 'programa') { const p = PODCAST.find(x => (x.yt || x.titulo) === v.ref); if (p) v.snap = { titulo: p.titulo, desc: p.desc || '', yt: p.yt || '', link: p.link || '' }; }
+      }
+      v.autor = nomeDe(); b.disabled = true;
+      try { await saveSite('comp-evento', v); COMPS.evento = v; evDraft = null; remix(); renderAcc(); st(v.ativo ? 'Destaque publicado na Home!' : 'Destaque retirado da Home.'); }
+      catch (er) { b.disabled = false; st('Não consegui salvar: ' + (er.message || er), 1); }
+    }, true);
   }
   // ===== Meu perfil: foto, nome e Instagram que aparecem nas notícias =====
   let pfDraft = null;
@@ -4154,7 +4294,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   if (ADM) { admInit(); renderAcc(); }
   $('ytClose').onclick = () => { $('ytBox').hidden = true; $('ytW').innerHTML = ''; };
   $('accClose').onclick = () => { $('accBox').hidden = true; };
-  fotosWire(); cpWire(); perfilWire();
+  fotosWire(); cpWire(); perfilWire(); eventoWire();
   $('accBox').onclick = e => { if (e.target === $('accBox')) $('accBox').hidden = true; };
   renderNews(); renderPodcast(); renderPart();
   let a = 'home'; try { a = localStorage.getItem('notatico-app') || 'home'; } catch (e) {}
