@@ -576,6 +576,20 @@ header{gap:12px}
 .acc-it span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .acc-x{margin-top:14px}
 
+.lib-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.lib-q{flex:1;min-width:180px;background:#0b0c0b;border:1px solid var(--line);border-radius:10px;color:#fff;padding:9px 12px;font-family:var(--head);font-size:14px}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.lib-it{background:#0e0f0e;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.lib-it img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#000}
+.lib-in{padding:8px 10px;display:flex;flex-direction:column;gap:2px;font-size:13px}
+.lib-in b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lib-in small{color:var(--mut);font-family:var(--cond)}
+.lib-it[data-libuse]{cursor:pointer}.lib-it[data-libuse]:hover{border-color:var(--g)}.lib-it.busy{opacity:.5}
+.lib-pk{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:16px}
+.lib-pk[hidden]{display:none}
+.lib-bx{background:#121312;border:1px solid var(--line);border-radius:18px;width:min(920px,100%);max-height:86vh;overflow:auto;padding:16px}
+.lib-hd{display:flex;gap:12px;align-items:center;margin-bottom:12px;position:sticky;top:-16px;background:#121312;padding:6px 0}
+.lib-hd b{font-weight:900;text-transform:uppercase}
+
 .nt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
 .nt-grid.one{grid-template-columns:1fr}
 .nt-tile{background:var(--card,#141514);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .15s,border-color .15s}
@@ -697,7 +711,7 @@ header{gap:12px}
 /* ===== /admin ===== */
 html:has(body.nt-admin){background:#0b0c0b}
 body.nt-admin{background:#0b0c0b!important;background-image:none!important;padding:0!important;margin:0;min-height:100vh}
-body.nt-admin>*:not(#adm):not(script):not(.acc){display:none!important}
+body.nt-admin>*:not(#adm):not(script):not(.acc):not(.lib-pk){display:none!important}
 .adm{display:grid;grid-template-columns:250px 1fr;min-height:100vh;font-family:var(--head);background:#0b0c0b;position:relative;z-index:1}
 .adm svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .adm-side{background:#101110;border-right:1px solid var(--line);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;padding:18px 12px}
@@ -768,6 +782,7 @@ body.adm-out .adm-head{justify-content:center;text-align:center}
 .adm-ed{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
 .adm-ed-main textarea{min-height:340px;line-height:1.55}
 .adm-ed-main #nTit{font-size:18px;font-weight:800}
+.adm-ed-main #nLead{min-height:0;height:auto}
 .adm-ed-side{position:sticky;top:76px}
 .adm-ed-side .fl2{grid-template-columns:1fr}
 .adm-wide{width:100%;margin-top:6px}
@@ -3758,18 +3773,18 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   const FOTO_MAX = 5, FOTO_BYTES = 140000;
   let nCapaV = null;
   let nFotos = [], nFotosFor = null;
-  const capaEdBox = () => `<div class="fl" id="nCapaBox"><span>Imagem de capa</span><div class="nf-help">Aparece grande no topo da matéria e no card da aba News.</div><div id="nCapaV"></div><label class="h-btn nf-add"><input type="file" id="nCapa" accept="image/*" hidden><span id="nCapaL">Escolher capa</span></label></div>`;
+  const capaEdBox = () => `<div class="fl" id="nCapaBox"><span>Imagem de capa</span><div class="nf-help">Aparece grande no topo da matéria e no card da aba News.</div><div id="nCapaV"></div><label class="h-btn nf-add"><input type="file" id="nCapa" accept="image/*" hidden><span id="nCapaL">Escolher capa</span></label>${LIB_ON() ? ' <button type="button" class="h-btn nf-add" data-libpick="capa">Da biblioteca</button>' : ''}</div>`;
   function capaShow() {
     const b = $('nCapaV'); if (!b) return;
     b.innerHTML = nCapaV ? `<div class="nf-it nc-it"><img src="${nCapaV.thumb || nCapaV.full}" alt=""><div class="nf-f"><b>Capa</b><div class="nf-b"><button type="button" class="lnk del" data-cdel="1">Remover capa</button></div></div></div>` : '';
     if ($('nCapaL')) $('nCapaL').textContent = nCapaV ? 'Trocar capa' : 'Escolher capa';
   }
-  const fotosBox = () => `<div class="fl" id="nFotosBox"><span>Fotos da matéria (até ${FOTO_MAX})</span><div class="nf-help">Escolha as fotos e clique em <b>Pôr no texto</b>: o marcador <b>[foto 1]</b> entra onde o cursor estiver no texto, e a foto aparece ali na matéria. Foto sem marcador vai para o fim.</div><label class="h-btn nf-add"><input type="file" id="nFoto" accept="image/*" multiple hidden>+ Adicionar fotos</label><div id="nFotos" class="nf-list"></div></div>`;
+  const fotosBox = () => `<div class="fl" id="nFotosBox"><span>Fotos da matéria (até ${FOTO_MAX})</span><div class="nf-help">Escolha as fotos e clique em <b>Pôr no texto</b>: o marcador <b>[foto 1]</b> entra onde o cursor estiver no texto, e a foto aparece ali na matéria. Foto sem marcador vai para o fim.</div><label class="h-btn nf-add"><input type="file" id="nFoto" accept="image/*" multiple hidden>+ Adicionar fotos</label>${LIB_ON() ? ' <button type="button" class="h-btn nf-add nf-lib" data-libpick="foto">Da biblioteca</button>' : ''}<div id="nFotos" class="nf-list"></div></div>`;
   function fotosList() {
     const b = $('nFotos'); if (!b) return;
     const tx = ($('nTxt') || {}).value || '';
     b.innerHTML = nFotos.map((f, i) => { const on = new RegExp('\\[\\s*foto\\s*' + (i + 1) + '\\s*\\]', 'i').test(tx); return `<div class="nf-it"><img src="${f.src}" alt=""><div class="nf-f"><b>Foto ${i + 1}</b> <small class="${on ? 'ok' : ''}">${on ? 'no texto' : 'vai para o fim'}</small><input data-fleg="${i}" placeholder="Legenda (opcional)" maxlength="140" value="${esc(f.leg || '')}"><div class="nf-b"><button type="button" class="lnk" data-fins="${i}">Pôr no texto</button>${i ? `<button type="button" class="lnk" data-fup="${i}">↑</button>` : ''}<button type="button" class="lnk del" data-fdel="${i}">Remover</button></div></div></div>`; }).join('');
-    const box = $('nFotosBox'); if (box) box.querySelector('.nf-add').style.display = nFotos.length >= FOTO_MAX ? 'none' : '';
+    const box = $('nFotosBox'); if (box) box.querySelectorAll('.nf-add').forEach(x => x.style.display = nFotos.length >= FOTO_MAX ? 'none' : '');
   }
   const fotosOut = () => nFotos.map(f => ({ src: f.src, leg: (f.leg || '').slice(0, 140) }));
   function fotoShrink(file, side0, bytes) {
@@ -3837,6 +3852,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     pod: AI('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
     dicas: AI('<path d="m12 3 2.6 5.6 6 .7-4.4 4.1 1.2 6L12 16.6 6.6 19.4l1.2-6L3.4 9.3l6-.7z"/>'),
     comp: AI('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/>'),
+    midia: AI('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>'),
     evento: AI('<path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.5L12 14.6 7.1 17.2l.9-5.5-4-3.9 5.6-.8z"/><path d="M5 21h14"/>'),
     perfil: AI('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),
     team: AI('<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15 15a5 5 0 0 1 6 5"/>'),
@@ -3845,8 +3861,8 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     ext: AI('<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>'),
     plus: AI('<path d="M12 5v14M5 12h14"/>')
   };
-  const ADM_T = { dash: 'Início', news: 'Notícias', tab: 'Tabela do Brasileirão', home: 'Home do site', pod: 'Programa', dicas: 'Dicas do Chefe', comp: 'Competições', evento: 'Destaque da Home', perfil: 'Meu perfil', team: 'Equipe', senha: 'Minha senha' };
-  const ADM_SUB = { news: 'Tudo o que aparece no carrossel da Home e na aba News.', tab: 'Lance os placares: tabela, simulador, bolão e Home se atualizam sozinhos.', home: 'Aviso do topo, textos das copas e o card da Seleção.', pod: 'Episódios que aparecem na Home e em Programas.', dicas: 'Os jogos que a equipe recomenda.', comp: 'Chaves e placares das copas e estaduais.', team: 'Quem tem acesso ao painel.', perfil: 'Sua foto, seu nome e seu Instagram aparecem nas notícias que você escrever.', evento: 'O que a equipe escolher aqui (jogo, notícia, programa ou outro) fica em destaque no topo da Home.', senha: 'Troque a sua senha de acesso.' };
+  const ADM_T = { dash: 'Início', news: 'Notícias', tab: 'Tabela do Brasileirão', home: 'Home do site', pod: 'Programa', dicas: 'Dicas do Chefe', comp: 'Competições', evento: 'Destaque da Home', midia: 'Biblioteca de imagens', perfil: 'Meu perfil', team: 'Equipe', senha: 'Minha senha' };
+  const ADM_SUB = { news: 'Tudo o que aparece no carrossel da Home e na aba News.', tab: 'Lance os placares: tabela, simulador, bolão e Home se atualizam sozinhos.', home: 'Aviso do topo, textos das copas e o card da Seleção.', pod: 'Episódios que aparecem na Home e em Programas.', dicas: 'Os jogos que a equipe recomenda.', comp: 'Chaves e placares das copas e estaduais.', team: 'Quem tem acesso ao painel.', perfil: 'Sua foto, seu nome e seu Instagram aparecem nas notícias que você escrever.', midia: 'Todas as imagens que a equipe já usou ou enviou. Dá pra reaproveitar em notícias e no Destaque.', evento: 'O que a equipe escolher aqui (jogo, notícia, programa ou outro) fica em destaque no topo da Home.', senha: 'Troque a sua senha de acesso.' };
   function admInit() {
     document.body.classList.add('nt-admin');
     document.title = 'Painel · Nó Tático';
@@ -3917,7 +3933,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     const tabsEl = el.querySelector('.c-tabs.sm'), head = el.querySelector('.acc-who');
     const keys = ['dash'].concat(tabsEl ? [...tabsEl.querySelectorAll('[data-at]')].map(b => b.dataset.at) : []);
     if (tabsEl) tabsEl.remove(); if (head) head.style.display = 'none';
-    const grp = k => k === 'dash' ? '' : k === 'team' || k === 'perfil' ? 'Sua conta' : ['news', 'evento', 'tab', 'home'].includes(k) ? 'Dia a dia' : 'Conteúdo';
+    const grp = k => k === 'dash' ? '' : k === 'midia' ? 'Conteúdo' : k === 'team' || k === 'perfil' ? 'Sua conta' : ['news', 'evento', 'tab', 'home'].includes(k) ? 'Dia a dia' : 'Conteúdo';
     let last = null;
     $('admNav').innerHTML = keys.map(k => { const g = grp(k); const h = g && g !== last ? `<p class="adm-grp">${g}</p>` : ''; last = g || last; return h + `<button data-at="${k}" class="${k === panelTab ? 'on' : ''}">${ADM_I[k] || ''}<span>${ADM_T[k] || k}</span></button>`; }).join('');
     const nm = me.displayName || me.email || '';
@@ -3965,7 +3981,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (role === 'verify') { el.innerHTML = head + '<p>Confirme seu e-mail pelo link que enviamos para liberar o painel do host. Depois de confirmar, saia e entre de novo.</p><button class="h-btn" id="aVer">Reenviar link</button><p class="acc-st" id="aSt"></p>'; return; }
     if (role === 'pending') { el.innerHTML = head + '<p>Seu pedido está aguardando a aprovação do host. Assim que ele aprovar, saia e entre de novo para abrir o painel.</p>'; return; }
     if (!role) { el.innerHTML = head + '<p>Verificando acesso…</p>'; return; }
-    const tabs = [['news', 'Notícia'], ['evento', 'Destaque'], ['tab', 'Tabela'], ['home', 'Home'], ['pod', 'Programa'], ['dicas', 'Dica do Chefe'], ['comp', 'Competições'], ['perfil', 'Meu perfil']].concat(role === 'host' ? [['team', 'Equipe']] : []);
+    const tabs = [['news', 'Notícia'], ['evento', 'Destaque'], ['tab', 'Tabela'], ['home', 'Home'], ['pod', 'Programa'], ['dicas', 'Dica do Chefe'], ['comp', 'Competições']].concat(LIB_ON() ? [['midia', 'Biblioteca']] : []).concat([['perfil', 'Meu perfil']]).concat(role === 'host' ? [['team', 'Equipe']] : []);
     if (ADM && panelTab === 'dash') { el.innerHTML = '<div class="c-tabs sm">' + tabs.map(t => `<button data-at="${t[0]}">${t[1]}</button>`).join('') + '</div>'; return; }
     if (!tabs.some(t => t[0] === panelTab) && !(CLM && panelTab === 'senha')) panelTab = ADM ? 'dash' : 'news';
     let body = '';
@@ -3978,6 +3994,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (panelTab === 'comp') body = compBody();
     if (panelTab === 'perfil') body = perfilBody();
     if (panelTab === 'evento') body = eventoBody();
+    if (panelTab === 'midia') body = libBody();
     if (panelTab === 'pod') body = fld('pTit', 'Título do episódio') + fld('pYt', 'Link do YouTube') + fld('pDesc', 'Descrição (opcional)', 'textarea', 'rows="3"') +
       `<button class="h-btn pri" id="pGo">Publicar episódio</button><p class="acc-st" id="aSt"></p><h5 class="acc-h">Episódios</h5>${FB_POD.map(p => `<div class="acc-it"><span>${esc(p.data || '')} · ${esc(p.titulo)}</span><button class="lnk del" data-del="podcasts/${p.id}">Apagar</button></div>`).join('') || '<p class="acc-st">Nenhum ainda.</p>'}`;
     if (panelTab === 'dicas') body = `<div class="fl2">${fld('mA', 'Mandante')}${fld('mB', 'Visitante')}</div><div class="fl2">${fld('mD', 'Data (ex: 15/11)')}${fld('mH', 'Horário (ex: 16h)')}</div><div class="fl2">${fld('mC', 'Competição (ex: Champions League)')}${fld('mO', 'Onde assistir (ex: TNT, ge TV)')}</div>${fld('mP', 'Por que assistir (a dica do chefe)', 'textarea', 'rows="3"')}` +
@@ -3998,6 +4015,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     if (panelTab === 'comp') compFill();
     if (panelTab === 'perfil') perfilFill();
     if (panelTab === 'evento') eventoFill();
+    if (panelTab === 'midia') libFill();
     if (panelTab === 'news' && nEdit) { const n = FB_NEWS.find(x => x.id === nEdit); if (n) { $('nTit').value = n.titulo; $('nTxt').value = n.texto || ''; $('nTag').value = n.tag || 'Brasileirão'; $('nComp').value = n.go || ''; if (n.times) { $('nA').value = n.times[0]; $('nB').value = n.times[1]; } $('nPl').value = n.placar || ''; $('nLead').value = n.lead || ''; $('nGo').textContent = 'Salvar alterações';
         if (nFotosFor !== nEdit) {
           nFotos = (n.fotos || []).map(f => ({ src: f.src, leg: f.leg || '' })); nCapaV = n.capa || n.capaT ? { full: n.capa || n.capaT, thumb: n.capaT || n.capa } : null; nFotosFor = nEdit;
@@ -4044,6 +4062,86 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
     $('sTi').value = SL.titulo || ''; $('sSu').value = SL.sub || ''; $('sAte').value = SL.ate || ''; $('sNo').value = SL.nota || '';
     [0, 1, 2].forEach(k => { const j = SL.jogos[k] || {}; $('sA' + k).innerHTML = $('sB' + k).innerHTML = teamOpts(); $('sA' + k).value = j.a || ''; $('sB' + k).value = j.b || ''; $('sD' + k).value = j.d || ''; $('sH' + k).value = j.h || ''; $('sL' + k).value = j.local || ''; $('sP' + k).value = j.placar || ''; });
   }
+  // ===== Biblioteca de imagens (tudo o que a equipe sobe fica guardado para reusar) =====
+  const LIB_ON = () => !CLM && !!F;
+  let LIB = null, libQ = '';
+  const hashStr = s => { let h = 5381; const step = Math.max(1, Math.floor(s.length / 6000)); for (let i = 0; i < s.length; i += step) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36) + s.length.toString(36); };
+  function srcShrink(src, side0, bytes) {
+    return new Promise((ok, bad) => { const im = new Image(); im.onerror = () => bad(new Error('imagem')); im.onload = () => {
+      let side = side0, q = 0.78, out = '';
+      for (let k = 0; k < 8; k++) { const sc = Math.min(1, side / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width * sc); c.height = Math.round(im.height * sc); const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height); out = c.toDataURL('image/jpeg', q); if (out.length <= bytes) break; if (q > 0.55) q -= 0.08; else side = Math.round(side * 0.82); }
+      ok(out); }; im.src = src; });
+  }
+  async function libLoad(force) {
+    if (!LIB_ON()) return [];
+    if (LIB && !force) return LIB;
+    const r = await F.getDocs(F.query(F.collection(F.db, 'noticias'), F.where('lib', '==', true)));
+    LIB = r.docs.map(d => Object.assign({ id: d.id }, d.data())).sort((a, b) => (b.criado || 0) - (a.criado || 0));
+    return LIB;
+  }
+  async function libAdd(src, nome) {
+    if (!LIB_ON() || !src || !me) return '';
+    const id = 'lib-' + hashStr(src);
+    try {
+      if (LIB && LIB.some(x => x.id === id)) return id;
+      const ex = await F.getDoc(F.doc(F.db, 'noticias', id)); if (ex.exists()) return id;
+      const meta = { lib: true, thumb: await srcShrink(src, 360, 26000), nome: String(nome || '').slice(0, 80), autor: nomeDe(), criado: Date.now() };
+      await F.setDoc(F.doc(F.db, 'noticias', id + '-f'), { src });
+      await F.setDoc(F.doc(F.db, 'noticias', id), meta);
+      if (LIB) LIB.unshift(Object.assign({ id }, meta));
+    } catch (e) {}
+    return id;
+  }
+  async function libFull(id) { const d = await F.getDoc(F.doc(F.db, 'noticias', id + '-f')); return d.exists() ? d.data().src : ''; }
+  const libKeep = (srcs, nome) => { srcs.filter(Boolean).forEach(s => libAdd(s, nome)); };
+  function libGridHtml(list, pick) {
+    if (!list.length) return `<p class="adm-mut">${LIB && LIB.length ? 'Nenhuma imagem com esse nome.' : 'A biblioteca ainda está vazia. As imagens entram aqui sozinhas quando alguém publica uma notícia ou um destaque com foto, ou pelo botão "Enviar imagens".'}</p>`;
+    return `<div class="lib-grid">${list.map(x => `<div class="lib-it" ${pick ? `data-libuse="${x.id}"` : ''}><img src="${x.thumb}" alt="" loading="lazy"><div class="lib-in"><b>${esc(x.nome || 'Sem nome')}</b><small>${esc(x.autor || '')}${x.criado ? ' · ' + new Date(x.criado).toLocaleDateString('pt-BR') : ''}</small>${pick ? '' : `<div class="nf-b"><button type="button" class="lnk" data-libren="${x.id}">Renomear</button><button type="button" class="lnk del" data-libdel="${x.id}">Excluir</button></div>`}</div></div>`).join('')}</div>`;
+  }
+  const libFilter = () => (LIB || []).filter(x => !libQ || (x.nome || '').toLowerCase().includes(libQ.toLowerCase()) || (x.autor || '').toLowerCase().includes(libQ.toLowerCase()));
+  function libBody() {
+    return `<div class="lib-top"><label class="h-btn pri nf-add"><input type="file" id="libUp" accept="image/*" multiple hidden>+ Enviar imagens</label><input id="libQ" class="lib-q" placeholder="Buscar por nome ou autor…" value="${esc(libQ)}"><span id="libN" class="adm-mut" style="margin:0"></span></div><div id="libGrid"><p class="adm-mut">Carregando…</p></div><p class="acc-st" id="aSt"></p>`;
+  }
+  async function libFill() {
+    try { await libLoad(); } catch (e) { $('libGrid').innerHTML = `<p class="acc-st">Não consegui abrir a biblioteca: ${esc(e.message || e)}</p>`; return; }
+    libDraw();
+  }
+  function libDraw() { const g = $('libGrid'); if (!g) return; const L = libFilter(); g.innerHTML = libGridHtml(L, false); if ($('libN')) $('libN').textContent = `${(LIB || []).length} imagens`; }
+  let libCb = null;
+  async function libPick(cb) {
+    if (!LIB_ON()) return st('A biblioteca só funciona no site (notatico.pages.dev).', 1);
+    libCb = cb; let pk = $('libPk');
+    if (!pk) { pk = document.createElement('div'); pk.id = 'libPk'; pk.className = 'lib-pk'; document.body.appendChild(pk); }
+    pk.hidden = false;
+    pk.innerHTML = `<div class="lib-bx"><div class="lib-hd"><b>Escolher da biblioteca</b><input id="libPq" class="lib-q" placeholder="Buscar…"><button type="button" class="lnk" data-libclose="1">Fechar ✕</button></div><div id="libPg"><p class="adm-mut">Carregando…</p></div></div>`;
+    try { await libLoad(); } catch (e) {}
+    const draw = () => { const q = ($('libPq') || {}).value || ''; const L = (LIB || []).filter(x => !q || (x.nome || '').toLowerCase().includes(q.toLowerCase())); $('libPg').innerHTML = libGridHtml(L, true); };
+    draw(); $('libPq').oninput = draw;
+    pk.onclick = async e => {
+      if (e.target === pk || e.target.closest('[data-libclose]')) { pk.hidden = true; return; }
+      const u = e.target.closest('[data-libuse]'); if (!u) return;
+      u.classList.add('busy'); const src = await libFull(u.dataset.libuse); pk.hidden = true;
+      if (src && libCb) libCb(src);
+    };
+  }
+  function libWire() {
+    const ab = $('accBox'); if (!ab || ab.dataset.libw) return; ab.dataset.libw = 1;
+    ab.addEventListener('input', e => { if (e.target.id === 'libQ') { libQ = e.target.value; libDraw(); } });
+    ab.addEventListener('change', async e => {
+      if (e.target.id !== 'libUp') return;
+      const fs = [...e.target.files]; e.target.value = ''; let n = 0;
+      for (const f of fs) { try { st(`Enviando ${++n} de ${fs.length}…`); const src = await fotoShrink(f, 1400, 150000); await libAdd(src, f.name.replace(/\.[^.]+$/, '')); } catch (er) {} }
+      st(fs.length ? 'Imagens guardadas na biblioteca!' : ''); libDraw();
+    });
+    ab.addEventListener('click', async e => {
+      const b = e.target.closest('[data-libdel],[data-libren],[data-libpick]'); if (!b) return; e.preventDefault(); e.stopPropagation();
+      if (b.dataset.libdel) { if (!confirm('Excluir esta imagem da biblioteca? Notícias que já usam a imagem continuam com ela.')) return; const id = b.dataset.libdel; await F.deleteDoc(F.doc(F.db, 'noticias', id)); try { await F.deleteDoc(F.doc(F.db, 'noticias', id + '-f')); } catch (er) {} LIB = (LIB || []).filter(x => x.id !== id); libDraw(); return st('Imagem excluída.'); }
+      if (b.dataset.libren) { const x = (LIB || []).find(y => y.id === b.dataset.libren); const nv = prompt('Nome da imagem:', x ? x.nome : ''); if (nv == null || !x) return; x.nome = nv.trim().slice(0, 80); await F.updateDoc(F.doc(F.db, 'noticias', x.id), { nome: x.nome }); libDraw(); return; }
+      if (b.dataset.libpick === 'capa') return libPick(async src => { nCapaV = { full: src, thumb: await srcShrink(src, 640, 45000) }; capaShow(); if (typeof admPrev === 'function') admPrev(); st('Capa escolhida da biblioteca.'); });
+      if (b.dataset.libpick === 'foto') { if (nFotos.length >= FOTO_MAX) return st(`Máximo de ${FOTO_MAX} fotos.`, 1); return libPick(src => { nFotos.push({ src, leg: '' }); fotosList(); if (typeof admPrev === 'function') admPrev(); st('Foto adicionada. Clique em "Pôr no texto" para escolher onde ela entra.'); }); }
+      if (b.dataset.libpick === 'ev') return libPick(src => { evDraft.img = src; renderAcc(); });
+    }, true);
+  }
   // ===== painel: Destaque da Home =====
   let evDraft = null;
   const EV_T = [['jogo', 'Jogo'], ['noticia', 'Notícia'], ['programa', 'Programa'], ['livre', 'Outro (livre)']];
@@ -4057,7 +4155,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
       <div class="fl2">${fld('evData', 'Dia', 'input', 'type="date"')}${fld('evHora', 'Horário', 'input', 'type="time"')}</div><div class="fl2">${fld('evLocal', 'Local (ex.: Centenário, Montevidéu)')}${fld('evPl', 'Placar (preencha depois do jogo)')}</div>${fld('evTx', 'Texto curto (opcional)', 'textarea', 'rows="2"')}`;
     if (t === 'noticia') f = `<label class="fl"><span>Qual notícia?</span><select id="evRef">${nOpts}</select></label>`;
     if (t === 'programa') f = `<label class="fl"><span>Qual episódio?</span><select id="evRef">${pOpts}</select></label>${fld('evTx', 'Texto extra (opcional)', 'textarea', 'rows="2"')}`;
-    if (t === 'livre') f = `${fld('evTit', 'Título')}${fld('evTx', 'Texto', 'textarea', 'rows="3"')}<div class="fl"><span>Imagem de fundo (opcional)</span><label class="h-btn nf-add"><input type="file" id="evImg" accept="image/*" hidden>${e.img ? 'Trocar imagem' : 'Escolher imagem'}</label>${e.img ? ' <button type="button" class="lnk del" id="evImgX">Tirar imagem</button>' : ''}</div>`;
+    if (t === 'livre') f = `${fld('evTit', 'Título')}${fld('evTx', 'Texto', 'textarea', 'rows="3"')}<div class="fl"><span>Imagem de fundo (opcional)</span><label class="h-btn nf-add"><input type="file" id="evImg" accept="image/*" hidden>${e.img ? 'Trocar imagem' : 'Escolher imagem'}</label>${LIB_ON() ? ' <button type="button" class="h-btn nf-add" data-libpick="ev">Da biblioteca</button>' : ''}${e.img ? ' <button type="button" class="lnk del" id="evImgX">Tirar imagem</button>' : ''}</div>`;
     const btnF = t === 'jogo' || t === 'livre' ? `<div class="fl2">${fld('evBt', 'Texto do botão (opcional, ex.: Onde assistir)')}${fld('evLk', 'Link do botão')}</div>` : '';
     return `<p class="nf-help">O destaque fica no topo da Home, acima de tudo. Escolha o que quer destacar:</p>
       <div class="ev-tipos">${EV_T.map(([k, n]) => `<button type="button" class="ev-t${k === t ? ' on' : ''}" data-evt="${k}">${n}</button>`).join('')}</div>
@@ -4094,7 +4192,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
         if (v.tipo === 'programa') { const p = PODCAST.find(x => (x.yt || x.titulo) === v.ref); if (p) v.snap = { titulo: p.titulo, desc: p.desc || '', yt: p.yt || '', link: p.link || '' }; }
       }
       v.autor = nomeDe(); b.disabled = true;
-      try { await saveSite('comp-evento', v); COMPS.evento = v; evDraft = null; remix(); renderAcc(); st(v.ativo ? 'Destaque publicado na Home!' : 'Destaque retirado da Home.'); }
+      try { await saveSite('comp-evento', v); COMPS.evento = v; if (v.ativo && v.img) libKeep([v.img], v.titulo || v.etiqueta || 'Destaque'); evDraft = null; remix(); renderAcc(); st(v.ativo ? 'Destaque publicado na Home!' : 'Destaque retirado da Home.'); }
       catch (er) { b.disabled = false; st('Não consegui salvar: ' + (er.message || er), 1); }
     }, true);
   }
@@ -4365,9 +4463,9 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
             const ref = await F.addDoc(F.collection(F.db, 'noticias'), Object.assign(base, { d: o.d || ddmm(new Date()), autor: o.autor || nomeDe(), autorUid: me.uid, ts: F.serverTimestamp() }));
             await putImg(ref.id); await apagaEmb('noticias/' + nEdit); nEdit = null; nFotosFor = null; admView = 'list'; renderAcc(); return st('Notícia atualizada!');
           }
-          if (nEdit) { await F.updateDoc(F.doc(F.db, 'noticias', nEdit), base); await putImg(nEdit); const L = FB_NEWS.find(x => x.id === nEdit); if (L) { delete L._img; } nEdit = null; nFotosFor = null; admView = 'list'; renderAcc(); return st('Notícia atualizada!'); }
+          if (nEdit) { await F.updateDoc(F.doc(F.db, 'noticias', nEdit), base); await putImg(nEdit); libKeep([img.capa].concat(img.fotos.map(f => f.src)), titulo); const L = FB_NEWS.find(x => x.id === nEdit); if (L) { delete L._img; } nEdit = null; nFotosFor = null; admView = 'list'; renderAcc(); return st('Notícia atualizada!'); }
           const ref = await F.addDoc(F.collection(F.db, 'noticias'), Object.assign(base, { d: ddmm(new Date()), autor: nomeDe(), autorUid: me.uid, ts: F.serverTimestamp() }));
-          await putImg(ref.id); nFotosFor = null;
+          await putImg(ref.id); nFotosFor = null; libKeep([img.capa].concat(img.fotos.map(f => f.src)), titulo);
           admView = 'list'; renderAcc(); return st('Notícia publicada!');
         } catch (er) { t.disabled = false; return st('Não consegui salvar: ' + (er.message || er), 1); }
       }
@@ -4401,7 +4499,7 @@ window.NT_esc = { CLUBS, DATA, shirtSVG, drawShirt, PHOTOS, saveBlob, toast };
   if (ADM) { admInit(); renderAcc(); }
   $('ytClose').onclick = () => { $('ytBox').hidden = true; $('ytW').innerHTML = ''; };
   $('accClose').onclick = () => { $('accBox').hidden = true; };
-  fotosWire(); cpWire(); perfilWire(); eventoWire();
+  fotosWire(); cpWire(); perfilWire(); eventoWire(); libWire();
   $('accBox').onclick = e => { if (e.target === $('accBox')) $('accBox').hidden = true; };
   renderNews(); renderPodcast(); renderPart();
   let a = 'home'; try { a = localStorage.getItem('notatico-app') || 'home'; } catch (e) {}
